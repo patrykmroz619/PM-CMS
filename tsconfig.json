@@ -7,7 +7,16 @@
     "noImplicitAny": true,
     "allowSyntheticDefaultImports": true,
     "noEmit": true,
-    "strict": true
+    "strict": true,
+    "esModuleInterop": true,
+    "moduleResolution": "node",
+    "baseUrl": "./src",
+    "paths": {
+      "@views/*": ["./views/*"],
+      "@myStyled": ["./style"],
+      "@common": ["./common"],
+      "@assets/*": ["./assets/*"]
+    }
   },
-  "include": ["src"]
+  "include": ["src/", "src/custom.d.ts"]
 }

@@ -2,6 +2,7 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
+const TsConfigPathsWebpackPlugin = require("tsconfig-paths-webpack-plugin");
 
 module.exports = {
   target: "web",
@@ -11,12 +12,15 @@ module.exports = {
     filename: "bundle.js"
   },
   resolve: {
-    extensions: [".ts", ".tsx", ".js"]
+    extensions: [".ts", ".tsx", ".js"],
+    plugins: [new TsConfigPathsWebpackPlugin()]
   },
   devServer: {
     contentBase: path.join(__dirname, "build"),
     compress: true,
     port: 3000,
+    publicPath: "/",
+    historyApiFallback: true,
     stats: "minimal"
   },
   plugins: [
@@ -49,6 +53,31 @@ module.exports = {
             presets: ["@babel/preset-env", "@babel/preset-react", "@babel/preset-typescript"]
           }
         }
+      },
+      {
+        test: /\.svg$/,
+        use: [
+          {
+            loader: "babel-loader"
+          },
+          {
+            loader: "react-svg-loader",
+            options: {
+              jsx: true
+            }
+          }
+        ]
+      },
+      {
+        test: /\.(png|jpg|gif)$/i,
+        use: [
+          {
+            loader: "url-loader",
+            options: {
+              limit: false
+            }
+          }
+        ]
       }
     ]
   }
