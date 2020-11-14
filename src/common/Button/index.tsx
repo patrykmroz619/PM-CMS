@@ -18,13 +18,14 @@ const Btn = styled.a<ButtonProps>`
   height: ${({ theme }) => theme.sizing.inputsHeight};
   font-size: ${({ theme }) => theme.fontSize.p};
   line-height: ${({ theme }) => theme.sizing.inputsHeight};
-  background-color: ${({ theme, disabled }) =>
-    disabled ? theme.color.tertiary : theme.color.primary};
+  background-color: ${({ theme, secondary }) =>
+    secondary ? theme.color.secondary : theme.color.primary};
   border: none;
   transition: 0.3s;
 
   &:hover {
-    background-color: ${({ theme }) => theme.color.primaryHover};
+    background-color: ${({ theme, secondary }) =>
+      secondary ? theme.color.secondaryHover : theme.color.primaryHover};
   }
 `;
 

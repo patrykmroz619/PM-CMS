@@ -1,35 +1,50 @@
-import React from "react";
+import React, { useState } from "react";
+import { useFormik, FormikProps } from "formik";
 
-import LoginIcon from "@assets//login.svg";
-import LockIcon from "@assets/lock.svg";
-import { AuthForm, Button, P, InputWithIcon } from "@common";
+import { AuthForm } from "@common";
+import Step1Form from "../Step1Form";
+import Step2Form from "../Step2Form";
 
-const RegisterForm: React.FC = () => (
-  <AuthForm>
-    <InputWithIcon icon={LoginIcon} type="text" placeholder="Nick" name="login" required />
-    <InputWithIcon icon={LoginIcon} type="email" placeholder="E - mail" name="e-mail" required />
-    <InputWithIcon
-      icon={LockIcon}
-      type="password"
-      placeholder="Password"
-      name="password"
-      required
-    />
-    <InputWithIcon
-      icon={LockIcon}
-      type="password"
-      placeholder="Repeat password"
-      name="repeatPassword"
-      required
-    />
-    <Button>NEXT</Button>
-    <P center light>
-      Do you have an account?{" "}
-      <Button inline to="/login">
-        Login here!
-      </Button>
-    </P>
-  </AuthForm>
-);
+export type InitialValues = {
+  email: string;
+  password: string;
+  passwordRepeated: string;
+  name: string;
+  surname: string;
+  company: string;
+};
+
+export type StepFormProps = {
+  formik: FormikProps<InitialValues>;
+  setCurrentStep: React.Dispatch<React.SetStateAction<1 | 2>>;
+};
+
+const RegisterForm: React.FC = () => {
+  const [currentStep, setCurrentStep] = useState<1 | 2>(1);
+
+  const formik = useFormik<InitialValues>({
+    initialValues: {
+      email: "",
+      password: "",
+      passwordRepeated: "",
+      name: "",
+      surname: "",
+      company: ""
+    },
+    onSubmit(values) {
+      console.log(values);
+    }
+  });
+
+  return (
+    <AuthForm onSubmit={formik.handleSubmit}>
+      {currentStep === 1 ? (
+        <Step1Form formik={formik} setCurrentStep={setCurrentStep} />
+      ) : (
+        <Step2Form formik={formik} setCurrentStep={setCurrentStep} />
+      )}
+    </AuthForm>
+  );
+};
 
 export default RegisterForm;

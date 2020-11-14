@@ -17,7 +17,7 @@ const StyledAuthForm = styled.form`
   img {
     display: block;
     margin: auto;
-    margin-bottom: ${({ theme }) => theme.spacing.s};
+    margin-bottom: ${({ theme }) => theme.spacing.l};
     width: 130px;
   }
 

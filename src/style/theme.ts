@@ -4,6 +4,7 @@ const theme = {
     primaryHover: "#C59400",
     primaryLight: "#FFD760",
     secondary: "#DDDDDD",
+    secondaryHover: "#AAAAAA",
     tertiary: "#607D8B",
     darkOpacity: "rgba(0, 0, 0, 0.7)",
     light: "#EEEEEE",
