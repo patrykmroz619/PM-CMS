@@ -15,7 +15,8 @@
       "@views/*": ["./views/*"],
       "@myStyled": ["./style"],
       "@common": ["./common"],
-      "@assets/*": ["./assets/*"]
+      "@assets/*": ["./assets/*"],
+      "@validators/*": ["./validators/*"]
     }
   },
   "include": ["src/", "src/custom.d.ts"]

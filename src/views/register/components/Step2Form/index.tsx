@@ -6,7 +6,11 @@ import { StepFormProps } from "../RegisterForm";
 import UserData from "./components/userData";
 import { StyledButton } from "./styled";
 
-const Step2Form: React.FC<StepFormProps> = ({ formik, setCurrentStep }) => (
+type Step2FormProps = StepFormProps & {
+  setCurrentStep: React.Dispatch<React.SetStateAction<1 | 2>>;
+};
+
+const Step2Form: React.FC<Step2FormProps> = ({ formik, setCurrentStep }) => (
   <>
     <UserData email={formik.values.email} password={formik.values.password} />
     <P light center>
@@ -20,6 +24,9 @@ const Step2Form: React.FC<StepFormProps> = ({ formik, setCurrentStep }) => (
       placeholder="Name"
       onChange={formik.handleChange}
       value={formik.values.name}
+      maxLength={35}
+      isTouched={formik.touched.name}
+      error={formik.errors.name}
     />
     <InputWithIcon
       icon={LockIcon}
@@ -29,6 +36,9 @@ const Step2Form: React.FC<StepFormProps> = ({ formik, setCurrentStep }) => (
       placeholder="Surname"
       onChange={formik.handleChange}
       value={formik.values.surname}
+      maxLength={35}
+      isTouched={formik.touched.surname}
+      error={formik.errors.surname}
     />
     <InputWithIcon
       icon={LockIcon}
@@ -38,8 +48,13 @@ const Step2Form: React.FC<StepFormProps> = ({ formik, setCurrentStep }) => (
       placeholder="Company"
       onChange={formik.handleChange}
       value={formik.values.company}
+      maxLength={35}
+      isTouched={formik.touched.company}
+      error={formik.errors.company}
     />
-    <StyledButton type="submit">REGISTER</StyledButton>
+    <StyledButton type="submit" onClick={() => formik.handleSubmit}>
+      REGISTER
+    </StyledButton>
     <Button secondary onClick={() => setCurrentStep(1)}>
       BACK
     </Button>

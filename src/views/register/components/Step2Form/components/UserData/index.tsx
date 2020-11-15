@@ -20,8 +20,8 @@ const UserData: React.FC<UserDataProps> = ({ email, password }) => {
       <P light>
         <Bold>Password: </Bold>
         {isPasswordVisible ? password : "*".repeat(password.length)}
-        <EyeButton onClick={() => setPasswordVisibility(!isPasswordVisible)}>
-          <EyeIcon isActive={isPasswordVisible} />
+        <EyeButton type="button" onClick={() => setPasswordVisibility(!isPasswordVisible)}>
+          <EyeIcon active={isPasswordVisible ? 1 : 0} />
         </EyeButton>
       </P>
     </>

@@ -6,39 +6,46 @@ import { Button, InputWithIcon, P } from "@common";
 import { StepFormProps } from "../RegisterForm";
 import { StyledButton } from "./styled";
 
-const Step1Form: React.FC<StepFormProps> = ({ formik, setCurrentStep }) => (
+type Step1FormProps = StepFormProps & { handleClickNext: () => void };
+
+const Step1Form: React.FC<Step1FormProps> = ({ formik, handleClickNext }) => (
   <>
     <InputWithIcon
       icon={LoginIcon}
-      id="email"
       name="email"
       type="email"
       placeholder="E - mail"
       onChange={formik.handleChange}
       value={formik.values.email}
-      required
+      maxLength={35}
+      isTouched={formik.touched.email}
+      error={formik.errors.email}
     />
     <InputWithIcon
       icon={LockIcon}
-      id="password"
       name="password"
       type="password"
       placeholder="Password"
       onChange={formik.handleChange}
       value={formik.values.password}
-      required
+      maxLength={35}
+      isTouched={formik.touched.password}
+      error={formik.errors.password}
     />
     <InputWithIcon
       icon={LockIcon}
-      id="passwordRepeated"
       name="passwordRepeated"
       type="password"
       placeholder="Repeat password"
       onChange={formik.handleChange}
       value={formik.values.passwordRepeated}
-      required
+      maxLength={35}
+      isTouched={formik.touched.passwordRepeated}
+      error={formik.errors.passwordRepeated}
     />
-    <StyledButton onClick={() => setCurrentStep(2)}>NEXT</StyledButton>
+    <StyledButton type="button" onClick={handleClickNext}>
+      NEXT
+    </StyledButton>
     <P center light>
       Do you have an account?{" "}
       <Button inline to="/login">

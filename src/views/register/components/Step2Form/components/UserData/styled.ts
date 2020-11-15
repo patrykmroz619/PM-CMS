@@ -11,10 +11,8 @@ export const EyeButton = styled.button`
   width: 15px;
   background-color: transparent;
   border: none;
-  outline: none;
 `;
 
-export const EyeIcon = styled(Eye)<{ isActive: boolean }>`
-  fill: ${({ theme, isActive }) =>
-    isActive ? theme.color.primary : theme.color.secondary} !important;
+export const EyeIcon = styled(Eye)<{ active: 1 | 0 }>`
+  fill: ${({ theme, active }) => (active ? theme.color.primary : theme.color.secondary)} !important;
 `;
