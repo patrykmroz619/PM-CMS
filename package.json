@@ -13,6 +13,7 @@
   "license": "ISC",
   "dependencies": {
     "@reduxjs/toolkit": "^1.4.0",
+    "axios": "^0.21.0",
     "formik": "^2.2.5",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
@@ -22,6 +23,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.12.3",
+    "@babel/polyfill": "^7.12.1",
     "@babel/preset-env": "^7.12.1",
     "@babel/preset-react": "^7.12.1",
     "@babel/preset-typescript": "^7.12.1",
@@ -43,6 +45,7 @@
     "@typescript-eslint/eslint-plugin": "^4.5.0",
     "@typescript-eslint/parser": "^4.5.0",
     "babel-loader": "^8.1.0",
+    "dotenv-webpack": "^5.1.0",
     "eslint": "^7.11.0",
     "eslint-plugin-jest-dom": "^3.2.3",
     "eslint-plugin-react": "^7.21.4",

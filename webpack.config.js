@@ -3,10 +3,11 @@ const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
 const TsConfigPathsWebpackPlugin = require("tsconfig-paths-webpack-plugin");
+const DotEnv = require("dotenv-webpack");
 
 module.exports = {
   target: "web",
-  entry: path.join(__dirname, "src", "index.tsx"),
+  entry: ["@babel/polyfill", path.join(__dirname, "src", "index.tsx")],
   output: {
     path: path.join(__dirname, "build"),
     filename: "bundle.js"
@@ -23,6 +24,7 @@ module.exports = {
     historyApiFallback: true,
     stats: "minimal"
   },
+  devtool: "cheap-module-source-map",
   plugins: [
     new HtmlWebpackPlugin({
       template: "./src/index.html"
@@ -32,7 +34,8 @@ module.exports = {
       eslint: {
         files: "./src/**/*.{ts,tsx,js,jsx}"
       }
-    })
+    }),
+    new DotEnv()
   ],
   module: {
     rules: [

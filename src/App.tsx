@@ -1,14 +1,15 @@
+import { useAuth } from "hooks/useAuth";
 import React from "react";
 import { Switch, Route } from "react-router-dom";
 
-import LoginPage from "@views/login";
-import PanelCore from "@views/panelCore";
-import RegisterPage from "@views/register";
+const LoginPage = React.lazy(() => import("@views/login"));
+const RegisterPage = React.lazy(() => import("@views/register"));
 
 const App: React.FC = () => {
+  useAuth();
+
   return (
     <Switch>
-      <Route path="/" exact component={PanelCore}></Route>
       <Route path="/login" component={LoginPage}></Route>
       <Route path="/register" component={RegisterPage}></Route>
     </Switch>

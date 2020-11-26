@@ -3,7 +3,7 @@ import styled from "@myStyled";
 
 import logo from "@assets/logo-light.png";
 
-const StyledAuthForm = styled.form`
+const StyledAuthForm = styled.form<{ loading: 1 | 0 }>`
   position: absolute;
   top: 50%;
   left: 50%;
@@ -13,6 +13,11 @@ const StyledAuthForm = styled.form`
   background-color: ${({ theme }) => theme.color.darkOpacity};
   border-radius: 15px;
   text-align: center;
+
+  * {
+    transition: 0.3s;
+    opacity: ${({ loading }) => (loading ? 0.5 : 1)};
+  }
 
   img {
     display: block;
@@ -35,12 +40,17 @@ const StyledAuthForm = styled.form`
     background-color: ${({ theme }) => theme.color.light};
     border: none;
   }
+
+  p.error {
+    margin: ${({ theme }) => theme.spacing.s};
+    color: red;
+    font-weight: normal;
+  }
 `;
 
-export const AuthForm: React.FC<React.HTMLAttributes<HTMLFormElement>> = ({
-  children,
-  ...props
-}) => (
+type AuthFormProps = React.HTMLAttributes<HTMLFormElement> & { loading: 1 | 0 };
+
+export const AuthForm = ({ children, ...props }: AuthFormProps) => (
   <StyledAuthForm {...props}>
     <img src={logo} alt="PM - CMS logo" />
     {children}

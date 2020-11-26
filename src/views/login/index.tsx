@@ -1,29 +1,34 @@
 import React from "react";
 
-import { GradientBg } from "@common";
-import LoginForm from "./components/LoginForm";
+import { useDispatch, useSelector } from "react-redux";
 import { FormikProps, useFormik } from "formik";
+
+import { GradientBg } from "@common";
 import { setError, validateEmail, validatePassword } from "@validators/authValidators";
+import { signInUser } from "@fetch";
+import { user } from "@selectors";
+import LoginForm from "./components/LoginForm";
 
-type InitialValues = {
-  email: string;
-  password: string;
-};
-
-type ErrorObject = Partial<InitialValues>;
+type ErrorObject = Partial<SignInFormData>;
 
 export type LoginFormProps = {
-  formik: FormikProps<InitialValues>;
+  formik: FormikProps<SignInFormData>;
+  error?: string;
+  loading: boolean;
 };
 
 const LoginPage: React.FC = () => {
-  const formik = useFormik<InitialValues>({
+  const dispatch = useDispatch();
+  const error = useSelector(user.selectError);
+  const loading = useSelector(user.selectLoading);
+
+  const formik = useFormik<SignInFormData>({
     initialValues: {
       email: "",
       password: ""
     },
     onSubmit(values) {
-      console.log(values);
+      dispatch(signInUser(values));
     },
     validate(values) {
       const errors: ErrorObject = {};
@@ -37,7 +42,7 @@ const LoginPage: React.FC = () => {
 
   return (
     <GradientBg>
-      <LoginForm formik={formik} />
+      <LoginForm formik={formik} error={error} loading={loading} />
     </GradientBg>
   );
 };

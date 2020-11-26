@@ -5,9 +5,10 @@ import LockIcon from "@assets/lock.svg";
 import { AuthForm, Button, P, InputWithIcon } from "@common";
 import { LoginFormProps } from "../../";
 
-const LoginForm: React.FC<LoginFormProps> = ({ formik }) => (
-  <AuthForm onSubmit={formik.handleSubmit}>
+const LoginForm = ({ formik, error, loading }: LoginFormProps) => (
+  <AuthForm onSubmit={formik.handleSubmit} loading={loading ? 1 : 0}>
     <h1>Welcome back!</h1>
+    {error ? <p className="error">{error}</p> : null}
     <InputWithIcon
       icon={LoginIcon}
       name="email"

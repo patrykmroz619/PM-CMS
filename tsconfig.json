@@ -16,8 +16,12 @@
       "@myStyled": ["./style"],
       "@common": ["./common"],
       "@assets/*": ["./assets/*"],
-      "@validators/*": ["./validators/*"]
+      "@validators/*": ["./validators/*"],
+      "@api/*": ["./api/*"],
+      "@selectors": ["./store/selectors"],
+      "@fetch": ["./store/fetch"],
+      "@utils/*": ["./utils/*"]
     }
   },
-  "include": ["src/", "src/custom.d.ts"]
+  "include": ["src/", "src/@types/"]
 }

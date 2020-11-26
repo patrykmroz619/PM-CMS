@@ -6,10 +6,11 @@ import { Button, InputWithIcon, P } from "@common";
 import { StepFormProps } from "../RegisterForm";
 import { StyledButton } from "./styled";
 
-type Step1FormProps = StepFormProps & { handleClickNext: () => void };
+type Step1FormProps = StepFormProps & { handleClickNext: () => void; error: string | undefined };
 
-const Step1Form: React.FC<Step1FormProps> = ({ formik, handleClickNext }) => (
+const Step1Form: React.FC<Step1FormProps> = ({ formik, handleClickNext, error }) => (
   <>
+    {error ? <p className="error">{error}</p> : null}
     <InputWithIcon
       icon={LoginIcon}
       name="email"

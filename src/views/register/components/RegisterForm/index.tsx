@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import { useFormik, FormikProps } from "formik";
+import { useSelector, useDispatch } from "react-redux";
 
+import { signUpUser } from "@fetch";
+import { user } from "@selectors";
 import { AuthForm } from "@common";
 import Step1Form from "../Step1Form";
 import Step2Form from "../Step2Form";
@@ -14,14 +17,7 @@ import {
   setError
 } from "@validators/authValidators";
 
-export type InitialValues = {
-  email: string;
-  password: string;
-  passwordRepeated: string;
-  name: string;
-  surname: string;
-  company: string;
-};
+export type InitialValues = SignUpFormData & { passwordRepeated: string };
 
 type ErrorObject = Partial<InitialValues>;
 
@@ -30,8 +26,13 @@ export type StepFormProps = {
 };
 
 const RegisterForm: React.FC = () => {
+  const dispatch = useDispatch();
+
   const [currentStep, setCurrentStep] = useState<1 | 2>(1);
   const [isValidated, setIsValidated] = useState<boolean>(false);
+
+  const error = useSelector(user.selectError);
+  const loading = useSelector(user.selectLoading);
 
   const initialValues: InitialValues = {
     email: "",
@@ -45,8 +46,7 @@ const RegisterForm: React.FC = () => {
   const formik = useFormik<InitialValues>({
     initialValues,
     onSubmit(values) {
-      console.log(values);
-      // action.setSubmitting(false);
+      dispatch(signUpUser(values));
     },
     validate(values) {
       const errors: ErrorObject = {};
@@ -71,6 +71,11 @@ const RegisterForm: React.FC = () => {
     }
   });
 
+  if (error && currentStep == 2) {
+    setCurrentStep(1);
+    formik.resetForm();
+  }
+
   const handleClickNext = () => {
     formik.setTouched({ email: true, password: true, passwordRepeated: true });
 
@@ -80,9 +85,9 @@ const RegisterForm: React.FC = () => {
   };
 
   return (
-    <AuthForm onSubmit={formik.handleSubmit}>
+    <AuthForm onSubmit={formik.handleSubmit} loading={loading ? 1 : 0}>
       {currentStep === 1 ? (
-        <Step1Form formik={formik} handleClickNext={handleClickNext} />
+        <Step1Form formik={formik} handleClickNext={handleClickNext} error={error} />
       ) : (
         <Step2Form formik={formik} setCurrentStep={setCurrentStep} />
       )}
