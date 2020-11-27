@@ -29,8 +29,8 @@ const authUser = createAsyncThunk(AUTH, async (arg: void, { rejectWithValue }) =
   try {
     const response = await getAuthUser();
     return response.data;
-  } catch (e) {
-    return rejectWithValue(e.response.data as ApiError);
+  } catch {
+    return rejectWithValue(null);
   }
 });
 

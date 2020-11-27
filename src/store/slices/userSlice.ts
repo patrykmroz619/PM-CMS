@@ -10,7 +10,7 @@ type InitialUserState = {
 
 const initialState: InitialUserState = {
   isAuthenticated: false,
-  loading: false
+  loading: true
 };
 
 const userSlice = createSlice({
