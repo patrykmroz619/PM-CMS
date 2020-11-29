@@ -11,11 +11,3 @@ declare type UserData = {
   surname?: string;
   company?: string;
 };
-
-declare type ApiError = {
-  statusCode: number;
-  error: {
-    type: string;
-    description: string;
-  };
-};

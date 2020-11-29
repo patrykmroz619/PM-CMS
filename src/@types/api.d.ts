@@ -15,3 +15,11 @@ declare type SignInApiResponseData = {
 };
 
 declare type SignUpApiResponseData = SignInApiResponseData;
+
+declare type ApiError = {
+  statusCode: number;
+  error: {
+    type: string;
+    description: string;
+  };
+};

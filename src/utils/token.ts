@@ -1,5 +1,5 @@
-const ACTIVE_TOKEN = "ACTIVE_TOKEN";
-const REFRESH_TOKEN = "REFRESH_TOKEN";
+export const ACTIVE_TOKEN = "ACTIVE_TOKEN";
+export const REFRESH_TOKEN = "REFRESH_TOKEN";
 
 const setActiveToken = (token: string) => window.localStorage.setItem(ACTIVE_TOKEN, token);
 
