@@ -1,5 +1,5 @@
 import { getRefreshToken, setTokens } from "@utils/token";
-import { api } from ".";
+import api from "..";
 
 export const signIn = (signInData: SignInFormData) =>
   api.post<SignInApiResponseData>("login", signInData);

@@ -27,8 +27,8 @@ export const validatePassword: validateFunction = (value) => {
   if (!value) {
     error = "Password is required.";
   } else if (value.length < 8) {
-    error = "Password has to be longer than 8 characters.";
-  } else if (value.length > 35) {
+    error = "Password has to be longer than 7 characters.";
+  } else if (value.length > 34) {
     error = "Password has to be shorter than 35 characters.";
   } else if (!/\d/.test(value)) {
     error = "Password should contain some numbers.";
@@ -52,7 +52,7 @@ export const validateCompanyName: validateFunction = (value) => {
   let error = "";
 
   if (value) {
-    if (value?.length > 35) {
+    if (value.length > 35) {
       error = "Company name is too long.";
     }
   }
