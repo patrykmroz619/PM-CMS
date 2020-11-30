@@ -20,7 +20,8 @@
       "@api/*": ["./api/*"],
       "@selectors": ["./store/selectors"],
       "@fetch": ["./store/fetch"],
-      "@utils/*": ["./utils/*"]
+      "@utils/*": ["./utils/*"],
+      "@testHelpers": ["./__test__/helpers"]
     }
   },
   "include": ["src/", "src/@types/"]

@@ -51,8 +51,8 @@ const StyledAuthForm = styled.form<{ loading: 1 | 0 }>`
 type AuthFormProps = React.HTMLAttributes<HTMLFormElement> & { loading: 1 | 0 };
 
 export const AuthForm = ({ children, ...props }: AuthFormProps) => (
-  <StyledAuthForm {...props}>
-    <img src={logo} alt="PM - CMS logo" />
+  <StyledAuthForm {...props} data-testid="form">
+    <img src={logo} alt="PM - CMS logo" data-testid="img" />
     {children}
   </StyledAuthForm>
 );
