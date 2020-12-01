@@ -1,1 +1,1 @@
-export { signInUser, signUpUser } from "./userFetch";
+export { signInUser, signUpUser, authUser } from "./userFetch";

@@ -1,7 +1,7 @@
 import { user } from "@selectors";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { authUser } from "store/fetch/userFetch";
+import { authUser } from "@fetch";
 
 export const useAuth = (): boolean => {
   const dispatch = useDispatch();
@@ -10,7 +10,7 @@ export const useAuth = (): boolean => {
   useEffect(() => {
     console.log("auth");
     dispatch(authUser());
-  }, [dispatch]);
+  }, []);
 
   return loading;
 };
