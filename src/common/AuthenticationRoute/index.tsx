@@ -4,7 +4,7 @@ import { Redirect, Route, RouteProps } from "react-router-dom";
 
 import { user } from "@selectors";
 
-export const AuthorizationRoute = ({ children, ...rest }: RouteProps) => {
+export const AuthenticationRoute = ({ children, ...rest }: RouteProps) => {
   const isAuthenticated = useSelector(user.selectIsAuthenticated);
 
   return (

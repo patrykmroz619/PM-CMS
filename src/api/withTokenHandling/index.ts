@@ -2,6 +2,7 @@ import axios from "axios";
 
 import apiConfig from "../config";
 import { getActiveToken } from "@utils/token";
+import { refreshActiveToken } from "@api/auth";
 
 const apiWithTokenHandling = axios.create(apiConfig);
 

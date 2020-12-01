@@ -2,7 +2,7 @@ import React from "react";
 import { Switch } from "react-router-dom";
 
 import { useAuth } from "hooks/useAuth";
-import { PrivateRoute, AuthorizationRoute, Spinner, GradientBg } from "@common";
+import { PrivateRoute, AuthenticationRoute, Spinner, GradientBg } from "@common";
 
 const LoginPage = React.lazy(() => import("@views/login"));
 const RegisterPage = React.lazy(() => import("@views/register"));
@@ -14,12 +14,12 @@ const App: React.FC = () => {
   return !loading ? (
     <>
       <Switch>
-        <AuthorizationRoute path="/login">
+        <AuthenticationRoute path="/login">
           <LoginPage />
-        </AuthorizationRoute>
-        <AuthorizationRoute path="/register">
+        </AuthenticationRoute>
+        <AuthenticationRoute path="/register">
           <RegisterPage />
-        </AuthorizationRoute>
+        </AuthenticationRoute>
       </Switch>
       <PrivateRoute path="/panel">
         <Layout>
