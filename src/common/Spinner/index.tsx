@@ -47,7 +47,7 @@ const Inner = styled(Circle)`
 `;
 
 export const Spinner = () => (
-  <Wrapper>
+  <Wrapper data-testid="spinner">
     <Outher />
     <Inner />
   </Wrapper>
