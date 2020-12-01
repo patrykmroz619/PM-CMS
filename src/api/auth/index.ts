@@ -22,7 +22,8 @@ export const refreshActiveToken = (): Promise<string> => {
       setTokens(response.data);
       return response.data.activeToken;
     })
-    .catch(() => {
+    .catch((e) => {
+      console.log("Refresh token is invalid", { e }); // For development
       return "";
     });
 };

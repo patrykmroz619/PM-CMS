@@ -4,6 +4,8 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
 const TsConfigPathsWebpackPlugin = require("tsconfig-paths-webpack-plugin");
 const DotEnv = require("dotenv-webpack");
+const ReactRefreshWebpackPlugin = require("@pmmmwh/react-refresh-webpack-plugin");
+const webpack = require("webpack");
 
 module.exports = {
   target: "web",
@@ -22,7 +24,8 @@ module.exports = {
     port: 3000,
     publicPath: "/",
     historyApiFallback: true,
-    stats: "minimal"
+    stats: "minimal",
+    hot: true
   },
   devtool: "cheap-module-source-map",
   plugins: [
@@ -35,7 +38,9 @@ module.exports = {
         files: "./src/**/*.{ts,tsx,js,jsx}"
       }
     }),
-    new DotEnv()
+    new DotEnv(),
+    new webpack.HotModuleReplacementPlugin(),
+    new ReactRefreshWebpackPlugin()
   ],
   module: {
     rules: [
@@ -53,7 +58,8 @@ module.exports = {
         use: {
           loader: "babel-loader",
           options: {
-            presets: ["@babel/preset-env", "@babel/preset-react", "@babel/preset-typescript"]
+            presets: ["@babel/preset-env", "@babel/preset-react", "@babel/preset-typescript"],
+            plugins: ["react-refresh/babel"]
           }
         }
       },

@@ -12,11 +12,11 @@ module.exports = {
     "\\.svg$": "<rootDir>/src/__mocks__/SvgComponentMock.tsx",
     "@utils/(.*)$": "<rootDir>/src/utils/$1",
     "@myStyled": "<rootDir>/src/style",
-    "@common": "<rootDir>/src/common",
+    "@common": "<rootDir>/src/components/common",
     "@api/(.*)$": "<rootDir>/src/api/$1",
     "@selectors": "<rootDir>/src/store/selectors",
     "@fetch": "<rootDir>/src/store/fetch",
-    "@views/(.*)$": "<rootDir>/src/views/$1",
+    "@views/(.*)$": "<rootDir>/src/components/views/$1",
     "@validators/(.*)$": "<rootDir>/src/validators/$1",
     "@testHelpers": "<rootDir>/src/__test__/helpers",
     "@mocks/(.*)$": "<rootDir>/src/__mocks__/$1"

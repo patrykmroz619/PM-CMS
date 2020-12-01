@@ -1,5 +1,5 @@
 import { CombinedState } from "@reduxjs/toolkit";
-import selectors from "../userSelectors";
+import userSelector from "../userSelectors";
 
 const state: CombinedState<RootState> = {
   user: {
@@ -14,26 +14,24 @@ const state: CombinedState<RootState> = {
   }
 };
 
-const { selectIsAuthenticated, selectLoading, selectData, selectError, selectUser } = selectors;
-
 describe("user selectors for useSelector hook", () => {
-  test("selectUser", () => {
-    expect(selectUser(state)).toBe(state.user);
+  test("select all user state", () => {
+    expect(userSelector.user(state)).toBe(state.user);
   });
 
-  test("selectIsAuthenticated", () => {
-    expect(selectIsAuthenticated(state)).toBe(state.user.isAuthenticated);
+  test("select is user authenticated", () => {
+    expect(userSelector.isAuthenticated(state)).toBe(state.user.isAuthenticated);
   });
 
-  test("selectLoading", () => {
-    expect(selectLoading(state)).toBe(state.user.loading);
+  test("select is user data loading", () => {
+    expect(userSelector.loading(state)).toBe(state.user.loading);
   });
 
-  test("selectData", () => {
-    expect(selectData(state)).toBe(state.user.data);
+  test("select user data", () => {
+    expect(userSelector.data(state)).toBe(state.user.data);
   });
 
-  test("selectError", () => {
-    expect(selectError(state)).toBe(state.user.error);
+  test("select is error occured", () => {
+    expect(userSelector.error(state)).toBe(state.user.error);
   });
 });

@@ -1,3 +1,3 @@
-import user from "./userSelectors";
+import userSelector from "./userSelectors";
 
-export { user };
+export { userSelector };
