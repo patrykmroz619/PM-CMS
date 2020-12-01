@@ -5,7 +5,7 @@ import { MemoryRouter } from "react-router-dom";
 import { Button } from "../index";
 
 describe("<Button />", () => {
-  test("renders <button> when props 'to' is not received", () => {
+  test("renders <button> when props 'to' is not passed", () => {
     const { getByText } = render(<Button>Click</Button>);
 
     const button = getByText(/Click/);
@@ -25,5 +25,25 @@ describe("<Button />", () => {
 
     expect(button.tagName).toBe("A");
     expect(button.textContent).toBe("Link");
+  });
+
+  test("is inline when props inline is passed", () => {
+    const { getByText } = render(<Button inline>Click</Button>);
+
+    const button = getByText(/Click/);
+
+    expect(button).toHaveStyleRule("display", "inline");
+  });
+
+  test("is block when props inline is not passed", () => {
+    const { getByText } = render(
+      <MemoryRouter>
+        <Button to="/route">Link</Button>
+      </MemoryRouter>
+    );
+
+    const button = getByText(/Link/);
+
+    expect(button).not.toHaveStyleRule("display", "inline");
   });
 });

@@ -3,8 +3,8 @@ import styled from "@myStyled";
 
 interface InputWithIconProps extends React.HTMLProps<HTMLInputElement> {
   icon: React.FC<React.SVGProps<SVGSVGElement>>;
-  isTouched: boolean | undefined;
-  error: string | undefined;
+  isTouched?: boolean;
+  error?: string;
 }
 
 const Wrapper = styled.div<{ isError: 1 | 0 }>`
@@ -37,7 +37,7 @@ export const InputWithIcon: React.FC<InputWithIconProps> = ({
   ...props
 }) => (
   <Wrapper isError={error && isTouched ? 1 : 0}>
-    <input {...props} />
+    <input {...props} data-testid="input" />
     {isTouched && error ? <Error>{error}</Error> : null}
     <Icon />
   </Wrapper>
