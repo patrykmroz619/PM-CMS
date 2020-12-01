@@ -21,7 +21,7 @@ const signUpUser = createAsyncThunk(AUTH, async (userData: SignUpFormData, { rej
     setTokens(response.data.tokens);
     return response.data.userData;
   } catch (e) {
-    return rejectWithValue(e.response.data as ApiError);
+    return rejectWithValue(e.response.data);
   }
 });
 

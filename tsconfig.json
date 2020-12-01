@@ -21,7 +21,8 @@
       "@selectors": ["./store/selectors"],
       "@fetch": ["./store/fetch"],
       "@utils/*": ["./utils/*"],
-      "@testHelpers": ["./__test__/helpers"]
+      "@testHelpers": ["./__test__/helpers"],
+      "@mocks/*": ["./__mocks__/*"]
     }
   },
   "include": ["src/", "src/@types/"]

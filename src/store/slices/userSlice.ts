@@ -1,14 +1,14 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { AUTH_PENDING, AUTH_FULFILLED, AUTH_REJECTED } from "../constants/auth";
 
-type InitialUserState = {
+type UserState = {
   isAuthenticated: boolean;
   loading: boolean;
   error?: string;
   data?: UserData;
 };
 
-const initialState: InitialUserState = {
+const initialState: UserState = {
   isAuthenticated: false,
   loading: true
 };

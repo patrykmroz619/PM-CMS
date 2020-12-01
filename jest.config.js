@@ -18,6 +18,7 @@ module.exports = {
     "@fetch": "<rootDir>/src/store/fetch",
     "@views/(.*)$": "<rootDir>/src/views/$1",
     "@validators/(.*)$": "<rootDir>/src/validators/$1",
-    "@testHelpers": "<rootDir>/src/__test__/helpers"
+    "@testHelpers": "<rootDir>/src/__test__/helpers",
+    "@mocks/(.*)$": "<rootDir>/src/__mocks__/$1"
   }
 };
