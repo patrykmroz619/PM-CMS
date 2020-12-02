@@ -3,7 +3,7 @@ import { MemoryRouter, Route } from "react-router-dom";
 import * as Redux from "react-redux";
 
 import { renderWithStore } from "@testHelpers";
-import { PrivateRoute } from "../index";
+import { PrivateRoute } from "./index";
 
 describe("<PrivateRoute />", () => {
   test("renders children when user is authenticated", () => {

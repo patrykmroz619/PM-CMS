@@ -3,7 +3,7 @@ import { MemoryRouter, Route } from "react-router-dom";
 import * as Redux from "react-redux";
 
 import { renderWithStore } from "@testHelpers";
-import { AuthenticationRoute } from "../index";
+import { AuthenticationRoute } from "./index";
 
 describe("<AuthenticationRoute />", () => {
   test("renders children when user is not authenticated", () => {

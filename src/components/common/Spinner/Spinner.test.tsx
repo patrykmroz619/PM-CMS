@@ -1,7 +1,7 @@
 import React from "react";
 import { render } from "@testHelpers";
 
-import { Spinner } from "../index";
+import { Spinner } from "./index";
 
 describe("<Spinner />", () => {
   test("renders two child elements", () => {

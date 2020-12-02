@@ -4,8 +4,8 @@ import { Switch } from "react-router-dom";
 import { useAuth } from "@hooks";
 import { PrivateRoute, AuthenticationRoute, Spinner, GradientBg } from "@common";
 
-const LoginPage = React.lazy(() => import("@views/login"));
-const RegisterPage = React.lazy(() => import("@views/register"));
+const LoginPage = React.lazy(() => import("components/pages/Login"));
+const RegisterPage = React.lazy(() => import("components/pages/Register"));
 const Layout = React.lazy(() => import("./layout"));
 
 const App: React.FC = () => {

@@ -6,9 +6,12 @@ import { ThemeProvider } from "styled-components";
 import theme from "../../style/theme";
 import { createStore, Store } from "@reduxjs/toolkit";
 import rootReducer from "../../store/slices";
+import { MemoryRouter } from "react-router-dom";
 
-const Providers: React.FC = ({ children }) => (
-  <ThemeProvider theme={theme}>{children}</ThemeProvider>
+const Providers: React.FC<{ initialRoute?: string }> = ({ children, initialRoute = "/" }) => (
+  <MemoryRouter initialEntries={[initialRoute]}>
+    <ThemeProvider theme={theme}>{children}</ThemeProvider>
+  </MemoryRouter>
 );
 
 const customRender = (component: ReactElement, options?: RenderOptions) =>
@@ -17,15 +20,21 @@ const customRender = (component: ReactElement, options?: RenderOptions) =>
 type Options = {
   initialState: Record<string, unknown>;
   store?: Store;
+  initialRoute?: string;
 } & RenderOptions;
 
 const renderWithStore = (
   Component: ReactElement,
-  { initialState, store = createStore(rootReducer, initialState), ...renderOptions }: Options
+  {
+    initialState,
+    store = createStore(rootReducer, initialState),
+    initialRoute,
+    ...renderOptions
+  }: Options
 ) => {
   const Wrapper: React.FC = ({ children }) => (
     <Provider store={store}>
-      <Providers>{children}</Providers>
+      <Providers initialRoute={initialRoute}>{children}</Providers>
     </Provider>
   );
 

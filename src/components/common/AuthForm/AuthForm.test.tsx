@@ -1,6 +1,6 @@
 import React from "react";
 import { cleanup, getByTestId, getByText, render } from "@testHelpers";
-import { AuthForm } from "../index";
+import { AuthForm } from "./index";
 import "jest-styled-components";
 
 afterEach(cleanup);

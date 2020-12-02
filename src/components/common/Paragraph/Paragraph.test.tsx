@@ -2,7 +2,7 @@ import { render } from "@testHelpers";
 import React from "react";
 import theme from "../../../style/theme";
 
-import { P } from "../index";
+import { P } from "./index";
 
 describe("<P />", () => {
   test("has property text-align: center in styles when props center is passed", () => {

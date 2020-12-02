@@ -2,7 +2,7 @@ import { render } from "@testHelpers";
 import React from "react";
 import { MemoryRouter } from "react-router-dom";
 
-import { Button } from "../index";
+import { Button } from "./index";
 
 describe("<Button />", () => {
   test("renders <button> when props 'to' is not passed", () => {
@@ -15,16 +15,16 @@ describe("<Button />", () => {
   });
 
   test("renders <a> when props 'to' is received", () => {
-    const { getByText } = render(
+    const { container } = render(
       <MemoryRouter>
         <Button to="/route">Link</Button>
       </MemoryRouter>
     );
 
-    const button = getByText(/Link/);
+    const button = container.querySelector("a");
 
-    expect(button.tagName).toBe("A");
-    expect(button.textContent).toBe("Link");
+    expect(button).toBeInTheDocument();
+    expect(button?.textContent).toBe("Link");
   });
 
   test("is inline when props inline is passed", () => {

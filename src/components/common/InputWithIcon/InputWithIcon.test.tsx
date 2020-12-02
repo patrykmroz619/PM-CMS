@@ -1,7 +1,7 @@
 import React from "react";
 
 import { render } from "@testHelpers";
-import { InputWithIcon } from "../index";
+import { InputWithIcon } from "./index";
 import Icon from "@assets/login.svg";
 
 describe("<InputWithIcon />", () => {
