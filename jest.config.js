@@ -16,9 +16,10 @@ module.exports = {
     "@api/(.*)$": "<rootDir>/src/api/$1",
     "@selectors": "<rootDir>/src/store/selectors",
     "@fetch": "<rootDir>/src/store/fetch",
-    "@views/(.*)$": "<rootDir>/src/components/views/$1",
+    "@pages/(.*)$": "<rootDir>/src/components/pages/$1",
     "@validators/(.*)$": "<rootDir>/src/validators/$1",
     "@testHelpers": "<rootDir>/src/__test__/helpers",
-    "@mocks/(.*)$": "<rootDir>/src/__mocks__/$1"
+    "@mocks/(.*)$": "<rootDir>/src/__mocks__/$1",
+    "@content": "<rootDir>/src/content"
   }
 };

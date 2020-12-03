@@ -1,3 +1,5 @@
+import { formErrors } from "@content";
+
 type validateFunction = (value: string | undefined, value2?: string | undefined) => string;
 
 type Error = string | undefined;
@@ -9,14 +11,16 @@ export const setError = <T>(obj: ErrorObject<T>, key: keyof T, error: Error): vo
   }
 };
 
+const { email, password, name, surname, companyName } = formErrors;
+
 export const validateEmail: validateFunction = (value) => {
   let error = "";
   if (!value) {
-    error = "Email is required.";
+    error = email.required;
   } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value)) {
-    error = "Invalid email address.";
+    error = email.invalid;
   } else if (value.length > 35) {
-    error = "Email is too long. It has to be shorter than 35 characters.";
+    error = email.tooLong;
   }
 
   return error;
@@ -25,15 +29,15 @@ export const validateEmail: validateFunction = (value) => {
 export const validatePassword: validateFunction = (value) => {
   let error = "";
   if (!value) {
-    error = "Password is required.";
+    error = password.required;
   } else if (value.length < 8) {
-    error = "Password has to be longer than 7 characters.";
+    error = password.tooShort;
   } else if (value.length > 34) {
-    error = "Password has to be shorter than 35 characters.";
+    error = password.tooLong;
   } else if (!/\d/.test(value)) {
-    error = "Password should contain some numbers.";
+    error = password.withoutNumber;
   } else if (!/[A-Z]/.test(value)) {
-    error = "Password should contain some uppercase letter.";
+    error = password.withoutUpper;
   }
 
   return error;
@@ -42,7 +46,7 @@ export const validatePassword: validateFunction = (value) => {
 export const validatePasswordRepeated: validateFunction = (value, value2) => {
   let error = "";
   if (value !== value2) {
-    error = "Passwords are not the same.";
+    error = password.differentRepeat;
   }
 
   return error;
@@ -53,19 +57,19 @@ export const validateCompanyName: validateFunction = (value) => {
 
   if (value) {
     if (value.length > 35) {
-      error = "Company name is too long.";
+      error = companyName.tooLong;
     }
   }
 
   return error;
 };
 
-const validateNameOrSurname = (field: string, value: string | undefined): string => {
+const validateNameOrSurname = (field: "Name" | "Surname", value: string | undefined): string => {
   let error = "";
 
   if (value) {
     if (!/^[a-zA-Z][a-zA-Z-']{2,33}$/.test(value)) {
-      error = `${field} is incorrect.`;
+      error = field == "Name" ? name.invalid : surname.invalid;
     }
   }
 

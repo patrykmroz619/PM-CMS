@@ -2,11 +2,14 @@ import React from "react";
 
 import LoginIcon from "@assets//login.svg";
 import LockIcon from "@assets/lock.svg";
+import { signUpPageContent as content } from "@content";
 import { Button, InputWithIcon, P } from "@common";
 import { StepFormProps } from "../index";
 import { StyledButton } from "./styled";
 
 type Step1FormProps = StepFormProps & { handleClickNext: () => void; error: string | undefined };
+
+const { placeholders, toLoginPage } = content;
 
 const Step1Form: React.FC<Step1FormProps> = ({ formik, handleClickNext, error }) => (
   <>
@@ -15,7 +18,7 @@ const Step1Form: React.FC<Step1FormProps> = ({ formik, handleClickNext, error })
       icon={LoginIcon}
       name="email"
       type="email"
-      placeholder="E - mail"
+      placeholder={placeholders.email}
       onChange={formik.handleChange}
       value={formik.values.email}
       maxLength={35}
@@ -26,7 +29,7 @@ const Step1Form: React.FC<Step1FormProps> = ({ formik, handleClickNext, error })
       icon={LockIcon}
       name="password"
       type="password"
-      placeholder="Password"
+      placeholder={placeholders.password}
       onChange={formik.handleChange}
       value={formik.values.password}
       maxLength={35}
@@ -37,7 +40,7 @@ const Step1Form: React.FC<Step1FormProps> = ({ formik, handleClickNext, error })
       icon={LockIcon}
       name="passwordRepeated"
       type="password"
-      placeholder="Repeat password"
+      placeholder={placeholders.repeatPassword}
       onChange={formik.handleChange}
       value={formik.values.passwordRepeated}
       maxLength={35}
@@ -45,12 +48,12 @@ const Step1Form: React.FC<Step1FormProps> = ({ formik, handleClickNext, error })
       error={formik.errors.passwordRepeated}
     />
     <StyledButton type="button" onClick={handleClickNext}>
-      NEXT
+      {content.next}
     </StyledButton>
     <P center light>
-      Do you have an account?{" "}
+      {toLoginPage.message}
       <Button inline to="/login">
-        Login here!
+        {toLoginPage.callToAction}
       </Button>
     </P>
   </>

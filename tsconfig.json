@@ -12,7 +12,7 @@
     "moduleResolution": "node",
     "baseUrl": "./src",
     "paths": {
-      "@views/*": ["./components/views/*"],
+      "@pages/*": ["./components/pages/*"],
       "@myStyled": ["./style"],
       "@common": ["./components/common"],
       "@assets/*": ["./assets/*"],
@@ -23,7 +23,8 @@
       "@utils/*": ["./utils/*"],
       "@testHelpers": ["./__test__/helpers"],
       "@mocks/*": ["./__mocks__/*"],
-      "@hooks": ["./hooks"]
+      "@hooks": ["./hooks"],
+      "@content": ["./content"]
     }
   },
   "include": ["src/", "src/@types/"]

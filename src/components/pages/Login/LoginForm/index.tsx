@@ -3,6 +3,7 @@ import { FormikProps } from "formik";
 
 import LoginIcon from "@assets//login.svg";
 import LockIcon from "@assets/lock.svg";
+import { singInPageContent as content } from "@content";
 import { AuthForm, Button, P, InputWithIcon } from "@common";
 
 type LoginFormProps = {
@@ -11,15 +12,17 @@ type LoginFormProps = {
   loading: boolean;
 };
 
+const { placeholders, greeting, submitText, demo, createAccount } = content;
+
 const LoginForm = ({ formik, error, loading }: LoginFormProps) => (
   <AuthForm onSubmit={formik.handleSubmit} loading={loading ? 1 : 0}>
-    <h1>Welcome back!</h1>
+    <h1>{greeting}</h1>
     {error ? <p className="error">{error}</p> : null}
     <InputWithIcon
       icon={LoginIcon}
       name="email"
       type="email"
-      placeholder="E - mail"
+      placeholder={placeholders.email}
       onChange={formik.handleChange}
       value={formik.values.email}
       maxLength={35}
@@ -30,7 +33,7 @@ const LoginForm = ({ formik, error, loading }: LoginFormProps) => (
       icon={LockIcon}
       name="password"
       type="password"
-      placeholder="Password"
+      placeholder={placeholders.password}
       onChange={formik.handleChange}
       value={formik.values.password}
       maxLength={35}
@@ -38,15 +41,16 @@ const LoginForm = ({ formik, error, loading }: LoginFormProps) => (
       error={formik.errors.password}
     />
     <P center light>
-      Forgot password? <Button inline>Click Here</Button>
+      {demo.message + " "}
+      <Button inline>{demo.callToAction}</Button>
     </P>
     <Button type="submit" onClick={() => formik.handleSubmit}>
-      LOGIN
+      {submitText}
     </Button>
     <P center light>
-      Don&apos;t have an account?{" "}
+      {createAccount.message + " "}
       <Button inline to="/register">
-        Register here!
+        {createAccount.callToAction}
       </Button>
     </P>
   </AuthForm>

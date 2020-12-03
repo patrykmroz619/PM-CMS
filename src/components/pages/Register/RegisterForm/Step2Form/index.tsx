@@ -1,6 +1,7 @@
 import React from "react";
 
 import LockIcon from "@assets/lock.svg";
+import { signUpPageContent as content } from "@content";
 import { Button, InputWithIcon, P } from "@common";
 import { StepFormProps, Step } from "../index";
 import UserData from "./UserData";
@@ -10,18 +11,20 @@ type Step2FormProps = StepFormProps & {
   setCurrentStep: React.Dispatch<React.SetStateAction<Step>>;
 };
 
+const { optionalData, placeholders, submitText } = content;
+
 const Step2Form: React.FC<Step2FormProps> = ({ formik, setCurrentStep }) => (
   <>
     <UserData email={formik.values.email} password={formik.values.password} />
     <P light center>
-      Personal data below are optional.
+      {optionalData}
     </P>
     <InputWithIcon
       icon={LockIcon}
       id="name"
       name="name"
       type="text"
-      placeholder="Name"
+      placeholder={placeholders.name}
       onChange={formik.handleChange}
       value={formik.values.name}
       maxLength={35}
@@ -33,7 +36,7 @@ const Step2Form: React.FC<Step2FormProps> = ({ formik, setCurrentStep }) => (
       id="surname"
       name="surname"
       type="text"
-      placeholder="Surname"
+      placeholder={placeholders.surname}
       onChange={formik.handleChange}
       value={formik.values.surname}
       maxLength={35}
@@ -45,7 +48,7 @@ const Step2Form: React.FC<Step2FormProps> = ({ formik, setCurrentStep }) => (
       id="company"
       name="company"
       type="text"
-      placeholder="Company"
+      placeholder={placeholders.company}
       onChange={formik.handleChange}
       value={formik.values.company}
       maxLength={35}
@@ -53,10 +56,10 @@ const Step2Form: React.FC<Step2FormProps> = ({ formik, setCurrentStep }) => (
       error={formik.errors.company}
     />
     <StyledButton type="submit" onClick={() => formik.handleSubmit}>
-      REGISTER
+      {submitText}
     </StyledButton>
     <Button secondary onClick={() => setCurrentStep(1)}>
-      BACK
+      {content.back}
     </Button>
   </>
 );
