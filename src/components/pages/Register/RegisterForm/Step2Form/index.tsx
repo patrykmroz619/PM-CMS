@@ -58,7 +58,7 @@ const Step2Form: React.FC<Step2FormProps> = ({ formik, setCurrentStep }) => (
     <StyledButton type="submit" onClick={() => formik.handleSubmit}>
       {submitText}
     </StyledButton>
-    <Button secondary onClick={() => setCurrentStep(1)}>
+    <Button secondary onClick={() => setCurrentStep(Step.first)}>
       {content.back}
     </Button>
   </>

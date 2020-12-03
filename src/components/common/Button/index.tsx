@@ -17,6 +17,7 @@ const Btn = styled.span<ButtonProps>`
   font-size: ${({ theme }) => theme.fontSize.p};
   line-height: ${({ theme }) => theme.sizing.inputsHeight};
   color: ${({ theme }) => theme.color.dark};
+  text-transform: uppercase;
   text-decoration: none;
   background-color: ${({ theme, secondary }) =>
     secondary ? theme.color.secondary : theme.color.primary};

@@ -1,6 +1,7 @@
 import React from "react";
 import LoginPage from "./index";
 import { RenderResult, renderWithStore } from "@testHelpers";
+import { singInPageContent as content } from "@content";
 
 describe("login page", () => {
   let renderResult: RenderResult;
@@ -13,22 +14,21 @@ describe("login page", () => {
   });
 
   test("renders greeting", () => {
-    const greet = renderResult.getByText(/Welcome back!/);
+    const greet = renderResult.getByText(content.greeting);
 
     expect(greet).toBeInTheDocument();
-    expect(greet.textContent).toBe("Welcome back!");
   });
 
   test("renders email and password input", () => {
-    const emailInput = renderResult.getByPlaceholderText(/E - mail/);
-    const passwordInput = renderResult.getByPlaceholderText(/Password/);
+    const emailInput = renderResult.getByPlaceholderText(content.placeholders.email);
+    const passwordInput = renderResult.getByPlaceholderText(content.placeholders.password);
 
     expect(emailInput).toBeInTheDocument();
     expect(passwordInput).toBeInTheDocument();
   });
 
   test("renders submit button", () => {
-    const submitButton = renderResult.getByText("LOGIN");
+    const submitButton = renderResult.getByText(content.submitText);
 
     expect(submitButton).toBeInTheDocument();
   });

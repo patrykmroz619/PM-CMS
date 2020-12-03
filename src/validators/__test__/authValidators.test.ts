@@ -7,6 +7,7 @@ import {
   validatePasswordRepeated,
   validateSurname
 } from "../authValidators";
+import { formErrors } from "@content";
 
 describe("auth validate functions", () => {
   describe("setError helper function", () => {
@@ -25,7 +26,7 @@ describe("auth validate functions", () => {
 
   describe("validateEmail function", () => {
     test('returns "Email is required." when passed empty value', () => {
-      const expected = "Email is required.";
+      const expected = formErrors.email.required;
 
       let result = validateEmail("");
       expect(result).toBe(expected);
@@ -35,7 +36,7 @@ describe("auth validate functions", () => {
     });
 
     test('returns "Invalid email address." when passed invalid email', () => {
-      const expected = "Invalid email address.";
+      const expected = formErrors.email.invalid;
 
       const invalidEmails = [
         "email.example.com",
@@ -51,7 +52,7 @@ describe("auth validate functions", () => {
     });
 
     test("returns error when passed email is too long", () => {
-      const expected = "Email is too long. It has to be shorter than 35 characters.";
+      const expected = formErrors.email.tooLong;
 
       const longEmail = "thisisveryveryloongemail@example.com";
 
@@ -79,7 +80,7 @@ describe("auth validate functions", () => {
 
   describe("validatePassword function", () => {
     test('returns "Password is required." when passed empty value', () => {
-      const expected = "Password is required.";
+      const expected = formErrors.password.required;
 
       let result = validatePassword("");
       expect(result).toBe(expected);
@@ -89,7 +90,7 @@ describe("auth validate functions", () => {
     });
 
     test('returns "Password has to be longer than 7 characters." when passed the password is too short', () => {
-      const expected = "Password has to be longer than 7 characters.";
+      const expected = formErrors.password.tooShort;
       const shortPassword = "pass123";
 
       const result = validatePassword(shortPassword);
@@ -97,7 +98,7 @@ describe("auth validate functions", () => {
     });
 
     test('returns "Password has to be shorter than 35 characters." when passed the password is too long', () => {
-      const expected = "Password has to be shorter than 35 characters.";
+      const expected = formErrors.password.tooLong;
       const longPassword = "passwordPasswordPassword0123456789!";
 
       const result = validatePassword(longPassword);
@@ -105,7 +106,7 @@ describe("auth validate functions", () => {
     });
 
     test('returns "Password should contain some numbers" when passed the password without numbers', () => {
-      const expected = "Password should contain some numbers.";
+      const expected = formErrors.password.withoutNumber;
       const passwordWithoutNumbers = "Password!";
 
       const result = validatePassword(passwordWithoutNumbers);
@@ -113,7 +114,7 @@ describe("auth validate functions", () => {
     });
 
     test('returns "Password should contain some uppercase letter" when passed the lowercase password', () => {
-      const expected = "Password should contain some uppercase letter.";
+      const expected = formErrors.password.withoutUpper;
       const lowercasePassword = "password1!";
 
       const result = validatePassword(lowercasePassword);
@@ -133,7 +134,7 @@ describe("auth validate functions", () => {
 
   describe("validatePasswordRepeated function", () => {
     test('returns "Passwords are not the same." when the passed passwords are different', () => {
-      const expected = "Passwords are not the same.";
+      const expected = formErrors.password.differentRepeat;
       const password1 = "Password1";
       const password2 = "Password2";
 
@@ -152,7 +153,7 @@ describe("auth validate functions", () => {
 
   describe("validateCompanyName function", () => {
     test('returns "Company name is too long." when passed name is longer than 34 characters', () => {
-      const expected = "Company name is too long.";
+      const expected = formErrors.companyName.tooLong;
       const longName = "looooooooooooooooooooooooooooongName";
 
       const result = validateCompanyName(longName);
@@ -183,9 +184,11 @@ describe("auth validate functions", () => {
 
       const incorectValue = "patr ick";
 
+      const { name, surname } = formErrors;
+
       for (const [key, value] of Object.entries(validators)) {
         const result = value(incorectValue);
-        expect(result).toBe(`${key} is incorrect.`);
+        expect(result).toBe(key == "Name" ? name.invalid : surname.invalid);
       }
     });
 
@@ -195,10 +198,10 @@ describe("auth validate functions", () => {
         Surname: validateSurname
       };
 
-      const incorectValue = "patrick";
+      const corectValue = "patrick";
 
       for (const validator of Object.values(validators)) {
-        const result = validator(incorectValue);
+        const result = validator(corectValue);
         expect(result).toBe("");
       }
     });

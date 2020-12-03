@@ -17,10 +17,8 @@ import {
   setError
 } from "@validators/authValidators";
 
-export type InitialValues = SignUpFormData & { passwordRepeated: string };
-
 export type StepFormProps = {
-  formik: FormikProps<InitialValues>;
+  formik: FormikProps<SignUpFormData>;
 };
 
 export enum Step {
@@ -28,9 +26,9 @@ export enum Step {
   second
 }
 
-type ErrorObject = Partial<InitialValues>;
+type ErrorObject = Partial<SignUpFormData>;
 
-const initialValues: InitialValues = {
+const initialValues: SignUpFormData = {
   email: "",
   password: "",
   passwordRepeated: "",
@@ -43,12 +41,12 @@ const RegisterForm = () => {
   const dispatch = useDispatch();
 
   const [currentStep, setCurrentStep] = useState<Step>(Step.first);
-  const [isValidated, setIsValidated] = useState<boolean>(false);
+  const [isformValid, setIsFormValid] = useState<boolean>(false);
 
   const authError = useSelector(userSelector.error);
   const loading = useSelector(userSelector.loading);
 
-  const formik = useFormik<InitialValues>({
+  const formik = useFormik<SignUpFormData>({
     initialValues,
     onSubmit(values) {
       dispatch(signUpUser(values));
@@ -70,7 +68,7 @@ const RegisterForm = () => {
         setError(errors, "company", validateCompanyName(values.company));
       }
 
-      if (!isValidated) setIsValidated(true);
+      setIsFormValid(Object.keys(errors).length == 0);
 
       return errors;
     }
@@ -84,7 +82,7 @@ const RegisterForm = () => {
   const handleClickNext = () => {
     formik.setTouched({ email: true, password: true, passwordRepeated: true });
 
-    if (formik.isValid && isValidated) {
+    if (isformValid) {
       setCurrentStep(Step.second);
     }
   };

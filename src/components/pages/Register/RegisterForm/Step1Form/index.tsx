@@ -51,7 +51,7 @@ const Step1Form: React.FC<Step1FormProps> = ({ formik, handleClickNext, error })
       {content.next}
     </StyledButton>
     <P center light>
-      {toLoginPage.message}
+      {toLoginPage.message + " "}
       <Button inline to="/login">
         {toLoginPage.callToAction}
       </Button>

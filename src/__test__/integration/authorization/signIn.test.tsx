@@ -1,10 +1,10 @@
 import React from "react";
 import { renderWithStore, RenderResult, fireEvent, waitFor } from "@testHelpers";
-
+import { singInPageContent as content } from "@content";
 import LoginPage from "@pages/Login";
 import * as fetch from "@fetch";
 
-describe("Sign in", () => {
+describe("Sign in integration tests:", () => {
   let renderResult: RenderResult;
   beforeEach(() => {
     renderResult = renderWithStore(<LoginPage />, { initialState: {}, initialRoute: "/login" });
@@ -18,21 +18,21 @@ describe("Sign in", () => {
 
     const { getByPlaceholderText, getByText } = renderResult;
 
-    let emailInput = getByPlaceholderText(/mail/i);
-    let passwordInput = getByPlaceholderText(/password/i);
-    const submitButton = getByText(/login/i);
+    let emailInput = getByPlaceholderText(content.placeholders.email);
+    let passwordInput = getByPlaceholderText(content.placeholders.password);
+    const submitButton = getByText(content.submitText);
 
     fireEvent.change(emailInput, { target: { value: data.email } });
     fireEvent.change(passwordInput, { target: { value: data.password } });
 
-    emailInput = await waitFor(() => getByPlaceholderText(/mail/i));
+    emailInput = await waitFor(() => getByPlaceholderText(content.placeholders.email));
     if (emailInput instanceof HTMLInputElement) {
       expect(emailInput.value).toBe(data.email);
     } else {
       throw new Error();
     }
 
-    passwordInput = await waitFor(() => getByPlaceholderText(/password/i));
+    passwordInput = await waitFor(() => getByPlaceholderText(content.placeholders.password));
     if (passwordInput instanceof HTMLInputElement) {
       expect(passwordInput.value).toBe(data.password);
     } else {
@@ -41,10 +41,10 @@ describe("Sign in", () => {
 
     fireEvent.click(submitButton);
 
-    passwordInput = await waitFor(() => getByPlaceholderText(/password/i));
-
-    expect(spy).toBeCalledTimes(1);
-    expect(spy).toBeCalledWith(data);
+    await waitFor(() => {
+      expect(spy).toBeCalledTimes(1);
+      expect(spy).toBeCalledWith(data);
+    });
   });
 
   test("types invalid data and shows error messages below inputs", async () => {

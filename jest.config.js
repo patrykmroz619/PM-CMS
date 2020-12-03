@@ -20,6 +20,7 @@ module.exports = {
     "@validators/(.*)$": "<rootDir>/src/validators/$1",
     "@testHelpers": "<rootDir>/src/__test__/helpers",
     "@mocks/(.*)$": "<rootDir>/src/__mocks__/$1",
-    "@content": "<rootDir>/src/content"
+    "@content": "<rootDir>/src/content",
+    "@hooks": "<rootDir>/src/hooks"
   }
 };
