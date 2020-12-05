@@ -18,7 +18,7 @@ describe("Sign up integration tests:", () => {
   });
 
   test("type correct data and call sign up function", async () => {
-    const spy = jest.spyOn(fetch, "signUpUser").mockImplementation();
+    const signUpSpy = jest.spyOn(fetch, "signUpUser").mockImplementation();
 
     const data: SignUpFormData = {
       email: "example@mail.com",
@@ -100,8 +100,8 @@ describe("Sign up integration tests:", () => {
     fireEvent.click(submitButton);
 
     await waitFor(() => {
-      expect(spy).toBeCalledTimes(1);
-      expect(spy).toBeCalledWith(data);
+      expect(signUpSpy).toBeCalledTimes(1);
+      expect(signUpSpy).toBeCalledWith(data);
     });
   });
 });
