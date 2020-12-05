@@ -58,3 +58,5 @@ export const formErrors = {
     tooLong: "Company name is too long."
   }
 };
+
+export const footer = "ⓒ 2020-2021 PM CMS - Headless CMS | Patryk Mróz";

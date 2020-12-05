@@ -12,7 +12,7 @@ type LoginFormProps = {
   loading: boolean;
 };
 
-const { placeholders, greeting, submitText, demo, createAccount } = content;
+const { placeholders, greeting, submitText, createAccount } = content;
 
 const LoginForm = ({ formik, error, loading }: LoginFormProps) => (
   <AuthForm onSubmit={formik.handleSubmit} loading={loading ? 1 : 0}>
@@ -40,10 +40,6 @@ const LoginForm = ({ formik, error, loading }: LoginFormProps) => (
       isTouched={formik.touched.password}
       error={formik.errors.password}
     />
-    <P center light>
-      {demo.message + " "}
-      <Button inline>{demo.callToAction}</Button>
-    </P>
     <Button type="submit" onClick={() => formik.handleSubmit}>
       {submitText}
     </Button>

@@ -1,13 +1,13 @@
 import React from "react";
 
-import { GradientBg } from "@common";
+import { AuthLayout } from "@layout";
 import RegisterForm from "./RegisterForm";
 
 const RegisterPage = () => {
   return (
-    <GradientBg>
+    <AuthLayout>
       <RegisterForm />
-    </GradientBg>
+    </AuthLayout>
   );
 };
 

@@ -1,18 +1,26 @@
 import React from "react";
 import styled from "@myStyled";
+import media, { breakpoints } from "@mediaQuery";
 
 import logo from "@assets/logo-light.png";
 
 const StyledAuthForm = styled.form<{ loading: 1 | 0 }>`
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  padding: ${({ theme }) => theme.spacing.xl};
-  width: 450px;
+  margin: ${({ theme }) => theme.spacing.s};
+  padding: ${({ theme }) => theme.spacing.m};
+  max-width: 450px;
   text-align: center;
   background-color: ${({ theme }) => theme.color.darkOpacity};
   border-radius: 15px;
-  transform: translate(-50%, -50%);
+
+  ${media(breakpoints.mobile.m)} {
+    padding: ${({ theme }) => theme.spacing.xl};
+    margin: ${({ theme }) => theme.spacing.m};
+  }
+
+  ${media(breakpoints.mobile.xl)} {
+    margin: auto;
+    width: 100%;
+  }
 
   * {
     transition: 0.3s;
@@ -22,14 +30,24 @@ const StyledAuthForm = styled.form<{ loading: 1 | 0 }>`
   img {
     display: block;
     margin: auto;
-    margin-bottom: ${({ theme }) => theme.spacing.l};
-    width: 130px;
+    margin-bottom: ${({ theme }) => theme.spacing.s};
+    width: 100px;
+
+    ${media(breakpoints.mobile.m)} {
+      margin-bottom: ${({ theme }) => theme.spacing.l};
+      width: 130px;
+    }
   }
 
   h1 {
-    margin-bottom: ${({ theme }) => theme.spacing.m};
-    font-size: 30px;
+    margin-bottom: ${({ theme }) => theme.spacing.s};
+    font-size: 24px;
     color: ${({ theme }) => theme.color.light};
+    ${media(breakpoints.mobile.m)} {
+      margin-bottom: ${({ theme }) => theme.spacing.m};
+      font-size: 30px;
+      margin-bottom: ${({ theme }) => theme.spacing.l};
+    }
   }
 
   input {

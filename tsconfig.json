@@ -15,6 +15,7 @@
       "@pages/*": ["./components/pages/*"],
       "@myStyled": ["./style"],
       "@common": ["./components/common"],
+      "@layout": ["./components/layout"],
       "@assets/*": ["./assets/*"],
       "@validators/*": ["./validators/*"],
       "@api/*": ["./api/*"],
@@ -24,7 +25,8 @@
       "@testHelpers": ["./__test__/helpers"],
       "@mocks/*": ["./__mocks__/*"],
       "@hooks": ["./hooks"],
-      "@content": ["./content"]
+      "@content": ["./content"],
+      "@mediaQuery": ["./style/media.ts"]
     }
   },
   "include": ["src/", "src/@types/"]

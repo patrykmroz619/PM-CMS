@@ -2,7 +2,7 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useFormik } from "formik";
 
-import { GradientBg } from "@common";
+import { AuthLayout } from "@layout";
 import { setError, validateEmail, validatePassword } from "@validators/authValidators";
 import { signInUser } from "@fetch";
 import { userSelector } from "@selectors";
@@ -35,9 +35,9 @@ const LoginPage: React.FC = () => {
   });
 
   return (
-    <GradientBg>
+    <AuthLayout>
       <LoginForm formik={formik} error={authError} loading={loading} />
-    </GradientBg>
+    </AuthLayout>
   );
 };
 

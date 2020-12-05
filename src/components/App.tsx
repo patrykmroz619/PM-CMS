@@ -4,9 +4,9 @@ import { Switch } from "react-router-dom";
 import { useAuth } from "@hooks";
 import { PrivateRoute, AuthenticationRoute, Spinner, GradientBg } from "@common";
 
-const LoginPage = React.lazy(() => import("components/pages/Login"));
-const RegisterPage = React.lazy(() => import("components/pages/Register"));
-const Layout = React.lazy(() => import("./layout"));
+const LoginPage = React.lazy(() => import("./pages/Login"));
+const RegisterPage = React.lazy(() => import("./pages/Register"));
+const PanelPage = React.lazy(() => import("./pages/Panel"));
 
 const App: React.FC = () => {
   const loading = useAuth();
@@ -22,9 +22,7 @@ const App: React.FC = () => {
         </AuthenticationRoute>
       </Switch>
       <PrivateRoute path="/panel">
-        <Layout>
-          <Switch></Switch>
-        </Layout>
+        <PanelPage />
       </PrivateRoute>
     </>
   ) : (

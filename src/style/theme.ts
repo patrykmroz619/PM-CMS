@@ -30,6 +30,6 @@ const theme = {
   sizing: {
     inputsHeight: "40px"
   }
-};
+} as const;
 
 export default theme;
