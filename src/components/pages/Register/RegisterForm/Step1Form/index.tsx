@@ -3,6 +3,7 @@ import React from "react";
 import LoginIcon from "@assets//login.svg";
 import LockIcon from "@assets/lock.svg";
 import { signUpPageContent as content } from "@content";
+import routes from "@routes";
 import { Button, InputWithIcon, P } from "@common";
 import { StepFormProps } from "../index";
 import { StyledButton } from "./styled";
@@ -52,7 +53,7 @@ const Step1Form: React.FC<Step1FormProps> = ({ formik, handleClickNext, error })
     </StyledButton>
     <P center light>
       {toLoginPage.message + " "}
-      <Button inline to="/login">
+      <Button inline to={routes.login}>
         {toLoginPage.callToAction}
       </Button>
     </P>

@@ -1,0 +1,13 @@
+const routes = {
+  login: "/login",
+  register: "/register",
+  panel: "/panel",
+  projects: "/panel",
+  content: "/panel/content",
+  profile: "/panel/profile",
+  media: "/panel/media",
+  settings: "/panel/settings",
+  logout: "/panel/logout"
+} as const;
+
+export default routes;

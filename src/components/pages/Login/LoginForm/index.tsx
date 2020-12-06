@@ -4,6 +4,7 @@ import { FormikProps } from "formik";
 import LoginIcon from "@assets//login.svg";
 import LockIcon from "@assets/lock.svg";
 import { singInPageContent as content } from "@content";
+import routes from "@routes";
 import { AuthForm, Button, P, InputWithIcon } from "@common";
 
 type LoginFormProps = {
@@ -45,7 +46,7 @@ const LoginForm = ({ formik, error, loading }: LoginFormProps) => (
     </Button>
     <P center light>
       {createAccount.message + " "}
-      <Button inline to="/register">
+      <Button inline to={routes.register}>
         {createAccount.callToAction}
       </Button>
     </P>

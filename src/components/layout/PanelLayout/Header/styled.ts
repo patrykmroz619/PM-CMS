@@ -59,7 +59,7 @@ export const Heading = styled.h1`
   }
 `;
 
-export const SecondaryHeading = styled.h2`
+export const SubHeading = styled.h2`
   font-size: 16px;
   line-height: 1.6;
 

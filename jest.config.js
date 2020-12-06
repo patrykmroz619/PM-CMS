@@ -21,6 +21,7 @@ module.exports = {
     "@testHelpers": "<rootDir>/src/__test__/helpers",
     "@mocks/(.*)$": "<rootDir>/src/__mocks__/$1",
     "@content": "<rootDir>/src/content",
-    "@hooks": "<rootDir>/src/hooks"
+    "@hooks": "<rootDir>/src/hooks",
+    "@routes": "<rootDir>/src/routes"
   }
 };

@@ -3,6 +3,7 @@ import { Switch } from "react-router-dom";
 
 import { useAuth } from "@hooks";
 import { PrivateRoute, AuthenticationRoute, LoadingScreen } from "@common";
+import routes from "@routes";
 
 const LoginPage = React.lazy(() => import("./pages/Login"));
 const RegisterPage = React.lazy(() => import("./pages/Register"));
@@ -14,14 +15,14 @@ const App: React.FC = () => {
   return !loading ? (
     <Suspense fallback={<LoadingScreen />}>
       <Switch>
-        <AuthenticationRoute path="/login">
+        <AuthenticationRoute path={routes.login}>
           <LoginPage />
         </AuthenticationRoute>
-        <AuthenticationRoute path="/register">
+        <AuthenticationRoute path={routes.register}>
           <RegisterPage />
         </AuthenticationRoute>
       </Switch>
-      <PrivateRoute path="/panel">
+      <PrivateRoute path={routes.panel}>
         <PanelPage />
       </PrivateRoute>
     </Suspense>

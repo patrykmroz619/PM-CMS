@@ -26,7 +26,8 @@
       "@mocks/*": ["./__mocks__/*"],
       "@hooks": ["./hooks"],
       "@content": ["./content"],
-      "@mediaQuery": ["./style/media.ts"]
+      "@mediaQuery": ["./style/media.ts"],
+      "@routes": ["./routes"]
     },
     "plugins": [
       {

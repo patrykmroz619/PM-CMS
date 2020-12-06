@@ -13,7 +13,7 @@ export const singInPageContent = {
     callToAction: "Register here!"
   },
   submitText: "Login"
-};
+} as const;
 
 export const signUpPageContent = {
   placeholders: {
@@ -32,7 +32,7 @@ export const signUpPageContent = {
   optionalData: "Personal data below are optional.",
   submitText: "Register",
   back: "Back"
-};
+} as const;
 
 export const formErrors = {
   email: {
@@ -57,6 +57,14 @@ export const formErrors = {
   companyName: {
     tooLong: "Company name is too long."
   }
-};
+} as const;
 
-export const footer = "ⓒ 2020-2021 PM CMS - Headless CMS | Patryk Mróz";
+export const subheadings = {
+  projects: "Projects list",
+  content: "Content models",
+  media: "Media",
+  profile: "Profile",
+  settings: "Settings"
+} as const;
+
+export const footer = "ⓒ 2020-2021 PM CMS - Headless CMS | Patryk Mróz" as const;
