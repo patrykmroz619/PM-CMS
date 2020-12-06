@@ -1,10 +1,8 @@
-import { P } from "@common";
-
 export const breakpoints = {
   mobile: {
     s: 320,
     m: 360,
-    l: 420,
+    l: 410,
     xl: 460
   },
   tablet: {

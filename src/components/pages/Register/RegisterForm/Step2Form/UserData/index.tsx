@@ -8,7 +8,7 @@ type UserDataProps = {
   password: string;
 };
 
-const UserData = ({ email, password }: UserDataProps) => {
+const UserData = React.memo(({ email, password }: UserDataProps) => {
   const [isPasswordVisible, setPasswordVisibility] = useState<boolean>(false);
 
   return (
@@ -26,6 +26,6 @@ const UserData = ({ email, password }: UserDataProps) => {
       </P>
     </>
   );
-};
+});
 
 export default UserData;

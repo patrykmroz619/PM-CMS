@@ -6,3 +6,4 @@ export { InputWithIcon } from "./InputWithIcon";
 export { PrivateRoute } from "./PrivateRoute";
 export { AuthenticationRoute } from "./AuthenticationRoute";
 export { Spinner } from "./Spinner";
+export { LoadingScreen } from "./LoadingScreen";

@@ -2,7 +2,7 @@ import React from "react";
 import styled from "@myStyled";
 import media, { breakpoints } from "@mediaQuery";
 
-import logo from "@assets/logo-light.png";
+import Logo from "@assets/logo-light.svg";
 
 const StyledAuthForm = styled.form<{ loading: 1 | 0 }>`
   margin: ${({ theme }) => theme.spacing.s};
@@ -27,7 +27,7 @@ const StyledAuthForm = styled.form<{ loading: 1 | 0 }>`
     opacity: ${({ loading }) => (loading ? 0.5 : 1)};
   }
 
-  img {
+  svg:first-child {
     display: block;
     margin: auto;
     margin-bottom: ${({ theme }) => theme.spacing.s};
@@ -70,7 +70,7 @@ type AuthFormProps = React.HTMLAttributes<HTMLFormElement> & { loading: 1 | 0 };
 
 export const AuthForm = React.memo(({ children, ...props }: AuthFormProps) => (
   <StyledAuthForm {...props} data-testid="form">
-    <img src={logo} alt="PM - CMS logo" data-testid="img" />
+    <Logo />
     {children}
   </StyledAuthForm>
 ));

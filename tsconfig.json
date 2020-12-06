@@ -27,7 +27,12 @@
       "@hooks": ["./hooks"],
       "@content": ["./content"],
       "@mediaQuery": ["./style/media.ts"]
-    }
+    },
+    "plugins": [
+      {
+        "name": "typescript-styled-plugin"
+      }
+    ]
   },
   "include": ["src/", "src/@types/"]
 }

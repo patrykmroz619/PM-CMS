@@ -1,4 +1,4 @@
-import React, { Suspense } from "react";
+import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
@@ -15,9 +15,7 @@ const RootApp = () => {
       <BrowserRouter>
         <ThemeProvider theme={theme}>
           <GlobalStyle />
-          <Suspense fallback={<></>}>
-            <App />
-          </Suspense>
+          <App />
         </ThemeProvider>
       </BrowserRouter>
     </Provider>

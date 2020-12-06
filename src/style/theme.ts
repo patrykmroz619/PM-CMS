@@ -23,12 +23,29 @@ const theme = {
     xxl: "45px"
   },
   fontSize: {
-    h1: "38px",
-    h2: "24px",
+    h1: {
+      mobile: "23px",
+      descop: "36px"
+    },
+    h2: {
+      mobile: "18px",
+      descop: "24px"
+    },
     p: "16px"
   },
   sizing: {
-    inputsHeight: "40px"
+    inputsHeight: "40px",
+    header: {
+      mobile: "75px",
+      descop: "85px"
+    },
+    navigation: {
+      mobile: "60px",
+      descop: "70px"
+    }
+  },
+  shadow: {
+    primary: " 0px 0px 10px 1px gray"
   }
 } as const;
 

@@ -1,13 +1,18 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import ContentWrapper from "./ContentWrapper";
+import Header from "./Header";
+import Navigation from "./Navigation";
 
 type PanelLayoutProps = { children: React.ReactChild };
 
-const PanelLayout = ({ children }: PanelLayoutProps) => (
-  <div>
-    <div>{children}</div>
-    <Link to="/login">Login</Link>
-  </div>
-);
+const PanelLayout = ({ children }: PanelLayoutProps) => {
+  return (
+    <>
+      <Header />
+      <Navigation />
+      <ContentWrapper>{children}</ContentWrapper>
+    </>
+  );
+};
 
 export { PanelLayout };
