@@ -29,10 +29,10 @@ const ProjectsView = () => {
   );
 
   return (
-    <S.ContentWrapper>
-      <S.Search mobile={mobileView} placeholder="SEARCH ..." onChange={handleChange} />
+    <S.ContentWrapper $mobile={mobileView}>
+      <S.Search $mobile={mobileView} placeholder="SEARCH ..." onChange={handleChange} />
       {Projects}
-      <S.AddButton mobile={mobileView}>+ ADD PROJECT</S.AddButton>
+      <S.AddButton $mobile={mobileView}>+ ADD PROJECT</S.AddButton>
     </S.ContentWrapper>
   );
 };
