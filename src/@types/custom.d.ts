@@ -11,3 +11,12 @@ declare type UserData = {
   surname?: string;
   company?: string;
 };
+
+declare type Project = {
+  id: string;
+  name: string;
+  createdAt: string;
+  updatedAt: string;
+  endpoint: string;
+  published: boolean;
+};
