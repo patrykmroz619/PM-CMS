@@ -2,8 +2,12 @@ import styled from "@myStyled";
 import media, { breakpoints } from "@mediaQuery";
 
 export const Wrapper = styled.section`
+  display: flex;
   position: relative;
-  min-height: calc(
+  align-items: center;
+  flex-direction: column;
+  padding: ${({ theme }) => theme.spacing.s};
+  height: calc(
     100vh -
       (
         ${({ theme }) => theme.sizing.header.mobile} +
@@ -12,9 +16,11 @@ export const Wrapper = styled.section`
   );
   background-color: ${({ theme }) => theme.color.light};
   box-shadow: inset ${({ theme }) => theme.shadow.primary};
+  overflow-y: auto;
 
   ${media(breakpoints.tablet.s)} {
-    min-height: calc(
+    padding: ${({ theme }) => theme.spacing.l};
+    height: calc(
       100vh -
         (
           ${({ theme }) => theme.sizing.header.descop} +
@@ -25,7 +31,17 @@ export const Wrapper = styled.section`
 
   ${media(breakpoints.descop.s)} {
     margin-left: 70px;
-    min-height: calc(100vh - ${({ theme }) => theme.sizing.header.descop});
+    padding: ${({ theme }) => theme.spacing.xxl};
+    padding-bottom: ${({ theme }) => theme.spacing.m};
+    height: calc(100vh - ${({ theme }) => theme.sizing.header.descop});
+  }
+`;
+
+export const Content = styled.div`
+  flex-basis: 100%;
+  width: 100%;
+  ${media(breakpoints.descop.s)} {
+    margin-bottom: ${({ theme }) => theme.spacing.m};
   }
 `;
 
@@ -33,10 +49,7 @@ export const Footer = styled.footer`
   display: none;
   ${media(breakpoints.descop.s)} {
     display: block;
-    position: absolute;
-    bottom: ${({ theme }) => theme.spacing.s};
-    left: 50%;
+    flex-shrink: 0;
     font-size: 12px;
-    transform: translateX(-50%);
   }
 `;

@@ -1,20 +1,17 @@
-import React, { useMemo } from "react";
-import { useLocation } from "react-router-dom";
+import React from "react";
 import ContentWrapper from "./ContentWrapper";
 import Header from "./Header";
-import { getSubheading } from "./helper";
+import useHeadings from "./useHeadings";
 import Navigation from "./Navigation";
 
 type PanelLayoutProps = { children: React.ReactChild };
 
 const PanelLayout = ({ children }: PanelLayoutProps) => {
-  const location = useLocation();
-
-  const subheading = useMemo(() => getSubheading(location.pathname), [location.pathname]);
+  const [heading, subheading] = useHeadings();
 
   return (
     <>
-      <Header subheading={subheading} />
+      <Header heading={heading} subheading={subheading} />
       <Navigation />
       <ContentWrapper>{children}</ContentWrapper>
     </>

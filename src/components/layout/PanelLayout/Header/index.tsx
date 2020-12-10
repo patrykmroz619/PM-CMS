@@ -4,13 +4,14 @@ import Logo from "@assets/logo-dark.svg";
 import * as S from "./styled";
 
 type HeaderProps = {
-  subheading: string;
+  heading?: string;
+  subheading?: string;
 };
 
-const Header = React.memo(({ subheading }: HeaderProps) => (
+const Header = React.memo(({ heading, subheading }: HeaderProps) => (
   <S.Header>
     <S.HeadingsBox>
-      <S.Heading>Primary header</S.Heading>
+      <S.Heading>{heading}</S.Heading>
       <S.Separator />
       <S.SubHeading>{subheading}</S.SubHeading>
     </S.HeadingsBox>

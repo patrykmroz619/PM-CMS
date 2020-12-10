@@ -8,6 +8,10 @@ const globalStyle = createGlobalStyle`
     font-family: "Roboto Mono", sans-serif;
   }
 
+  ul, ol {
+    list-style: none;
+  }
+
   button, a {
     cursor: pointer;
   }

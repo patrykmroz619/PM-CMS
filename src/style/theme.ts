@@ -2,10 +2,11 @@ const theme = {
   color: {
     primary: "#FFC107",
     primaryHover: "#C59400",
-    primaryLight: "#FFD760",
+    primaryLight: "#FFF4D4",
     secondary: "#DDDDDD",
     secondaryHover: "#AAAAAA",
     tertiary: "#607D8B",
+    tertiaryLight: "#607D8B4D",
     darkOpacity: "rgba(0, 0, 0, 0.7)",
     light: "#EEEEEE",
     dark: "#111111"

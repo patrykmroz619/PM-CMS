@@ -10,7 +10,7 @@ type ContentWrapperProps = {
 const ContentWrapper = ({ children }: ContentWrapperProps) => {
   return (
     <S.Wrapper>
-      {children}
+      <S.Content>{children}</S.Content>
       <S.Footer>{footer}</S.Footer>
     </S.Wrapper>
   );
