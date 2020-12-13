@@ -16,6 +16,7 @@ module.exports = {
     "@api/(.*)$": "<rootDir>/src/api/$1",
     "@selectors": "<rootDir>/src/store/selectors",
     "@fetch": "<rootDir>/src/store/fetch",
+    "@fetch": "<rootDir>/src/store/actions.ts",
     "@pages/(.*)$": "<rootDir>/src/components/pages/$1",
     "@validators/(.*)$": "<rootDir>/src/validators/$1",
     "@testHelpers": "<rootDir>/src/__test__/helpers",

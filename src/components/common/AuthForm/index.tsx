@@ -27,7 +27,7 @@ const StyledAuthForm = styled.form<{ loading: 1 | 0 }>`
     opacity: ${({ loading }) => (loading ? 0.5 : 1)};
   }
 
-  svg:first-child {
+  .logo {
     display: block;
     margin: auto;
     margin-bottom: ${({ theme }) => theme.spacing.s};
@@ -70,7 +70,7 @@ type AuthFormProps = React.HTMLAttributes<HTMLFormElement> & { loading: 1 | 0 };
 
 export const AuthForm = React.memo(({ children, ...props }: AuthFormProps) => (
   <StyledAuthForm {...props} data-testid="form">
-    <Logo />
+    <Logo className="logo" />
     {children}
   </StyledAuthForm>
 ));

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useFormik } from "formik";
 
@@ -8,6 +8,7 @@ import { signInUser } from "@fetch";
 import { userSelector } from "@selectors";
 
 import LoginForm from "./LoginForm";
+import { userActions } from "@actions";
 
 type ErrorObject = Partial<SignInFormData>;
 
@@ -34,9 +35,18 @@ const LoginPage: React.FC = () => {
     }
   });
 
+  const handleOnLinkClick = useCallback(() => {
+    dispatch(userActions.clearError());
+  }, []);
+
   return (
     <AuthLayout>
-      <LoginForm formik={formik} error={authError} loading={loading} />
+      <LoginForm
+        formik={formik}
+        error={authError}
+        loading={loading}
+        handleOnLinkClick={handleOnLinkClick}
+      />
     </AuthLayout>
   );
 };

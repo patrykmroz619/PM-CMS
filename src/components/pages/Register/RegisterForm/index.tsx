@@ -16,13 +16,14 @@ import {
   validateSurname,
   setError
 } from "@validators/authValidators";
+import { userActions } from "@actions";
 
 export type StepFormProps = {
   formik: FormikProps<SignUpFormData>;
 };
 
 export enum Step {
-  first,
+  first = 1,
   second
 }
 
@@ -87,10 +88,19 @@ const RegisterForm = () => {
     }
   };
 
+  const handleClickLoginLink = () => {
+    dispatch(userActions.clearError());
+  };
+
   return (
     <AuthForm onSubmit={formik.handleSubmit} loading={loading ? 1 : 0}>
       {currentStep === Step.first ? (
-        <Step1Form formik={formik} handleClickNext={handleClickNext} error={authError} />
+        <Step1Form
+          formik={formik}
+          handleClickNext={handleClickNext}
+          handleClickLoginLink={handleClickLoginLink}
+          error={authError}
+        />
       ) : (
         <Step2Form formik={formik} setCurrentStep={setCurrentStep} />
       )}

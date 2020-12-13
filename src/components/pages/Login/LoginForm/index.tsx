@@ -1,21 +1,22 @@
 import React from "react";
 import { FormikProps } from "formik";
 
-import LoginIcon from "@assets//login.svg";
-import LockIcon from "@assets/lock.svg";
 import { singInPageContent as content } from "@content";
 import routes from "@routes";
+import LoginIcon from "@assets//login.svg";
+import LockIcon from "@assets/lock.svg";
 import { AuthForm, Button, P, InputWithIcon } from "@common";
 
 type LoginFormProps = {
   formik: FormikProps<SignInFormData>;
   error?: string;
   loading: boolean;
+  handleOnLinkClick: () => void;
 };
 
 const { placeholders, greeting, submitText, createAccount } = content;
 
-const LoginForm = ({ formik, error, loading }: LoginFormProps) => (
+const LoginForm = ({ formik, error, loading, handleOnLinkClick }: LoginFormProps) => (
   <AuthForm onSubmit={formik.handleSubmit} loading={loading ? 1 : 0}>
     <h1>{greeting}</h1>
     {error ? <p className="error">{error}</p> : null}
@@ -46,7 +47,7 @@ const LoginForm = ({ formik, error, loading }: LoginFormProps) => (
     </Button>
     <P center light>
       {createAccount.message + " "}
-      <Button inline to={routes.register}>
+      <Button inline to={routes.register} onClick={handleOnLinkClick}>
         {createAccount.callToAction}
       </Button>
     </P>

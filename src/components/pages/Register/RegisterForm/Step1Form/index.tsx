@@ -8,11 +8,20 @@ import { Button, InputWithIcon, P } from "@common";
 import { StepFormProps } from "../index";
 import { StyledButton } from "./styled";
 
-type Step1FormProps = StepFormProps & { handleClickNext: () => void; error: string | undefined };
+type Step1FormProps = StepFormProps & {
+  handleClickNext: () => void;
+  error: string | undefined;
+  handleClickLoginLink: () => void;
+};
 
 const { placeholders, toLoginPage } = content;
 
-const Step1Form: React.FC<Step1FormProps> = ({ formik, handleClickNext, error }) => (
+const Step1Form: React.FC<Step1FormProps> = ({
+  formik,
+  handleClickNext,
+  handleClickLoginLink,
+  error
+}) => (
   <>
     {error ? <p className="error">{error}</p> : null}
     <InputWithIcon
@@ -53,7 +62,7 @@ const Step1Form: React.FC<Step1FormProps> = ({ formik, handleClickNext, error })
     </StyledButton>
     <P center light>
       {toLoginPage.message + " "}
-      <Button inline to={routes.login}>
+      <Button inline to={routes.login} onClick={handleClickLoginLink}>
         {toLoginPage.callToAction}
       </Button>
     </P>

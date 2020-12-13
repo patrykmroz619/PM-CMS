@@ -21,6 +21,7 @@
       "@api/*": ["./api/*"],
       "@selectors": ["./store/selectors"],
       "@fetch": ["./store/fetch"],
+      "@actions": ["./store/actions.ts"],
       "@utils/*": ["./utils/*"],
       "@testHelpers": ["./__test__/helpers"],
       "@mocks/*": ["./__mocks__/*"],
