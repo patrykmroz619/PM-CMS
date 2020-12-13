@@ -1,5 +1,5 @@
 import React, { Suspense } from "react";
-import { Switch } from "react-router-dom";
+import { Redirect, Switch } from "react-router-dom";
 
 import { useAuth } from "@hooks";
 import { PrivateRoute, AuthenticationRoute, LoadingScreen } from "@common";
@@ -24,6 +24,9 @@ const App: React.FC = () => {
       </Switch>
       <PrivateRoute path={routes.panel}>
         <PanelPage />
+      </PrivateRoute>
+      <PrivateRoute exact path="/">
+        <Redirect to={routes.panel} />
       </PrivateRoute>
     </Suspense>
   ) : (
