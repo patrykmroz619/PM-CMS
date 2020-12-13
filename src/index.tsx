@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
-import { BrowserRouter } from "react-router-dom";
+import { HashRouter } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 
 import App from "./components/App";
@@ -12,12 +12,12 @@ import GlobalStyle from "./style/global";
 const RootApp = () => {
   return (
     <Provider store={store}>
-      <BrowserRouter>
+      <HashRouter>
         <ThemeProvider theme={theme}>
           <GlobalStyle />
           <App />
         </ThemeProvider>
-      </BrowserRouter>
+      </HashRouter>
     </Provider>
   );
 };

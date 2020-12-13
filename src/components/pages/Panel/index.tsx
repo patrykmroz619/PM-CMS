@@ -1,5 +1,5 @@
 import React, { Suspense } from "react";
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, Redirect } from "react-router-dom";
 
 import routes from "@routes";
 
@@ -20,20 +20,23 @@ const PanelPage = () => {
           <Route exact path={routes.projects}>
             <ProjectsView />
           </Route>
-          <Route path={routes.newProject}>
+          <Route exact path={routes.newProject}>
             <NewProjectFormView />
           </Route>
-          <Route path={routes.content}>
+          <Route exact path={routes.content}>
             <ContentView />
           </Route>
-          <Route path={routes.media}>
+          <Route exact path={routes.media}>
             <MediaView />
           </Route>
-          <Route path={routes.profile}>
+          <Route exact path={routes.profile}>
             <ProfileView />
           </Route>
-          <Route path={routes.settings}>
+          <Route exact path={routes.settings}>
             <SettingsView />
+          </Route>
+          <Route path={routes.panel}>
+            <Redirect to={routes.projects} />
           </Route>
         </Switch>
       </Suspense>

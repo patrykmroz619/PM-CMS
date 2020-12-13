@@ -2,7 +2,7 @@ const routes = {
   login: "/login",
   register: "/register",
   panel: "/panel",
-  projects: "/panel",
+  projects: "/panel/projects",
   newProject: "/panel/projects/add",
   content: "/panel/content",
   profile: "/panel/profile",
