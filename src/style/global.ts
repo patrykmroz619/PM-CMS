@@ -14,6 +14,7 @@ const globalStyle = createGlobalStyle`
 
   button, a {
     cursor: pointer;
+    text-decoration: none;
   }
 `;
 

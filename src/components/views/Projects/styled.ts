@@ -18,6 +18,7 @@ export const Search = styled(SearchInput)<{ $mobile: boolean }>`
 export const AddButton = styled(Button)<{ $mobile: boolean }>`
   margin-top: auto;
   order: 2;
+  width: 100%;
   ${({ $mobile, theme }) =>
     $mobile
       ? null

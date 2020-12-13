@@ -1,9 +1,12 @@
 import React, { Suspense } from "react";
 import { Switch, Route } from "react-router-dom";
+
+import routes from "@routes";
+
 import { PanelLayout } from "@layout";
 import { Spinner } from "@common";
-
 const ProjectsView = React.lazy(() => import("../../views/Projects"));
+const NewProjectFormView = React.lazy(() => import("../../views/NewProjectForm"));
 const ContentView = React.lazy(() => import("../../views/Content"));
 const MediaView = React.lazy(() => import("../../views/Media"));
 const ProfileView = React.lazy(() => import("../../views/Profile"));
@@ -14,19 +17,22 @@ const PanelPage = () => {
     <PanelLayout>
       <Suspense fallback={<Spinner />}>
         <Switch>
-          <Route exact path="/panel">
+          <Route exact path={routes.projects}>
             <ProjectsView />
           </Route>
-          <Route path="/panel/content">
+          <Route path={routes.newProject}>
+            <NewProjectFormView />
+          </Route>
+          <Route path={routes.content}>
             <ContentView />
           </Route>
-          <Route path="/panel/media">
+          <Route path={routes.media}>
             <MediaView />
           </Route>
-          <Route path="/panel/profile">
+          <Route path={routes.profile}>
             <ProfileView />
           </Route>
-          <Route path="/panel/settings">
+          <Route path={routes.settings}>
             <SettingsView />
           </Route>
         </Switch>

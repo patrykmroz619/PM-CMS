@@ -64,11 +64,26 @@ export const subheadings = {
   content: "Content models",
   media: "Media",
   profile: "Profile",
-  settings: "Settings"
+  settings: "Settings",
+  addProject: "Add new project"
 } as const;
 
 export const projectsPage = {
-  lackOfProjects: "Your projects collection is empty."
+  lackOfProjects: "Your projects collection is empty.",
+  addProjecBtn: "+ add project"
+} as const;
+
+export const newProjectForm = {
+  heading: "Create new project",
+  nameInput: {
+    label: "Name",
+    placeholder: "My new project"
+  },
+  endpointInput: {
+    label: "Api endpoint",
+    placeholder: "my-new-project"
+  },
+  submit: "confirm"
 } as const;
 
 export const footer = "ⓒ 2020-2021 PM CMS - Headless CMS | Patryk Mróz" as const;

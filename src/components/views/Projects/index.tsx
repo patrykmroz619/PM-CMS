@@ -1,6 +1,8 @@
 import React, { ChangeEvent, useCallback, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
+import { projectsPage as content } from "@content";
+import routes from "@routes";
 import { useFilter, useWindowWidth } from "@hooks";
 import { projectsSelector } from "@selectors";
 import { getProjects } from "@fetch";
@@ -21,7 +23,9 @@ const ProjectsView = () => {
 
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getProjects());
+    if (!areProjects) {
+      dispatch(getProjects());
+    }
   }, []);
 
   const windowWidth = useWindowWidth();
@@ -40,7 +44,9 @@ const ProjectsView = () => {
     <S.ContentWrapper $mobile={mobileView} areProjects={areProjects}>
       <S.Search $mobile={mobileView} placeholder="SEARCH ..." onChange={handleChange} />
       {!areProjects ? <LackOfProjectMessage /> : Projects}
-      <S.AddButton $mobile={mobileView}>+ ADD PROJECT</S.AddButton>
+      <S.AddButton to={routes.newProject} $mobile={mobileView}>
+        {content.addProjecBtn}
+      </S.AddButton>
     </S.ContentWrapper>
   );
 };
