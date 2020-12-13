@@ -1,5 +1,3 @@
-import { RootState } from "store";
-
 const error = (state: RootState) => state.user.error;
 const data = (state: RootState) => state.user.data;
 const isAuthenticated = (state: RootState) => state.user.isAuthenticated;

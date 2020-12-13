@@ -1,4 +1,6 @@
-export const AUTH_PENDING = "user/auth/pending";
-export const AUTH_FULFILLED = "user/auth/fulfilled";
-export const AUTH_REJECTED = "user/auth/rejected";
-export const AUTH = "user/auth";
+export const AUTH: ThunkConstants = {
+  CONST: "user/auth",
+  PENDING: "user/auth/pending",
+  FULFILLED: "user/auth/fulfilled",
+  REJECTED: "user/auth/rejected"
+} as const;

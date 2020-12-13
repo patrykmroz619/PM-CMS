@@ -16,6 +16,10 @@ declare type SignInApiResponseData = {
 
 declare type SignUpApiResponseData = SignInApiResponseData;
 
+declare type GetProjectsApiResponseData = {
+  projects: Project[];
+};
+
 declare type ApiError = {
   statusCode: number;
   error: {

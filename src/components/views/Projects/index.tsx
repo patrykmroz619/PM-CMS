@@ -1,26 +1,32 @@
-import React, { ChangeEvent, useCallback } from "react";
-import { useSelector } from "react-redux";
+import React, { ChangeEvent, useCallback, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 import { useFilter, useWindowWidth } from "@hooks";
 import { projectsSelector } from "@selectors";
+import { getProjects } from "@fetch";
+
 import ProjectsList from "./ProjectsList";
-import * as S from "./styled";
 import ProjectsTable from "./ProjectsTable";
+import LackOfProjectMessage from "./LackOfProjectMessage";
+import * as S from "./styled";
 
 const MOBILE_VW = 800;
 
 const ProjectsView = () => {
-  const windowWidth = useWindowWidth();
   const projects = useSelector(projectsSelector.projects);
-  const mobileView = windowWidth < MOBILE_VW;
-
   const [filteredProjects, handleFilter] = useFilter(projects, "name");
-
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => handleFilter(e.target.value);
-
   const selectProject = useCallback((id: string) => console.log("selected: " + id), []);
 
+  const areProjects = projects.length > 0;
+
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getProjects());
+  }, []);
+
+  const windowWidth = useWindowWidth();
   if (!windowWidth) return null;
+  const mobileView = windowWidth < MOBILE_VW;
 
   const Projects = mobileView ? (
     <ProjectsList selectProject={selectProject} projects={filteredProjects} />
@@ -28,10 +34,12 @@ const ProjectsView = () => {
     <ProjectsTable selectProject={selectProject} projects={filteredProjects} />
   );
 
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => handleFilter(e.target.value);
+
   return (
-    <S.ContentWrapper $mobile={mobileView}>
+    <S.ContentWrapper $mobile={mobileView} areProjects={areProjects}>
       <S.Search $mobile={mobileView} placeholder="SEARCH ..." onChange={handleChange} />
-      {Projects}
+      {!areProjects ? <LackOfProjectMessage /> : Projects}
       <S.AddButton $mobile={mobileView}>+ ADD PROJECT</S.AddButton>
     </S.ContentWrapper>
   );

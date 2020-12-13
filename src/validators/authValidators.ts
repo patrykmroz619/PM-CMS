@@ -70,7 +70,7 @@ const validateNameOrSurname = (field: "Name" | "Surname", value: string | undefi
   let error = "";
 
   if (value) {
-    if (!/^[a-zA-Z][a-zA-Z-']{2,33}$/.test(value)) {
+    if (!/^[a-zA-ZąĄćĆęĘśŚóÓłŁńŃżŻźŹ][a-zA-ZąĄćĆęĘśŚóÓłŁńŃżŻźŹ ,'-]{2,33}$/.test(value)) {
       error = field == "Name" ? name.invalid : surname.invalid;
     }
   }

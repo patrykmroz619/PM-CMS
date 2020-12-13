@@ -67,4 +67,8 @@ export const subheadings = {
   settings: "Settings"
 } as const;
 
+export const projectsPage = {
+  lackOfProjects: "Your projects collection is empty."
+} as const;
+
 export const footer = "ⓒ 2020-2021 PM CMS - Headless CMS | Patryk Mróz" as const;
