@@ -1,6 +1,6 @@
 import React from "react";
 
-import { convertToDate } from "@utils/index";
+import { convertToDate } from "@utils";
 import * as S from "./styled";
 
 type ProjectsTableRowProps = {

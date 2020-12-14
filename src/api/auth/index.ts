@@ -1,5 +1,5 @@
 import { endpoint } from "@api/endpoint";
-import { getRefreshToken, setTokens } from "@utils/token";
+import { tokenHandler } from "@utils";
 import api from "..";
 
 export const signIn = (signInData: SignInFormData) =>
@@ -15,12 +15,12 @@ export const refreshActiveToken = (): Promise<string> => {
       {},
       {
         headers: {
-          Authorization: "Bearer " + getRefreshToken()
+          Authorization: "Bearer " + tokenHandler.getRefreshToken()
         }
       }
     )
     .then((response) => {
-      setTokens(response.data);
+      tokenHandler.setTokens(response.data);
       return response.data.activeToken;
     })
     .catch((e) => {

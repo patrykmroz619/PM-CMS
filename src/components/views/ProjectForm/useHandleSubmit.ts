@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
 
 import { addProject } from "@api/projects";
 import { projectsActions } from "@actions";
@@ -11,6 +12,9 @@ const useHandleSubmit = (): [boolean, string, (data: NewProjectFormData) => void
   const [pending, setPending] = useState(false);
 
   const dispatch = useDispatch();
+  const history = useHistory();
+
+  console.log(history);
 
   const handleSubmit = async (data: NewProjectFormData) => {
     try {
@@ -20,6 +24,7 @@ const useHandleSubmit = (): [boolean, string, (data: NewProjectFormData) => void
       const newProject = response.data;
 
       dispatch(add(newProject));
+      history.push("/panel/projects");
     } catch (e) {
       const error = e?.response.data.error.description;
       if (error) {
@@ -27,7 +32,6 @@ const useHandleSubmit = (): [boolean, string, (data: NewProjectFormData) => void
       } else {
         setError("Something went wrong. Pleasy try again later.");
       }
-    } finally {
       setPending(false);
     }
   };

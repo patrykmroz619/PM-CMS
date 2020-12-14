@@ -1,12 +1,10 @@
 import React from "react";
 import { useFormik } from "formik";
 
-import { slugify } from "@utils/index";
+import { slugify } from "@utils";
 import { setError, projectDataValidator } from "@validators";
 
 import ProjectForm from "./Form";
-import { useDispatch } from "react-redux";
-import { addProject } from "@api/projects";
 import useHandleSubmit from "./usehandleSubmit";
 import { Spinner } from "@common";
 

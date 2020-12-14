@@ -2,13 +2,13 @@
 import axios from "axios";
 
 import apiConfig from "../config";
-import { getActiveToken } from "@utils/token";
+import { tokenHandler } from "@utils";
 import { refreshActiveToken } from "@api/auth";
 
 const apiWithTokenHandling = axios.create(apiConfig);
 
 const applyTokenToHeaders = (config: any) => {
-  config.headers.Authorization = `Bearer ${getActiveToken()}`;
+  config.headers.Authorization = `Bearer ${tokenHandler.getActiveToken()}`;
   return config;
 };
 

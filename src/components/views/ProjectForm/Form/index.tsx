@@ -3,7 +3,7 @@ import React, { ChangeEvent, useState } from "react";
 import { FormikProps } from "formik";
 
 import { newProjectForm as content } from "@content";
-import { slugify } from "@utils/index";
+import { slugify } from "@utils";
 import { Input } from "@common";
 import * as S from "./styled";
 

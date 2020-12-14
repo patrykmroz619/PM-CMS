@@ -22,7 +22,7 @@
       "@selectors": ["./store/selectors"],
       "@fetch": ["./store/fetch"],
       "@actions": ["./store/actions.ts"],
-      "@utils/*": ["./utils/*"],
+      "@utils": ["./utils"],
       "@testHelpers": ["./__test__/helpers"],
       "@mocks/*": ["./__mocks__/*"],
       "@hooks": ["./hooks"],
