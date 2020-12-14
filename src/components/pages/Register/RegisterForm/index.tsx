@@ -7,15 +7,7 @@ import { userSelector } from "@selectors";
 import { AuthForm } from "@common";
 import Step1Form from "./Step1Form";
 import Step2Form from "./Step2Form";
-import {
-  validateEmail,
-  validateName,
-  validatePassword,
-  validatePasswordRepeated,
-  validateCompanyName,
-  validateSurname,
-  setError
-} from "@validators/authValidators";
+import { authValidator, setError } from "@validators";
 import { userActions } from "@actions";
 
 export type StepFormProps = {
@@ -37,6 +29,15 @@ const initialValues: SignUpFormData = {
   surname: "",
   company: ""
 };
+
+const {
+  validateName,
+  validatePassword,
+  validatePasswordRepeated,
+  validateEmail,
+  validateCompanyName,
+  validateSurname
+} = authValidator;
 
 const RegisterForm = () => {
   const dispatch = useDispatch();

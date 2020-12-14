@@ -10,3 +10,4 @@ export { Spinner } from "./Spinner";
 export { LoadingScreen } from "./LoadingScreen";
 export { DotsButton } from "./DotsButton";
 export { Form } from "./Form";
+export { Input } from "./Input";

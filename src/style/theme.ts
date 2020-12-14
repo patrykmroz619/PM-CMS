@@ -9,7 +9,11 @@ const theme = {
     tertiaryLight: "#607D8B4D",
     darkOpacity: "rgba(0, 0, 0, 0.7)",
     light: "#EEEEEE",
-    dark: "#111111"
+    dark: "#111111",
+    error: {
+      background: "#FFD2D2",
+      text: "#D8000C"
+    }
   },
   gradient: {
     primary:

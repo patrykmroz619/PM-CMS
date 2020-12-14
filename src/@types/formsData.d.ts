@@ -11,3 +11,8 @@ declare type SignUpFormData = {
   surname?: string;
   company?: string;
 };
+
+declare type NewProjectFormData = {
+  name: string;
+  endpoint: string;
+};

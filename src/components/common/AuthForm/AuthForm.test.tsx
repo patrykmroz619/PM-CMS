@@ -1,9 +1,7 @@
 import React from "react";
-import { cleanup, getByTestId, getByText, render } from "@testHelpers";
+import { render } from "@testHelpers";
 import { AuthForm } from "./index";
 import "jest-styled-components";
-
-afterEach(cleanup);
 
 describe("<AuthForm />", () => {
   test("renders a <form />", () => {
@@ -24,9 +22,9 @@ describe("<AuthForm />", () => {
       </AuthForm>
     );
 
-    const el = getByTestId("img");
+    const el = getByTestId("svg");
 
-    expect(el.tagName).toBe("IMG");
+    expect(el.tagName).toBe("svg");
   });
 
   test("renders children", () => {

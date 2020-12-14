@@ -7,8 +7,8 @@ export const getProjects = () =>
 export const getProjectById = (id: string) =>
   apiWithTokenHandling.get<Project>(endpoint.projects + `/${id}`);
 
-export const addProject = (project: Project) =>
-  apiWithTokenHandling.post<Project>(endpoint.projects, project);
+export const addProject = (data: NewProjectFormData) =>
+  apiWithTokenHandling.post<Project>(endpoint.projects, data);
 
 export const updateProject = (id: string, data: Partial<Project>) =>
   apiWithTokenHandling.put<Project>(endpoint.projects + `/${id}`, data);

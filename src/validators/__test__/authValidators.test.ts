@@ -1,5 +1,4 @@
 import {
-  setError,
   validateCompanyName,
   validateEmail,
   validateName,
@@ -7,6 +6,7 @@ import {
   validatePasswordRepeated,
   validateSurname
 } from "../authValidators";
+import { setError } from "../setError";
 import { formErrors } from "@content";
 
 describe("auth validate functions", () => {
@@ -182,7 +182,7 @@ describe("auth validate functions", () => {
         Surname: validateSurname
       };
 
-      const incorectValue = "patr ick";
+      const incorectValue = "patr.ick";
 
       const { name, surname } = formErrors;
 

@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useFormik } from "formik";
 
 import { AuthLayout } from "@layout";
-import { setError, validateEmail, validatePassword } from "@validators/authValidators";
+import { authValidator, setError } from "@validators";
 import { signInUser } from "@fetch";
 import { userSelector } from "@selectors";
 
@@ -11,6 +11,8 @@ import LoginForm from "./LoginForm";
 import { userActions } from "@actions";
 
 type ErrorObject = Partial<SignInFormData>;
+
+const { validateEmail, validatePassword } = authValidator;
 
 const LoginPage: React.FC = () => {
   const dispatch = useDispatch();

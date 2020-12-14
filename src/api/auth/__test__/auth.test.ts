@@ -21,6 +21,7 @@ test("sign in function is able to do api request on endpoint /register with pass
   const data: SignUpFormData = {
     email: "email",
     password: "password",
+    passwordRepeated: "password",
     company: "company",
     name: "name"
   };

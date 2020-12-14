@@ -56,6 +56,16 @@ export const formErrors = {
   },
   companyName: {
     tooLong: "Company name is too long."
+  },
+  projectName: {
+    required: "The project name is required.",
+    tooLong: "The project name is too long.",
+    tooShort: "The project name has to have 2 characters at least."
+  },
+  endpoint: {
+    invalid: "The api endpoint is incorrect.",
+    tooLong: "The api endpoint is too long.",
+    tooShort: "The api endpoint is too short."
   }
 } as const;
 

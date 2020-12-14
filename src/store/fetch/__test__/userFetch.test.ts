@@ -14,12 +14,12 @@ const authApi = require("@api/auth");
 const userApi = require("@api/user");
 
 const mockStore = configureStore([thunk]);
-const userData: SignInFormData = {
-  email: "email",
-  password: "password"
-};
 
 describe("signInUser async thunk", () => {
+  const userData: SignInFormData = {
+    email: "email",
+    password: "password"
+  };
   test("dispatch pending, and then fulfilled actions when sign in will be succesful", async () => {
     authApi.signIn.mockImplementation(() => Promise.resolve({ data: "data" }));
 
@@ -48,6 +48,11 @@ describe("signInUser async thunk", () => {
 });
 
 describe("signUpUser async thunk", () => {
+  const userData: SignUpFormData = {
+    email: "email",
+    password: "password",
+    passwordRepeated: "password"
+  };
   test("dispatch pending, and then fulfilled actions when sign up will be succesful", async () => {
     authApi.signUp.mockImplementation(() => Promise.resolve({ data: "data" }));
 

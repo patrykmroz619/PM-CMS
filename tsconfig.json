@@ -17,7 +17,7 @@
       "@common": ["./components/common"],
       "@layout": ["./components/layout"],
       "@assets/*": ["./assets/*"],
-      "@validators/*": ["./validators/*"],
+      "@validators": ["./validators/index.ts"],
       "@api/*": ["./api/*"],
       "@selectors": ["./store/selectors"],
       "@fetch": ["./store/fetch"],

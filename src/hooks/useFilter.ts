@@ -5,6 +5,7 @@ export const useFilter = <T extends Pick<T, string>>(
   filterBy: keyof T
 ): [T[], (value: unknown) => void] => {
   const [filteredItems, setFilteredItems] = useState(items);
+  const [isFilterUsed, setIsFilterUsed] = useState(false);
 
   const handleFilter = (value: unknown) => {
     const filterResult = items.filter((item) => {
@@ -14,8 +15,11 @@ export const useFilter = <T extends Pick<T, string>>(
       }
       return false;
     });
+    if (!isFilterUsed) {
+      setIsFilterUsed(true);
+    }
     setFilteredItems(filterResult);
   };
 
-  return [filteredItems, handleFilter];
+  return [isFilterUsed ? filteredItems : items, handleFilter];
 };

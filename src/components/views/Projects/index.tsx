@@ -11,12 +11,16 @@ import ProjectsList from "./ProjectsList";
 import ProjectsTable from "./ProjectsTable";
 import LackOfProjectMessage from "./LackOfProjectMessage";
 import * as S from "./styled";
+import { Spinner } from "@common";
 
 const MOBILE_VW = 800;
 
 const ProjectsView = () => {
+  const projectsLoading = useSelector(projectsSelector.loading);
   const projects = useSelector(projectsSelector.projects);
+
   const [filteredProjects, handleFilter] = useFilter(projects, "name");
+
   const selectProject = useCallback((id: string) => console.log("selected: " + id), []);
 
   const areProjects = projects.length > 0;
@@ -29,7 +33,11 @@ const ProjectsView = () => {
   }, []);
 
   const windowWidth = useWindowWidth();
-  if (!windowWidth) return null;
+
+  if (projectsLoading || !windowWidth) {
+    return <Spinner />;
+  }
+
   const mobileView = windowWidth < MOBILE_VW;
 
   const Projects = mobileView ? (

@@ -9,7 +9,6 @@ export const useAuth = (): boolean => {
   const loading = useSelector(userSelector.loading);
 
   useEffect(() => {
-    console.log("auth");
     dispatch(authUser());
   }, []);
 

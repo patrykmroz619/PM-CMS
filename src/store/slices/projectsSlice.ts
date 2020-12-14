@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { PROJECTS_GET } from "store/constants/project";
+import { PROJECTS_GET } from "../constants/project";
 
 type ProjectsState = {
   loading: boolean;
@@ -15,7 +15,11 @@ const initialState: ProjectsState = {
 const projectsSlice = createSlice({
   name: "projects",
   initialState,
-  reducers: {},
+  reducers: {
+    add: (state, action: PayloadAction<Project>) => {
+      state.data.unshift(action.payload);
+    }
+  },
   extraReducers: {
     [`${PROJECTS_GET.PENDING}`]: (state) => {
       state.loading = true;

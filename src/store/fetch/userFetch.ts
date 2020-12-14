@@ -13,7 +13,6 @@ const signInUser = createAsyncThunk(
       setTokens(response.data.tokens);
       return response.data.userData;
     } catch (e) {
-      console.log(e.response.data);
       return rejectWithValue(e.response.data);
     }
   }

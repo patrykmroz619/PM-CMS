@@ -6,7 +6,7 @@ import routes from "@routes";
 import { PanelLayout } from "@layout";
 import { Spinner } from "@common";
 const ProjectsView = React.lazy(() => import("../../views/Projects"));
-const NewProjectFormView = React.lazy(() => import("../../views/NewProjectForm"));
+const ProjectFormView = React.lazy(() => import("../../views/ProjectForm"));
 const ContentView = React.lazy(() => import("../../views/Content"));
 const MediaView = React.lazy(() => import("../../views/Media"));
 const ProfileView = React.lazy(() => import("../../views/Profile"));
@@ -21,7 +21,7 @@ const PanelPage = () => {
             <ProjectsView />
           </Route>
           <Route exact path={routes.newProject}>
-            <NewProjectFormView />
+            <ProjectFormView />
           </Route>
           <Route exact path={routes.content}>
             <ContentView />

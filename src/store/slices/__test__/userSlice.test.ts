@@ -1,5 +1,5 @@
 import userSlice from "../userSlice";
-import { AUTH_PENDING, AUTH_FULFILLED, AUTH_REJECTED } from "../../constants/auth";
+import { AUTH } from "../../constants/auth";
 
 describe("userSlice:", () => {
   const reducer = userSlice.reducer;
@@ -7,7 +7,7 @@ describe("userSlice:", () => {
   describe("auth action pending", () => {
     test("changes isAuthenticated on false and loading on true", () => {
       const action = {
-        type: AUTH_PENDING
+        type: AUTH.PENDING
       };
 
       const result = reducer({ isAuthenticated: true, loading: false }, action);
@@ -20,7 +20,7 @@ describe("userSlice:", () => {
   describe("auth action fulfilled", () => {
     test("changes isAuthenticated on true loading on false", () => {
       const action = {
-        type: AUTH_FULFILLED
+        type: AUTH.FULFILLED
       };
 
       const result = reducer({ isAuthenticated: false, loading: true }, action);
@@ -33,7 +33,7 @@ describe("userSlice:", () => {
       const userData = { email: "email", name: "name" };
 
       const action = {
-        type: AUTH_FULFILLED,
+        type: AUTH.FULFILLED,
         payload: userData
       };
 
@@ -46,7 +46,7 @@ describe("userSlice:", () => {
   describe("auth action rejected", () => {
     test("changes isAuthenticated and loading properties on false", () => {
       const action = {
-        type: AUTH_REJECTED
+        type: AUTH.REJECTED
       };
 
       const result = reducer({ isAuthenticated: false, loading: true }, action);
@@ -65,7 +65,7 @@ describe("userSlice:", () => {
       };
 
       const action = {
-        type: AUTH_REJECTED,
+        type: AUTH.REJECTED,
         payload: apiError
       };
 
