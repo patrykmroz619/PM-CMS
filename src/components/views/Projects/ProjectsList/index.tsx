@@ -12,12 +12,12 @@ const List = styled.ul`
   margin-bottom: ${({ theme }) => theme.spacing.m};
 `;
 
-const ProjectsList = ({ projects, selectProject }: ProjectsListProps) => (
-  <List>
-    {projects.map((project) => (
-      <ProjectsListItem key={project.id} project={project} selectProject={selectProject} />
-    ))}
-  </List>
-);
+const ProjectsList = ({ projects, selectProject }: ProjectsListProps) => {
+  const listItems = projects.map((project) => (
+    <ProjectsListItem key={project.id} project={project} selectProject={selectProject} />
+  ));
+
+  return <List>{listItems}</List>;
+};
 
 export default ProjectsList;

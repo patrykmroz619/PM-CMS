@@ -38,9 +38,9 @@ const ProjectsView = () => {
     return <Spinner />;
   }
 
-  const mobileView = windowWidth < MOBILE_VW;
+  const isMobile = windowWidth < MOBILE_VW;
 
-  const Projects = mobileView ? (
+  const Projects = isMobile ? (
     <ProjectsList selectProject={selectProject} projects={filteredProjects} />
   ) : (
     <ProjectsTable selectProject={selectProject} projects={filteredProjects} />
@@ -49,10 +49,10 @@ const ProjectsView = () => {
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => handleFilter(e.target.value);
 
   return (
-    <S.ContentWrapper $mobile={mobileView} areProjects={areProjects}>
-      <S.Search $mobile={mobileView} placeholder="SEARCH ..." onChange={handleChange} />
+    <S.ContentWrapper $mobile={isMobile} areProjects={areProjects}>
+      <S.Search $mobile={isMobile} placeholder="SEARCH ..." onChange={handleChange} />
       {!areProjects ? <LackOfProjectMessage /> : Projects}
-      <S.AddButton to={routes.newProject} $mobile={mobileView}>
+      <S.AddButton to={routes.newProject} $mobile={isMobile}>
         {content.addProjecBtn}
       </S.AddButton>
     </S.ContentWrapper>
