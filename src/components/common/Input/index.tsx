@@ -30,7 +30,7 @@ const Error = styled.p`
 
 export const Input = ({ isTouched, error, ...props }: InputProps) => (
   <Wrapper isError={error && isTouched ? 1 : 0}>
-    <input {...props} data-testid="input" />
+    <input data-testId="input" {...props} data-testid="input" />
     {isTouched && error ? <Error>{error}</Error> : null}
   </Wrapper>
 );

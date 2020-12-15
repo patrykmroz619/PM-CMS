@@ -6,8 +6,10 @@ import { signInUser, signUpUser, authUser } from "../userFetch";
 
 jest.mock("@api/auth");
 jest.mock("@api/user");
-jest.mock("@utils/token", () => ({
-  setTokens: jest.fn()
+jest.mock("@utils", () => ({
+  tokenHandler: {
+    setTokens: jest.fn()
+  }
 }));
 
 const authApi = require("@api/auth");
