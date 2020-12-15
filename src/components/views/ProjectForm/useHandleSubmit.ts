@@ -14,8 +14,6 @@ const useHandleSubmit = (): [boolean, string, (data: NewProjectFormData) => void
   const dispatch = useDispatch();
   const history = useHistory();
 
-  console.log(history);
-
   const handleSubmit = async (data: NewProjectFormData) => {
     try {
       setPending(true);
