@@ -21,7 +21,7 @@ export const refreshActiveToken = (): Promise<string> => {
     )
     .then((response) => {
       tokenHandler.setTokens(response.data);
-      return response.data.activeToken;
+      return response.data.accessToken;
     })
     .catch((e) => {
       console.log("Refresh token is invalid", { e }); // For development

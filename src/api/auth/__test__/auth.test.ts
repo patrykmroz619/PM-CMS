@@ -37,7 +37,7 @@ describe("api call to refresh token", () => {
     const VALID_TOKEN = "VALID";
     const spy = jest
       .spyOn(api, "post")
-      .mockImplementation(() => Promise.resolve({ data: { activeToken: VALID_TOKEN } }));
+      .mockImplementation(() => Promise.resolve({ data: { accessToken: VALID_TOKEN } }));
     const response = await refreshActiveToken();
 
     expect(response).toBe(VALID_TOKEN);

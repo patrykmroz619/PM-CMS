@@ -2,7 +2,7 @@ import styled from "@myStyled";
 
 export const Wrapper = styled.li`
   position: relative;
-  padding: ${({ theme }) => theme.spacing.s};
+  padding: ${({ theme }) => `${theme.spacing.m} ${theme.spacing.s}`};
   &:nth-child(odd) {
     background-color: ${({ theme }) => theme.color.tertiaryLight};
   }

@@ -20,10 +20,6 @@ const ProjectsListItem = ({ project, selectProject }: ProjectsListItemProps) => 
       <S.Label>Updated at: </S.Label>
       {project.updatedAt}
     </S.Detail>
-    <S.Detail>
-      <S.Label>Api endpoint: </S.Label>
-      {project.endpoint}
-    </S.Detail>
   </S.Wrapper>
 );
 

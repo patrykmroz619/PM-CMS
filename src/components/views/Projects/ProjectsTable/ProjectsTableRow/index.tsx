@@ -13,7 +13,6 @@ const ProjectsTableRow = ({ project, selectProject }: ProjectsTableRowProps) => 
     <S.TD>{project.name}</S.TD>
     <S.TD>{convertToDate(Number(project.createdAt))}</S.TD>
     <S.TD>{convertToDate(Number(project.updatedAt))}</S.TD>
-    <S.TD>{project.endpoint}</S.TD>
   </S.TR>
 );
 

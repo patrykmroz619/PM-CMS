@@ -1,5 +1,5 @@
 declare type JsonWebTokens = {
-  activeToken: string;
+  accessToken: string;
   refreshToken: string;
 };
 

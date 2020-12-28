@@ -8,7 +8,7 @@ import { refreshActiveToken } from "@api/auth";
 const apiWithTokenHandling = axios.create(apiConfig);
 
 const applyTokenToHeaders = (config: any) => {
-  config.headers.Authorization = `Bearer ${tokenHandler.getActiveToken()}`;
+  config.headers.Authorization = `Bearer ${tokenHandler.getAccessToken()}`;
   return config;
 };
 
@@ -21,7 +21,7 @@ const errorResponseInterceptor = async (error: any) => {
 
   const { status, data } = error.response;
 
-  if (status === 401 && data.error.type === "INVALID_ACTIVE_TOKEN" && !originalRequest.retry) {
+  if (status === 401 && data.error.type === "INVALID_ACCESS_TOKEN" && !originalRequest.retry) {
     originalRequest.retry = true;
     const newActiveToken = await refreshActiveToken();
 

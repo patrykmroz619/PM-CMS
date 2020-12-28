@@ -1,4 +1,4 @@
-import { getActiveToken, getRefreshToken, setTokens, ACTIVE_TOKEN, REFRESH_TOKEN } from "../token";
+import { getAccessToken, getRefreshToken, setTokens, ACCESS_TOKEN, REFRESH_TOKEN } from "../token";
 
 beforeEach(() => {
   const store: Record<string, string> = {};
@@ -18,21 +18,21 @@ afterEach(() => {
 
 describe("Token utils", () => {
   const tokens: JsonWebTokens = {
-    activeToken: "active",
+    accessToken: "access",
     refreshToken: "refresh"
   };
 
   test("add tokens to local storage", () => {
     setTokens(tokens);
 
-    expect(localStorage.getItem(ACTIVE_TOKEN)).toBe(tokens.activeToken);
+    expect(localStorage.getItem(ACCESS_TOKEN)).toBe(tokens.accessToken);
     expect(localStorage.getItem(REFRESH_TOKEN)).toBe(tokens.refreshToken);
   });
 
-  test("get active token from local storage", () => {
-    localStorage.setItem(ACTIVE_TOKEN, tokens.activeToken);
+  test("get access token from local storage", () => {
+    localStorage.setItem(ACCESS_TOKEN, tokens.accessToken);
 
-    expect(getActiveToken()).toBe(tokens.activeToken);
+    expect(getAccessToken()).toBe(tokens.accessToken);
   });
 
   test("get refreshToken from local storage", () => {
@@ -41,11 +41,11 @@ describe("Token utils", () => {
     expect(getRefreshToken()).toBe(tokens.refreshToken);
   });
 
-  test("return null if tries get active token when there isn't one in local storage", () => {
-    expect(getActiveToken()).toBeNull();
+  test("return null if tries get access token when there isn't one in local storage", () => {
+    expect(getAccessToken()).toBeNull();
   });
 
   test("return null if tries get refresh token when there isn't one in local storage", () => {
-    expect(getActiveToken()).toBeNull();
+    expect(getAccessToken()).toBeNull();
   });
 });

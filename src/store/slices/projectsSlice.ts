@@ -32,6 +32,7 @@ const projectsSlice = createSlice({
       state.data = action.payload;
     },
     [`${PROJECTS_GET.REJECTED}`]: (state, action: PayloadAction<ApiError>) => {
+      console.log(action);
       state.loading = false;
       state.error = action.payload.error.description;
       state.data = [];

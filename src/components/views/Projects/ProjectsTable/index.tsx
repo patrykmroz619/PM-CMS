@@ -26,7 +26,6 @@ const ProjectsTable = ({ projects, selectProject }: ProjectsTableProps) => {
               <S.TH>Name</S.TH>
               <S.TH>Created at</S.TH>
               <S.TH>Updated at</S.TH>
-              <S.TH>API endpoint</S.TH>
             </tr>
           </S.THead>
           <S.TBody>{tableRows}</S.TBody>
