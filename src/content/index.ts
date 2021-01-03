@@ -71,7 +71,9 @@ export const formErrors = {
 
 export const subheadings = {
   projects: "Projects list",
+  newProject: "New project",
   content: "Content models",
+  newContentModel: "New content model",
   media: "Media",
   profile: "Profile",
   settings: "Settings",
@@ -110,6 +112,11 @@ export const contentModelsPage = {
   lackOfContentModels: {
     message: "You haven't created any content models. Let's add your first one!",
     button: "add model"
+  },
+  newModelButton: "+ new model",
+  lackOfFields: {
+    message: "You need add some fields to this content model.",
+    button: "add field"
   }
 } as const;
 

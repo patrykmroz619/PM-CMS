@@ -1,6 +1,7 @@
 import React from "react";
 
 import routes from "@routes";
+import { contentModelsPage as content } from "@content";
 import { ContentModelsMenuProps } from "../index";
 import MenuItem from "./MenuItem";
 import ArrowIcon from "@assets/arrow.svg";
@@ -25,7 +26,7 @@ const Menu = ({ contentModels, selectedModelId, selectModel, isOpen, toogleMenu 
         />
       ))}
     </S.MenuList>
-    <S.Btn to={routes.newContentModel}>+ new model</S.Btn>
+    <S.Btn to={routes.newContentModel}>{content.newModelButton}</S.Btn>
     <S.Toggler isOpen={isOpen} onClick={toogleMenu}>
       <ArrowIcon />
     </S.Toggler>

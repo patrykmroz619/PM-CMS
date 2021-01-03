@@ -16,7 +16,13 @@ const getSubheading = (pathname: string) => {
   switch (pathname) {
     case routes.projects:
       return "";
-    case routes.content:
+    case routes.newProject:
+      return subheadings.newProject;
+    case routes.newContentModel:
+      return subheadings.newContentModel;
+    case routes.records:
+      return subheadings.content;
+    case routes.modelFields:
       return subheadings.content;
     case routes.media:
       return subheadings.media;

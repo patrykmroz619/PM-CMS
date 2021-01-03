@@ -35,7 +35,7 @@ const PanelPage = () => {
           <Route exact path={routes.newProject}>
             <ProjectFormView />
           </Route>
-          <Route exact path={routes.content}>
+          <Route path={routes.content}>
             <ContentView />
           </Route>
           <Route exact path={routes.newContentModel}>
@@ -50,7 +50,7 @@ const PanelPage = () => {
           <Route exact path={routes.settings}>
             <SettingsView />
           </Route>
-          <Route path={routes.panel}>
+          <Route exact path={routes.panel}>
             <Redirect to={routes.projects} />
           </Route>
         </Switch>
