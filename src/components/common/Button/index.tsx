@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement | HTMLAnchorElement> {
   secondary?: boolean;
-  width?: string;
   to?: string;
   inline?: boolean;
   children: React.ReactText;
@@ -12,7 +11,7 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement | HTM
 
 const Btn = styled.span<ButtonProps>`
   display: block;
-  width: ${({ width }) => (width ? width : "100%")};
+  width: 100%;
   height: ${({ theme }) => theme.sizing.inputsHeight};
   font-size: ${({ theme }) => theme.fontSize.p};
   font-weight: 700;
@@ -48,17 +47,17 @@ const InlineBtn = styled.span<ButtonProps>`
 `;
 
 export const Button: React.FC<ButtonProps> = React.memo(
-  ({ inline, width, secondary, to, children, ...props }) => {
+  ({ inline, secondary, className, to, children, ...props }) => {
     const Component = inline ? InlineBtn : Btn;
 
     return to ? (
       <Link to={to} {...props}>
-        <Component width={width} secondary={secondary}>
+        <Component className={className} secondary={secondary}>
           {children}
         </Component>
       </Link>
     ) : (
-      <Component as="button" width={width} secondary={secondary} {...props}>
+      <Component as="button" secondary={secondary} className={className} {...props}>
         {children}
       </Component>
     );

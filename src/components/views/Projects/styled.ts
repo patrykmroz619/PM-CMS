@@ -2,9 +2,10 @@ import { SearchInput, Button } from "@common";
 import styled from "@myStyled";
 import { css } from "styled-components";
 
-export const ContentWrapper = styled.div<{ $mobile: boolean; areProjects: boolean }>`
+export const ContentWrapper = styled.div<{ $mobile: boolean; areThereProjects: boolean }>`
   display: flex;
-  flex-direction: ${({ $mobile, areProjects }) => ($mobile && areProjects ? "column" : "row")};
+  flex-direction: ${({ $mobile, areThereProjects }) =>
+    $mobile && areThereProjects ? "column" : "row"};
   width: 100%;
   height: 100%;
   flex-wrap: wrap;

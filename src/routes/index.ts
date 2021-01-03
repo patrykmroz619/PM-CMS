@@ -5,6 +5,7 @@ const routes = {
   projects: "/panel/projects",
   newProject: "/panel/projects/add",
   content: "/panel/content",
+  newContentModel: "/panel/content/add",
   profile: "/panel/profile",
   media: "/panel/media",
   settings: "/panel/settings",

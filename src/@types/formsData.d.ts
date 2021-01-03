@@ -14,5 +14,9 @@ declare type SignUpFormData = {
 
 declare type NewProjectFormData = {
   name: string;
+};
+
+declare type NewContentModelData = {
+  name: string;
   endpoint: string;
 };

@@ -3,5 +3,6 @@ export const endpoint = {
   projects: "projects",
   login: "login",
   register: "register",
-  refresh: "refresh"
+  refresh: "refresh",
+  contentModels: "content-models"
 } as const;

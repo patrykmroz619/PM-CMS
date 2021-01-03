@@ -17,6 +17,66 @@ declare type Project = {
   name: string;
   createdAt: string;
   updatedAt: string;
-  endpoint: string;
+  userId: string;
   published: boolean;
+};
+
+declare type ContentModel = {
+  id: string;
+  name: string;
+  endpoint: string;
+  fields: Field[];
+  userId: string;
+  projectId: string;
+};
+
+declare type Field = {
+  id: string;
+  type: string;
+  name: string;
+};
+
+declare type TextField = Field & {
+  type: "text";
+  multiline: boolean;
+  unique: boolean;
+  maxLength?: number;
+  minLength?: number;
+};
+
+declare type NumberField = Field & {
+  type: "number";
+  unique: boolean;
+  integer: boolean;
+  max?: number;
+  min?: number;
+};
+
+declare type BooleanField = Field & {
+  type: "boolean";
+};
+
+declare type ColorField = Field & {
+  type: "color";
+};
+
+declare type DateField = Field & {
+  type: "date";
+};
+
+declare type RecordItem = {
+  name: string;
+  value: string;
+};
+
+declare type RecordObject = {
+  id: string;
+  userId: string;
+  contentModelId: string;
+  record: RecordItem[];
+};
+
+declare type CurrentProject = Project & {
+  contentModels: ContentModel[];
+  records: RecordObject[];
 };

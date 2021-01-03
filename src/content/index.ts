@@ -89,11 +89,28 @@ export const newProjectForm = {
     label: "Name",
     placeholder: "My new project"
   },
+
+  submit: "confirm"
+} as const;
+
+export const newContentModelForm = {
+  heading: "Add content model",
+  nameInput: {
+    label: "Name",
+    placeholder: "Article"
+  },
   endpointInput: {
     label: "Api endpoint",
-    placeholder: "my-new-project"
+    placeholder: "article"
   },
   submit: "confirm"
+};
+
+export const contentModelsPage = {
+  lackOfContentModels: {
+    message: "You haven't created any content models. Let's add your first one!",
+    button: "add model"
+  }
 } as const;
 
 export const footer = "ⓒ 2020-2021 PM CMS - Headless CMS | Patryk Mróz" as const;
