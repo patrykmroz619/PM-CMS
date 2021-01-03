@@ -2,17 +2,22 @@ import React from "react";
 
 import routes from "@routes";
 import { ContentModelsMenuProps } from "../index";
-import DescopMenuItem from "./DescopMenuItem";
+import MenuItem from "./MenuItem";
+import ArrowIcon from "@assets/arrow.svg";
 
 import * as S from "./styled";
 
-type DescopMenuProps = ContentModelsMenuProps & { selectModel: (id: string) => void };
+type MenuProps = ContentModelsMenuProps & {
+  selectModel: (id: string) => void;
+  isOpen: boolean;
+  toogleMenu: () => void;
+};
 
-const DescopMenu = ({ contentModels, selectedModelId, selectModel }: DescopMenuProps) => (
-  <S.Menu>
+const Menu = ({ contentModels, selectedModelId, selectModel, isOpen, toogleMenu }: MenuProps) => (
+  <S.Menu isOpen={isOpen}>
     <S.MenuList>
       {contentModels.map((model) => (
-        <DescopMenuItem
+        <MenuItem
           key={model.id}
           modelData={model}
           isActive={model.id === selectedModelId}
@@ -21,7 +26,10 @@ const DescopMenu = ({ contentModels, selectedModelId, selectModel }: DescopMenuP
       ))}
     </S.MenuList>
     <S.Btn to={routes.newContentModel}>+ new model</S.Btn>
+    <S.Toggler isOpen={isOpen} onClick={toogleMenu}>
+      <ArrowIcon />
+    </S.Toggler>
   </S.Menu>
 );
 
-export default DescopMenu;
+export default Menu;

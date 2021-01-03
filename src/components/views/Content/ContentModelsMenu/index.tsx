@@ -1,7 +1,7 @@
 import { currentProjectActions } from "@actions";
-import React, { useCallback } from "react";
+import React, { useCallback, useState } from "react";
 import { useDispatch } from "react-redux";
-import DescopMenu from "./DescopMenu";
+import Menu from "./Menu";
 
 export type ContentModelsMenuProps = {
   contentModels: ContentModel[];
@@ -9,13 +9,19 @@ export type ContentModelsMenuProps = {
 };
 
 const ContentModelsMenu = (props: ContentModelsMenuProps) => {
+  const [isOpen, setIsOpen] = useState(false);
+
   const dispatch = useDispatch();
 
   const selectModel = useCallback((id: string) => {
     dispatch(currentProjectActions.selectModel(id));
   }, []);
 
-  return <DescopMenu {...props} selectModel={selectModel} />;
+  const toogleMenu = useCallback(() => {
+    setIsOpen((prevValue) => !prevValue);
+  }, []);
+
+  return <Menu {...props} selectModel={selectModel} isOpen={isOpen} toogleMenu={toogleMenu} />;
 };
 
 export default ContentModelsMenu;
