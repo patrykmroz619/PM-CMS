@@ -1,21 +1,30 @@
-import React from "react";
+import React, { useState } from "react";
+
 import LackOfFieldMessage from "../LackOfFieldsMessage";
+import NewFieldAsidePanel from "./NewFieldAsidePanel";
 
 type FieldsViewProps = {
   model: ContentModel;
 };
 
 const FieldsView = ({ model }: FieldsViewProps) => {
-  if (model.fields.length === 0) {
-    return <LackOfFieldMessage />;
-  }
+  const [isNewFieldPanelVisible, setNewFieldPanelVisibility] = useState(false);
 
-  console.log(model.fields);
+  const openNewFieldPanel = () => setNewFieldPanelVisibility(true);
+
+  const closeNewFieldPanel = () => setNewFieldPanelVisibility(false);
+
+  const isLackOfFields = model.fields.length === 0;
 
   return (
-    <div>
-      <h4>Fields</h4>
-    </div>
+    <section>
+      {isLackOfFields ? (
+        <LackOfFieldMessage openNewFieldPanel={openNewFieldPanel} />
+      ) : (
+        <h4>Fields</h4>
+      )}
+      <NewFieldAsidePanel isVisible={isNewFieldPanelVisible} closePanel={closeNewFieldPanel} />
+    </section>
   );
 };
 

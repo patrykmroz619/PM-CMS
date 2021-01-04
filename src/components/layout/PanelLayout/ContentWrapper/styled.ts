@@ -17,6 +17,7 @@ export const Wrapper = styled.section`
   background-color: ${({ theme }) => theme.color.light};
   box-shadow: inset ${({ theme }) => theme.shadow.primary};
   overflow-y: auto;
+  overflow-x: hidden;
 
   ${media(breakpoints.tablet.s)} {
     padding: ${({ theme }) => theme.spacing.l};

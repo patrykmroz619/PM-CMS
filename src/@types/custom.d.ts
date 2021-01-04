@@ -30,9 +30,11 @@ declare type ContentModel = {
   projectId: string;
 };
 
+declare type FieldType = "text" | "number" | "boolean" | "color" | "date" | "media";
+
 declare type Field = {
   id: string;
-  type: string;
+  type: FieldType;
   name: string;
 };
 
@@ -63,6 +65,8 @@ declare type ColorField = Field & {
 declare type DateField = Field & {
   type: "date";
 };
+
+declare type ContentField = TextField | NumberField | BooleanField | DateField | ColorField;
 
 declare type RecordItem = {
   name: string;

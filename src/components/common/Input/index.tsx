@@ -18,6 +18,12 @@ const Wrapper = styled.div<{ isError: 1 | 0 }>`
     height: ${({ theme }) => theme.sizing.inputsHeight};
     background-color: ${({ theme, isError }) => (isError ? "#ffbbbb" : theme.color.primaryLight)};
     border: none;
+    transition: 0.3s;
+
+    &:disabled {
+      color: "#666";
+      background-color: ${({ theme }) => theme.color.secondary};
+    }
   }
 `;
 

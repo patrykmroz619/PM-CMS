@@ -4,15 +4,17 @@ import styled from "@myStyled";
 import { contentModelsPage as content } from "@content";
 import { Button, P } from "@common";
 
+type LackOfFieldMessageProps = { openNewFieldPanel: () => void };
+
 const Btn = styled(Button)`
   width: 200px;
 `;
 
-const LackOfFieldMessage = () => (
-  <div>
+const LackOfFieldMessage = ({ openNewFieldPanel }: LackOfFieldMessageProps) => (
+  <section>
     <P>{content.lackOfFields.message}</P>
-    <Btn to={"/panel/content/newField"}>{content.lackOfFields.button}</Btn>
-  </div>
+    <Btn onClick={openNewFieldPanel}>{content.lackOfFields.button}</Btn>
+  </section>
 );
 
 export default LackOfFieldMessage;

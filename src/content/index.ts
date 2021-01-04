@@ -120,4 +120,13 @@ export const contentModelsPage = {
   }
 } as const;
 
+export const fieldFormErrors = {
+  tooLongName: "The value has to be shorter than 35 characters.",
+  requiredFieldName: "Field name is required.",
+  textField: {
+    positiveNumber: "The value has to be a positive number.",
+    maxlength: "The balue has to be greather than the min. length value."
+  }
+} as const;
+
 export const footer = "ⓒ 2020-2021 PM CMS - Headless CMS | Patryk Mróz" as const;

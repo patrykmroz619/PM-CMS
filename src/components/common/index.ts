@@ -10,3 +10,5 @@ export { Spinner } from "./Spinner";
 export { LoadingScreen } from "./LoadingScreen";
 export { Form } from "./Form";
 export { Input } from "./Input";
+export { InputWithCheckbox } from "./InputWithCheckbox";
+export { Checkbox } from "./Checkbox";
