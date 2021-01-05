@@ -10,7 +10,7 @@ const { heading, nameInput, submit } = content;
 
 type ProjectFormProps = {
   formik: FormikProps<NewProjectFormData>;
-  error: string | null;
+  error: string | undefined;
 };
 
 const ProjectForm = ({ formik, error }: ProjectFormProps) => (

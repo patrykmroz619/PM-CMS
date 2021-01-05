@@ -4,5 +4,6 @@ export const endpoint = {
   login: "login",
   register: "register",
   refresh: "refresh",
-  contentModels: "content-models"
+  contentModels: "content-models",
+  contentFields: "content-model-fields"
 } as const;

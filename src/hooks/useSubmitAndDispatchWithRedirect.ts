@@ -9,13 +9,13 @@ type ApiCall<T, K> = (data: T, param?: any) => AxiosPromise<K>;
 type SuccessAction<T> = ActionCreatorWithPayload<T>;
 
 type Pending = boolean;
-type Error = string | null;
+type Error = string | undefined;
 type SubmitHandler<T> = (data: T, param?: string) => void;
 
 type UseSubmitAndDispatchWithRedirectType = <T, K>(
   apiCall: ApiCall<T, K>,
   successAction: SuccessAction<K>,
-  redirectTo: string
+  redirectTo: string | null
 ) => [Pending, Error, SubmitHandler<T>];
 
 export const useSubmitAndDispatchWithRedirect: UseSubmitAndDispatchWithRedirectType = (
@@ -23,7 +23,7 @@ export const useSubmitAndDispatchWithRedirect: UseSubmitAndDispatchWithRedirectT
   successAction,
   redirectTo
 ) => {
-  const [error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<Error>();
   const [pending, setPending] = useState(false);
 
   const dispatch = useDispatch();
@@ -36,7 +36,11 @@ export const useSubmitAndDispatchWithRedirect: UseSubmitAndDispatchWithRedirectT
       const response = await apiCall(data, param);
 
       dispatch(successAction(response.data));
-      history.push(redirectTo);
+      if (redirectTo) {
+        history.push(redirectTo);
+      } else {
+        setPending(false);
+      }
     } catch (e) {
       const error = e?.response.data.error.description;
       if (error) {

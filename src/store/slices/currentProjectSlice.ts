@@ -22,6 +22,14 @@ const currentProjectSlice = createSlice({
     },
     addContentModel(state, action: PayloadAction<ContentModel>) {
       state.data?.contentModels.push(action.payload);
+    },
+    addField(state, action: PayloadAction<ContentField>) {
+      if (state.data) {
+        const models = state.data.contentModels;
+        const selectedModelIndex = models.findIndex((model) => model.id === state.selectedModelId);
+
+        models[selectedModelIndex].fields.push(action.payload);
+      }
     }
   },
   extraReducers: {
