@@ -1,8 +1,10 @@
 import React from "react";
 import { FormikProps, useFormik } from "formik";
 
+import { contentModelsPage as content } from "@content";
 import { validateField } from "@validators";
 
+import { Button } from "@common";
 import * as S from "./styled";
 
 type FieldFormProviderProps<T> = {
@@ -32,7 +34,7 @@ const FieldFormProvider = <T extends ContentFieldFormData>({
   return (
     <S.Form onSubmit={handleSubmit}>
       {render(formik)}
-      <S.SubmitButton type="submit">Submit</S.SubmitButton>
+      <Button type="submit">{content.fieldPanel.submit}</Button>
     </S.Form>
   );
 };

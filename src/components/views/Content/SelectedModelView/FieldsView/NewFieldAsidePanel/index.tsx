@@ -1,6 +1,14 @@
 import React, { useCallback, useState } from "react";
-import TextFieldForm from "./FieldForms/TextFieldForm";
+
+import { contentModelsPage as content } from "@content";
+
 import FieldTypesList from "./FieldTypesList";
+import TextFieldForm from "./FieldForms/TextFieldForm";
+import NumberFieldForm from "./FieldForms/NumberFieldForm";
+import BooleanFieldForm from "./FieldForms/BooleanFieldForm";
+import DateFieldForm from "./FieldForms/DateFieldForm";
+import MediaFieldForm from "./FieldForms/MediaFieldForm";
+import ColorFieldForm from "./FieldForms/ColorFieldForm";
 
 import * as S from "./styled";
 
@@ -21,15 +29,15 @@ const NewFieldAsidePanel = ({ isVisible, closePanel }: NewFieldFormProps) => {
       case "text":
         return <TextFieldForm />;
       case "number":
-        return <p>number</p>;
+        return <NumberFieldForm />;
       case "boolean":
-        return <p>boolean</p>;
+        return <BooleanFieldForm />;
       case "date":
-        return <p>date</p>;
+        return <DateFieldForm />;
       case "media":
-        return <p>media</p>;
+        return <MediaFieldForm />;
       case "color":
-        return <p>color</p>;
+        return <ColorFieldForm />;
     }
   })();
 
@@ -37,9 +45,12 @@ const NewFieldAsidePanel = ({ isVisible, closePanel }: NewFieldFormProps) => {
     <>
       {isVisible && <S.BlurBackground onClick={closePanel} />}
       <S.FormWrapper isVisible={isVisible}>
-        <h5>Choose a field type</h5>
+        <h5>{content.fieldPanel.fieldChoose}</h5>
         <FieldTypesList selectFieldType={selectFieldType} selectedFieldType={selectedFieldType} />
         {FieldForm}
+        <S.CancelButton onClick={closePanel} secondary>
+          {content.fieldPanel.cancel}
+        </S.CancelButton>
       </S.FormWrapper>
     </>
   );

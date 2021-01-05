@@ -1,3 +1,4 @@
+import { Button } from "@common";
 import styled from "@myStyled";
 
 export const BlurBackground = styled.div`
@@ -22,4 +23,10 @@ export const FormWrapper = styled.div<{ isVisible: boolean }>`
   box-shadow: ${({ theme }) => theme.shadow.primary};
   border-left: 1px solid ${({ theme }) => theme.color.tertiary};
   overflow-y: auto;
+`;
+
+export const CancelButton = styled(Button)`
+  margin: ${({ theme }) => theme.spacing.s};
+  margin-top: 0;
+  width: calc(100% - ${({ theme }) => theme.spacing.s} * 2);
 `;

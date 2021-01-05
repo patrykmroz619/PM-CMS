@@ -1,5 +1,6 @@
 import React from "react";
 
+import { fieldForms as content } from "@content";
 import FieldFormProvider from "../FieldFormProvider";
 import { InputWithCheckbox, Input, Checkbox } from "@common";
 
@@ -10,17 +11,20 @@ const initialValues: TextFieldFormData = {
   unique: false
 };
 
+const { textField } = content;
+
 const TextFieldForm = () => {
   return (
     <FieldFormProvider
       initialValues={initialValues}
       render={(formik) => (
         <>
-          <label htmlFor="name">Field name</label>
+          <label htmlFor="name">{textField.name.label}</label>
           <Input
             id="name"
             name="name"
             type="text"
+            placeholder={textField.name.placeholder}
             onChange={formik.handleChange}
             value={formik.values.name}
             isTouched={formik.touched.name}
@@ -30,7 +34,8 @@ const TextFieldForm = () => {
             id="minLength"
             name="minLength"
             type="number"
-            label="Min. length"
+            label={textField.min.label}
+            placeholder={textField.min.placeholder}
             onChange={formik.handleChange}
             value={formik.values.minLength}
             isTouched={formik.touched.minLength}
@@ -41,7 +46,8 @@ const TextFieldForm = () => {
             id="maxLength"
             name="maxLength"
             type="number"
-            label="Max. length"
+            label={textField.max.label}
+            placeholder={textField.max.placeholder}
             onChange={formik.handleChange}
             value={formik.values.maxLength}
             isTouched={formik.touched.maxLength}
@@ -51,14 +57,14 @@ const TextFieldForm = () => {
           <Checkbox
             id="unique"
             name="unique"
-            label="Unique value"
+            label={textField.unique}
             onChange={formik.handleChange}
             checked={formik.values.unique}
           />
           <Checkbox
             id="multiline"
             name="multiline"
-            label="Multi-line text"
+            label={textField.multiline}
             onChange={formik.handleChange}
             checked={formik.values.multiline}
           />

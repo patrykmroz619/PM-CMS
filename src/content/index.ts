@@ -117,6 +117,66 @@ export const contentModelsPage = {
   lackOfFields: {
     message: "You need add some fields to this content model.",
     button: "add field"
+  },
+  fieldPanel: {
+    fieldChoose: "Choose a type field",
+    submit: "add field",
+    cancel: "cancel"
+  }
+} as const;
+
+export const fieldForms = {
+  textField: {
+    name: {
+      label: "Field name",
+      placeholder: "Title"
+    },
+    min: {
+      label: "Min. length",
+      placeholder: "0"
+    },
+    max: {
+      label: "Max. length",
+      placeholder: "Unlimited"
+    },
+    unique: "Unique value",
+    multiline: "Multi-line text"
+  },
+  numberField: {
+    name: {
+      label: "Field name",
+      placeholder: "Quantity"
+    },
+    min: {
+      label: "Min. value"
+    },
+    max: {
+      label: "Max. value"
+    },
+    unique: "Unique value",
+    integer: "Integer value"
+  },
+  booleanField: {
+    name: {
+      label: "Field name",
+      placeholder: "Is public"
+    }
+  },
+  dateField: {
+    name: {
+      label: "Field name",
+      placeholder: "Event's date"
+    },
+    value: {
+      label: "Date",
+      placeholder: "12-12-2012"
+    }
+  },
+  colorField: {
+    name: {
+      label: "Field name",
+      placeholder: "Basic color"
+    }
   }
 } as const;
 
@@ -125,7 +185,10 @@ export const fieldFormErrors = {
   requiredFieldName: "Field name is required.",
   textField: {
     positiveNumber: "The value has to be a positive number.",
-    maxlength: "The balue has to be greather than the min. length value."
+    maxlength: "The value has to be greather than the min. length value."
+  },
+  numberField: {
+    max: "The value has to be greather than the min. value."
   }
 } as const;
 
