@@ -1,16 +1,20 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-import { CURRENT_PROJECT_SET } from "../constants/project";
+import { CURRENT_PROJECT_SET, RECORDS_GET } from "../constants/project";
 
 type CurrentProjectState = {
   loading: boolean;
   error?: string;
+  recordsLoading: boolean;
+  recordsError: boolean;
   data?: CurrentProject;
   selectedModelId: string | null;
 };
 
 const initialState: CurrentProjectState = {
   loading: false,
+  recordsLoading: false,
+  recordsError: false,
   selectedModelId: null
 };
 
@@ -78,6 +82,33 @@ const currentProjectSlice = createSlice({
     [`${CURRENT_PROJECT_SET.REJECTED}`]: (state, action: PayloadAction<ApiError>) => {
       state.loading = false;
       state.error = action.payload?.error.description;
+    },
+    [`${RECORDS_GET.PENDING}`]: (state) => {
+      state.recordsLoading = true;
+      state.recordsError = false;
+      if (state.selectedModelId && state.data) {
+        const currentModel = getCurrentModel(state.data, state.selectedModelId);
+
+        currentModel.records = [];
+      }
+    },
+    [`${RECORDS_GET.FULFILLED}`]: (state, action: PayloadAction<RecordObject[]>) => {
+      state.recordsLoading = false;
+      state.recordsError = false;
+      if (state.selectedModelId && state.data) {
+        const currentModel = getCurrentModel(state.data, state.selectedModelId);
+
+        currentModel.records = action.payload;
+      }
+    },
+    [`${RECORDS_GET.REJECTED}`]: (state) => {
+      state.recordsLoading = false;
+      state.recordsError = true;
+      if (state.selectedModelId && state.data) {
+        const currentModel = getCurrentModel(state.data, state.selectedModelId);
+
+        currentModel.records = [];
+      }
     }
   }
 });

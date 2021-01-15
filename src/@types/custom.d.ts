@@ -26,6 +26,7 @@ declare type ContentModel = {
   name: string;
   endpoint: string;
   fields: ContentField[];
+  records?: RecordObject[];
   userId: string;
   projectId: string;
 };
@@ -70,7 +71,7 @@ declare type ContentField = TextField | NumberField | BooleanField | DateField |
 
 declare type RecordItem = {
   name: string;
-  value: string;
+  value: string | number | boolean;
 };
 
 declare type RecordObject = {
@@ -82,5 +83,4 @@ declare type RecordObject = {
 
 declare type CurrentProject = Project & {
   contentModels: ContentModel[];
-  records: RecordObject[];
 };

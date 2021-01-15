@@ -27,3 +27,7 @@ declare type ApiError = {
     description: string;
   };
 };
+
+declare type GetRecordsApiResponseData = {
+  records: RecordObject[];
+};

@@ -11,3 +11,10 @@ export const CURRENT_PROJECT_SET: ThunkConstants = {
   FULFILLED: "currentProject/set/fulfilled",
   REJECTED: "currentProject/set/rejected"
 } as const;
+
+export const RECORDS_GET: ThunkConstants = {
+  CONST: "currentProject/records/get",
+  PENDING: "currentProject/records/get/pending",
+  FULFILLED: "currentProject/records/get/fulfilled",
+  REJECTED: "currentProject/records/get/rejected"
+};
