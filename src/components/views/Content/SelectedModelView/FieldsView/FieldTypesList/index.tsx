@@ -10,8 +10,8 @@ import ColorIcon from "@assets/color.svg";
 import * as S from "./styled";
 
 type FieldTypesListProps = {
-  selectFieldType: (fieldType: FieldType) => void;
-  selectedFieldType: FieldType;
+  selectFieldType?: (fieldType: FieldType) => void;
+  selectedFieldType: FieldType | null;
 };
 
 const FieldTypesList = ({ selectedFieldType, selectFieldType }: FieldTypesListProps) => {

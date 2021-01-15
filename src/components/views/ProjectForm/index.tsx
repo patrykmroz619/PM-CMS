@@ -3,12 +3,13 @@ import { useFormik } from "formik";
 
 import { addProject } from "@api/projects";
 import { projectsActions } from "@actions";
-import { useSubmitAndDispatchWithRedirect } from "@hooks";
+import { useSubmitAndDispatch } from "@hooks";
 import { setError, projectDataValidator } from "@validators";
 import routes from "@routes";
 
 import ProjectForm from "./Form";
 import { Spinner } from "@common";
+import { useHistory } from "react-router-dom";
 
 type ErrorObject = Partial<NewProjectFormData>;
 
@@ -19,10 +20,16 @@ const initialValues: NewProjectFormData = {
 const { validateProjectName } = projectDataValidator;
 
 const ProjectFormView = () => {
-  const [pending, error, handleSubmit] = useSubmitAndDispatchWithRedirect(
+  const history = useHistory();
+
+  const onSuccess = () => {
+    history.push(routes.projects);
+  };
+
+  const [pending, error, handleSubmit] = useSubmitAndDispatch(
     addProject,
     projectsActions.add,
-    routes.projects
+    onSuccess
   );
 
   const formik = useFormik({

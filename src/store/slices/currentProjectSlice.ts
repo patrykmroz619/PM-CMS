@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { CURRENT_PROJECT_SET } from "store/constants/project";
+
+import { CURRENT_PROJECT_SET } from "../constants/project";
 
 type CurrentProjectState = {
   loading: boolean;
@@ -11,6 +12,13 @@ type CurrentProjectState = {
 const initialState: CurrentProjectState = {
   loading: false,
   selectedModelId: null
+};
+
+const getCurrentModel = (project: CurrentProject, selectedModelId: string | null) => {
+  const models = project.contentModels;
+  const selectedModelIndex = models.findIndex((model) => model.id === selectedModelId);
+
+  return models[selectedModelIndex];
 };
 
 const currentProjectSlice = createSlice({
@@ -25,10 +33,33 @@ const currentProjectSlice = createSlice({
     },
     addField(state, action: PayloadAction<ContentField>) {
       if (state.data) {
-        const models = state.data.contentModels;
-        const selectedModelIndex = models.findIndex((model) => model.id === state.selectedModelId);
+        const currentModel = getCurrentModel(state.data, state.selectedModelId);
 
-        models[selectedModelIndex].fields.push(action.payload);
+        currentModel.fields.push(action.payload);
+      }
+    },
+    updateField(state, action: PayloadAction<ContentField>) {
+      if (state.data) {
+        const currentModel = getCurrentModel(state.data, state.selectedModelId);
+
+        const updatedField = action.payload;
+        for (let i = 0; i < currentModel.fields.length; i++) {
+          if (currentModel.fields[i].id === updatedField.id) {
+            currentModel.fields[i] = updatedField;
+          }
+        }
+      }
+    },
+    deleteField(state, action: PayloadAction<{ fieldId: string }>) {
+      if (state.data) {
+        const currentModel = getCurrentModel(state.data, state.selectedModelId);
+
+        const deletedFieldId = action.payload.fieldId;
+        for (let i = 0; i < currentModel.fields.length; i++) {
+          if (currentModel.fields[i].id === deletedFieldId) {
+            currentModel.fields.splice(i, 1);
+          }
+        }
       }
     }
   },
@@ -42,6 +73,7 @@ const currentProjectSlice = createSlice({
       state.loading = false;
       delete state.error;
       state.data = action.payload;
+      state.selectedModelId = action.payload.contentModels[0].id || null;
     },
     [`${CURRENT_PROJECT_SET.REJECTED}`]: (state, action: PayloadAction<ApiError>) => {
       state.loading = false;

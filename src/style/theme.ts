@@ -7,6 +7,8 @@ const theme = {
     secondaryHover: "#AAAAAA",
     tertiary: "#607D8B",
     tertiaryLight: "#607D8B4D",
+    danger: "#CD5C5C",
+    dangerHover: "#A94242",
     darkOpacity: "rgba(0, 0, 0, 0.7)",
     light: "#EEEEEE",
     dark: "#111111",

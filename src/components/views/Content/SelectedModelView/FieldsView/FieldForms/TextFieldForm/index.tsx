@@ -1,10 +1,17 @@
 import React from "react";
 
 import { fieldForms as content } from "@content";
-import FieldFormProvider from "../FieldFormProvider";
+import AddFormProvider from "../AddFormProvider";
+import UpdateFormProvider from "../UpdateFormProvider";
 import { InputWithCheckbox, Input, Checkbox } from "@common";
 
-const initialValues: TextFieldFormData = {
+type TextFieldFormProps = {
+  initialValues?: TextFieldFormData;
+  update?: boolean;
+  closePanel: () => void;
+};
+
+const defaultValues: TextFieldFormData = {
   type: "text",
   name: "",
   multiline: false,
@@ -13,10 +20,13 @@ const initialValues: TextFieldFormData = {
 
 const { textField } = content;
 
-const TextFieldForm = () => {
+const TextFieldForm = ({ initialValues, update, closePanel }: TextFieldFormProps) => {
+  const FormProvider = update ? UpdateFormProvider : AddFormProvider;
+
   return (
-    <FieldFormProvider
-      initialValues={initialValues}
+    <FormProvider
+      initialValues={initialValues || defaultValues}
+      closePanel={closePanel}
       render={(formik) => (
         <>
           <label htmlFor="name">{textField.name.label}</label>

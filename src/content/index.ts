@@ -114,13 +114,20 @@ export const contentModelsPage = {
     button: "add model"
   },
   newModelButton: "+ new model",
+  addFieldButton: "+ add field",
   lackOfFields: {
     message: "You need add some fields to this content model.",
     button: "add field"
   },
-  fieldPanel: {
-    fieldChoose: "Choose a type field",
+  newFieldPanel: {
+    label: "Add new field.",
     submit: "add field",
+    cancel: "cancel"
+  },
+  updateFieldPanel: {
+    label: "Update field.",
+    submit: "update",
+    delete: "delete",
     cancel: "cancel"
   }
 } as const;

@@ -5,8 +5,8 @@ import * as S from "./styled";
 type FieldTypesListItemProps = {
   type: FieldType;
   icon: React.FC<React.SVGProps<SVGSVGElement>>;
-  selectFieldType: (fieldType: FieldType) => void;
-  selectedType: FieldType;
+  selectFieldType?: (fieldType: FieldType) => void;
+  selectedType: FieldType | null;
 };
 
 const FieldTypesListItem = ({
@@ -15,7 +15,11 @@ const FieldTypesListItem = ({
   selectFieldType,
   selectedType
 }: FieldTypesListItemProps) => {
-  const handleClick = () => selectFieldType(type);
+  const handleClick = () => {
+    if (selectFieldType) {
+      selectFieldType(type);
+    }
+  };
 
   return (
     <S.ListItem onClick={handleClick} isSelected={type === selectedType}>

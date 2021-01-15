@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { useHistory } from "react-router-dom";
 import { AxiosPromise } from "axios";
 import { ActionCreatorWithPayload } from "@reduxjs/toolkit";
 
@@ -12,22 +11,21 @@ type Pending = boolean;
 type Error = string | undefined;
 type SubmitHandler<T> = (data: T, param?: string) => void;
 
-type UseSubmitAndDispatchWithRedirectType = <T, K>(
+type UseSubmitAndDispatchType = <T, K>(
   apiCall: ApiCall<T, K>,
   successAction: SuccessAction<K>,
-  redirectTo: string | null
+  onSuccess?: () => void
 ) => [Pending, Error, SubmitHandler<T>];
 
-export const useSubmitAndDispatchWithRedirect: UseSubmitAndDispatchWithRedirectType = (
+export const useSubmitAndDispatch: UseSubmitAndDispatchType = (
   apiCall,
   successAction,
-  redirectTo
+  onSuccess
 ) => {
   const [error, setError] = useState<Error>();
   const [pending, setPending] = useState(false);
 
   const dispatch = useDispatch();
-  const history = useHistory();
 
   const handleSubmit = async (data: any, param?: string) => {
     try {
@@ -36,10 +34,10 @@ export const useSubmitAndDispatchWithRedirect: UseSubmitAndDispatchWithRedirectT
       const response = await apiCall(data, param);
 
       dispatch(successAction(response.data));
-      if (redirectTo) {
-        history.push(redirectTo);
-      } else {
-        setPending(false);
+
+      setPending(false);
+      if (onSuccess) {
+        onSuccess();
       }
     } catch (e) {
       const error = e?.response.data.error.description;

@@ -2,15 +2,16 @@ import React, { useCallback, useState } from "react";
 
 import { contentModelsPage as content } from "@content";
 
-import FieldTypesList from "./FieldTypesList";
-import TextFieldForm from "./FieldForms/TextFieldForm";
-import NumberFieldForm from "./FieldForms/NumberFieldForm";
-import BooleanFieldForm from "./FieldForms/BooleanFieldForm";
-import DateFieldForm from "./FieldForms/DateFieldForm";
-import MediaFieldForm from "./FieldForms/MediaFieldForm";
-import ColorFieldForm from "./FieldForms/ColorFieldForm";
+import FieldTypesList from "../FieldTypesList";
+import TextFieldForm from "../FieldForms/TextFieldForm";
+import NumberFieldForm from "../FieldForms/NumberFieldForm";
+import BooleanFieldForm from "../FieldForms/BooleanFieldForm";
+import DateFieldForm from "../FieldForms/DateFieldForm";
+// import MediaFieldForm from "./FieldForms/MediaFieldForm";
+import ColorFieldForm from "../FieldForms/ColorFieldForm";
 
 import * as S from "./styled";
+import AsidePanel from "../../AsidePanel";
 
 type NewFieldFormProps = {
   isVisible: boolean;
@@ -18,7 +19,7 @@ type NewFieldFormProps = {
 };
 
 const NewFieldAsidePanel = ({ isVisible, closePanel }: NewFieldFormProps) => {
-  const [selectedFieldType, setSelectedFieldType] = useState<FieldType>("text");
+  const [selectedFieldType, setSelectedFieldType] = useState<FieldType | null>(null);
 
   const selectFieldType = useCallback((fieldType: FieldType) => {
     setSelectedFieldType(fieldType);
@@ -27,32 +28,31 @@ const NewFieldAsidePanel = ({ isVisible, closePanel }: NewFieldFormProps) => {
   const FieldForm = (() => {
     switch (selectedFieldType) {
       case "text":
-        return <TextFieldForm />;
+        return <TextFieldForm closePanel={closePanel} />;
       case "number":
-        return <NumberFieldForm />;
+        return <NumberFieldForm closePanel={closePanel} />;
       case "boolean":
-        return <BooleanFieldForm />;
+        return <BooleanFieldForm closePanel={closePanel} />;
       case "date":
-        return <DateFieldForm />;
-      case "media":
-        return <MediaFieldForm />;
+        return <DateFieldForm closePanel={closePanel} />;
+      // case "media":
+      //   return <MediaFieldForm closePanel={closePanel} />;
       case "color":
-        return <ColorFieldForm />;
+        return <ColorFieldForm closePanel={closePanel} />;
+      case null:
+        return null;
     }
   })();
 
   return (
-    <>
-      {isVisible && <S.BlurBackground onClick={closePanel} />}
-      <S.FormWrapper isVisible={isVisible}>
-        <h5>{content.fieldPanel.fieldChoose}</h5>
-        <FieldTypesList selectFieldType={selectFieldType} selectedFieldType={selectedFieldType} />
-        {FieldForm}
-        <S.CancelButton onClick={closePanel} secondary>
-          {content.fieldPanel.cancel}
-        </S.CancelButton>
-      </S.FormWrapper>
-    </>
+    <AsidePanel visible={isVisible} close={closePanel}>
+      <S.ListLabel>{content.newFieldPanel.label}</S.ListLabel>
+      <FieldTypesList selectFieldType={selectFieldType} selectedFieldType={selectedFieldType} />
+      {FieldForm}
+      <S.CancelButton onClick={closePanel} secondary>
+        {content.newFieldPanel.cancel}
+      </S.CancelButton>
+    </AsidePanel>
   );
 };
 

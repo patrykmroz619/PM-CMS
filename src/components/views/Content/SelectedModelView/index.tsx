@@ -6,6 +6,7 @@ import routes from "@routes";
 import FieldsView from "./FieldsView";
 import RecordsView from "./RecordsView";
 import * as S from "./styled";
+import ViewSwitcher from "./ViewSwitcher";
 
 type SelectedModelViewProps = {
   model: ContentModel;
@@ -14,7 +15,10 @@ type SelectedModelViewProps = {
 const SelectedModelView = ({ model }: SelectedModelViewProps) => {
   return (
     <S.Wrapper>
-      <h3>{model.name}</h3>
+      <S.HeadContainer>
+        <S.ModelName>{model.name}</S.ModelName>
+        <ViewSwitcher />
+      </S.HeadContainer>
       <Route exact path={routes.records}>
         <RecordsView model={model} />
       </Route>

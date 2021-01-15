@@ -25,7 +25,7 @@ declare type ContentModel = {
   id: string;
   name: string;
   endpoint: string;
-  fields: Field[];
+  fields: ContentField[];
   userId: string;
   projectId: string;
 };

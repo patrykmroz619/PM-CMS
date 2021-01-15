@@ -6,12 +6,13 @@ import { slugify } from "@utils";
 import { useFormik } from "formik";
 import { setError } from "@validators";
 import { validateApiEndpoint, validateProjectName } from "validators/projectDataValidators";
-import { useSubmitAndDispatchWithRedirect } from "@hooks";
+import { useSubmitAndDispatch } from "@hooks";
 import ContentModelForm from "./Form";
 import routes from "@routes";
 import { Spinner } from "@common";
 import { useSelector } from "react-redux";
 import currentProjectSelectors from "store/selectors/currentProjectSelectors";
+import { useHistory } from "react-router-dom";
 
 type ErrorObject = Partial<NewContentModelData>;
 
@@ -21,10 +22,14 @@ const initialValues: NewContentModelData = {
 };
 
 const ContentModelFormView = () => {
-  const [pending, error, handleSubmit] = useSubmitAndDispatchWithRedirect(
+  const history = useHistory();
+
+  const onSuccess = () => history.push(routes.content);
+
+  const [pending, error, handleSubmit] = useSubmitAndDispatch(
     addContentModel,
     currentProjectActions.addContentModel,
-    routes.content
+    onSuccess
   );
 
   const currentProjectId = useSelector(currentProjectSelectors.id);
