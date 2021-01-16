@@ -45,13 +45,13 @@ export const Field = styled.li`
 `;
 
 export const Numeral = styled(P)`
-  min-width: 50px;
+  min-width: 25px;
   width: 10%;
   flex-shrink: 0;
 `;
 
 export const Type = styled(P)`
-  min-width: 100px;
+  min-width: 70px;
   width: 30%;
 `;
 

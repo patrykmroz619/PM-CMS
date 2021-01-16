@@ -39,8 +39,7 @@ export const SwitcherText = styled.p<{ isActive: boolean }>`
   line-height: 26px;
   text-align: center;
   color: ${({ theme }) => theme.color.dark};
-  background-color: ${({ isActive, theme }) =>
-    isActive ? theme.color.primary : theme.color.light};
+  background-color: ${({ isActive, theme }) => (isActive ? theme.color.primary : "white")};
   transition: 0.3s;
   cursor: pointer;
 
