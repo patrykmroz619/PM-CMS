@@ -6,6 +6,7 @@ export const Navigation = styled.nav`
   bottom: 0;
   left: 0;
   right: 0;
+  z-index: 2;
   padding: ${({ theme }) => theme.spacing.s};
   height: ${({ theme }) => theme.sizing.navigation.mobile};
   background-color: ${({ theme }) => theme.color.primary};

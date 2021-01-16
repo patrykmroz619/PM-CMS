@@ -21,7 +21,17 @@ const ContentModelsMenu = (props: ContentModelsMenuProps) => {
     setIsOpen((prevValue) => !prevValue);
   }, []);
 
-  return <Menu {...props} selectModel={selectModel} isOpen={isOpen} toogleMenu={toogleMenu} />;
+  const closeMenu = () => setIsOpen(false);
+
+  return (
+    <Menu
+      {...props}
+      selectModel={selectModel}
+      isOpen={isOpen}
+      toogleMenu={toogleMenu}
+      closeMenu={closeMenu}
+    />
+  );
 };
 
 export default ContentModelsMenu;

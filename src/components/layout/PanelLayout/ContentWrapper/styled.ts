@@ -6,7 +6,7 @@ export const Wrapper = styled.section`
   position: relative;
   align-items: center;
   flex-direction: column;
-  padding: ${({ theme }) => theme.spacing.s};
+  padding: ${({ theme }) => theme.spacing.s} ${({ theme }) => theme.spacing.m};
   height: calc(
     100vh -
       (
