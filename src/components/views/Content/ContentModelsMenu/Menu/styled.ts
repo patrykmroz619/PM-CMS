@@ -11,10 +11,14 @@ export const Wrapper = styled.div<{ isOpen: boolean }>`
   width: 240px;
   bottom: ${({ theme }) => theme.sizing.navigation.mobile};
   transform: ${({ isOpen }) => (isOpen ? "translateX(0px)" : "translateX(-225px)")};
+  overflow-y: hidden;
   transition: 0.3s;
 
   ${media(breakpoints.tablet.s)} {
     top: ${({ theme }) => theme.sizing.header.descop};
+  }
+
+  ${media(breakpoints.tablet.xl)} {
     transform: translateX(0px);
   }
 
@@ -31,8 +35,11 @@ export const Menu = styled.aside`
   background-color: white;
   border-left: 1px solid ${({ theme }) => theme.color.tertiary};
   border-right: 1px solid ${({ theme }) => theme.color.tertiary};
-  box-shadow: ${({ theme }) => theme.shadow.primary};
   transition: 0.3s;
+
+  ${media(breakpoints.tablet.xl)} {
+    box-shadow: ${({ theme }) => theme.shadow.primary};
+  }
 `;
 
 export const MenuList = styled.ul`
