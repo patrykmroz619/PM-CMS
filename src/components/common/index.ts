@@ -12,3 +12,5 @@ export { Form } from "./Form";
 export { Input } from "./Input";
 export { InputWithCheckbox } from "./InputWithCheckbox";
 export { Checkbox } from "./Checkbox";
+export { DropDown } from "./DropDown";
+export { ScrollableTable } from "./ScrollableTable";
