@@ -27,6 +27,7 @@ export const Toggler = styled.button`
 
 export const Menu = styled.ul`
   position: absolute;
+  z-index: 1;
   top: 100%;
   left: 0;
   width: 100%;

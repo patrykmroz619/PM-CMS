@@ -10,8 +10,10 @@ type RecordsTableProps = {
 };
 
 const RecordsTable = ({ records, preview }: RecordsTableProps) => {
+  console.log(records);
+
   const filteredRecordsData = records.map((record) => {
-    const previewRecord = record.record.find((dataItem) => dataItem.name === preview);
+    const previewRecord = record.data.find((dataItem) => dataItem.name === preview);
     if (previewRecord) {
       return previewRecord.value;
     }
@@ -20,7 +22,7 @@ const RecordsTable = ({ records, preview }: RecordsTableProps) => {
 
   const tableRows = filteredRecordsData.map((item) => (
     <ScrollableTable.TR key={Math.random()}>
-      <ScrollableTable.TD>{item}</ScrollableTable.TD>
+      <ScrollableTable.TD>{String(item)}</ScrollableTable.TD>
       <ScrollableTable.TD>{new Date().toLocaleDateString()}</ScrollableTable.TD>
     </ScrollableTable.TR>
   ));

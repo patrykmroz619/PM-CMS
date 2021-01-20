@@ -115,6 +115,7 @@ export const contentModelsPage = {
   },
   newModelButton: "+ new model",
   addFieldButton: "+ add field",
+  addRecordButton: "+ add record",
   lackOfFields: {
     message: "You need add some fields to this content model.",
     button: "add field"

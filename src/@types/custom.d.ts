@@ -78,7 +78,7 @@ declare type RecordObject = {
   id: string;
   userId: string;
   contentModelId: string;
-  record: RecordItem[];
+  data: RecordItem[];
 };
 
 declare type CurrentProject = Project & {
