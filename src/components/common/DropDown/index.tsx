@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 import { useDetectOutsideClick } from "@hooks";
 
@@ -8,20 +8,17 @@ import * as S from "./styled";
 type SelectProps = {
   values: string[];
   handleChange: (value: string) => void;
-  defaultValue?: string;
   placeholder?: string;
   className?: string;
 };
 
-export const DropDown = ({
-  values,
-  handleChange,
-  defaultValue,
-  placeholder,
-  className
-}: SelectProps) => {
+export const DropDown = ({ values, handleChange, placeholder, className }: SelectProps) => {
   const [isMenuVisible, setMenuVisibility] = useState(false);
-  const [selectedValue, setSelectedValue] = useState(defaultValue || null);
+  const [selectedValue, setSelectedValue] = useState(values[0]);
+
+  useEffect(() => {
+    setSelectedValue(values[0]);
+  }, [values]);
 
   const dropDownRef = useRef<HTMLDivElement>(null);
 
