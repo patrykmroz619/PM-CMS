@@ -10,19 +10,15 @@ type RecordsTableProps = {
 };
 
 const RecordsTable = ({ records, preview }: RecordsTableProps) => {
-  console.log(records);
-
-  const filteredRecordsData = records.map((record) => {
+  const recordsWithPreview = records.map((record) => {
     const previewRecord = record.data.find((dataItem) => dataItem.name === preview);
-    if (previewRecord) {
-      return previewRecord.value;
-    }
-    return null;
+
+    return { ...record, preview: previewRecord?.value || null };
   });
 
-  const tableRows = filteredRecordsData.map((item) => (
-    <ScrollableTable.TR key={Math.random()}>
-      <ScrollableTable.TD>{String(item)}</ScrollableTable.TD>
+  const tableRows = recordsWithPreview.map((record) => (
+    <ScrollableTable.TR key={record.id}>
+      <ScrollableTable.TD>{String(record.preview)}</ScrollableTable.TD>
       <ScrollableTable.TD>{new Date().toLocaleDateString()}</ScrollableTable.TD>
     </ScrollableTable.TR>
   ));

@@ -1,13 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { Redirect } from "react-router-dom";
 
 import { contentModelsPage as content } from "@content";
 import routes from "@routes";
 import { useRecordsFetching } from "./useRecordsFetching";
+import { useAsidePanelHandler } from "./useAsidePanelHandler";
 
 import RecordsTable from "./RecordsTable";
 import * as S from "./styled";
 import { Spinner } from "@common";
+import NewRecordAsidePanel from "./NewRecordAsidePanel";
 
 type RecordsViewProps = {
   model: ContentModel;
@@ -22,13 +24,15 @@ const RecordsView = ({ model }: RecordsViewProps) => {
 
   const pending = useRecordsFetching(model);
 
+  const asidePanelHandler = useAsidePanelHandler();
+
+  const fieldNames = useMemo(() => model.fields.map((field) => field.name), [model.fields]);
+
   if (pending) return <Spinner />;
 
   if (model.fields.length === 0) {
     return <Redirect to={routes.modelFields} />;
   }
-
-  const fieldNames = model.fields.map((field) => field.name);
 
   const handleDropDownChange = (value: string) => setActivePreview(value);
 
@@ -39,7 +43,12 @@ const RecordsView = ({ model }: RecordsViewProps) => {
       {activePreview && model.records && (
         <RecordsTable preview={activePreview} records={model.records} />
       )}
-      <S.AddButton>{content.addRecordButton}</S.AddButton>
+      <S.AddButton onClick={asidePanelHandler.open}>{content.addRecordButton}</S.AddButton>
+      <NewRecordAsidePanel
+        visible={asidePanelHandler.visible}
+        close={asidePanelHandler.close}
+        fields={model.fields}
+      />
     </S.ViewWrapper>
   );
 };

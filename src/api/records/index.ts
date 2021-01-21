@@ -4,8 +4,10 @@ import ApiWithTokenHandling from "../withTokenHandling";
 export const getRecords = (contentModelId: string) =>
   ApiWithTokenHandling.get<GetRecordsApiResponseData>(endpoint.records + "/" + contentModelId);
 
-export const addRecord = (contentModelId: string, recordData: RecordItem) =>
-  ApiWithTokenHandling.post<RecordItem>(endpoint.records + "/" + contentModelId, recordData);
+export const addRecord = (recordData: RecordItem[], contentModelId: string) =>
+  ApiWithTokenHandling.post<RecordObject>(endpoint.records + "/" + contentModelId, {
+    record: recordData
+  });
 
 export const updateRecord = (recordId: string, recordData: RecordItem) =>
   ApiWithTokenHandling.put<RecordItem>(endpoint.records + "/" + recordId, recordData);

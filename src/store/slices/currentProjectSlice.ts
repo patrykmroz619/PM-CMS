@@ -65,6 +65,13 @@ const currentProjectSlice = createSlice({
           }
         }
       }
+    },
+    addRecord(state, action: PayloadAction<RecordObject>) {
+      if (state.data) {
+        const currentModel = getCurrentModel(state.data, state.selectedModelId);
+
+        currentModel.records?.push(action.payload);
+      }
     }
   },
   extraReducers: {

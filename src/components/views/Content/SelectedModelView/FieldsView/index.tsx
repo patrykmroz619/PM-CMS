@@ -48,7 +48,7 @@ const FieldsView = ({ model }: FieldsViewProps) => {
           openFieldPanel={openUpdateFieldPanel}
         />
       )}
-      <S.AddFieldBtn onClick={() => openNewFieldPanel()}>{content.addFieldButton}</S.AddFieldBtn>
+      <S.AddFieldBtn onClick={openNewFieldPanel}>{content.addFieldButton}</S.AddFieldBtn>
       <NewFieldAsidePanel isVisible={isNewFieldPanelVisible} closePanel={closeNewFieldPanel} />
       <UpdateFieldAsidePanel
         isVisible={isUpdateFieldPanelVisible}

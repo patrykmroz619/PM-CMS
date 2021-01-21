@@ -10,14 +10,21 @@ type SelectProps = {
   handleChange: (value: string) => void;
   placeholder?: string;
   className?: string;
+  nullDefault?: boolean;
 };
 
-export const DropDown = ({ values, handleChange, placeholder, className }: SelectProps) => {
+export const DropDown = ({
+  values,
+  handleChange,
+  placeholder,
+  className,
+  nullDefault
+}: SelectProps) => {
   const [isMenuVisible, setMenuVisibility] = useState(false);
-  const [selectedValue, setSelectedValue] = useState(values[0]);
+  const [selectedValue, setSelectedValue] = useState(nullDefault ? null : values[0]);
 
   useEffect(() => {
-    setSelectedValue(values[0]);
+    setSelectedValue(nullDefault ? null : values[0]);
   }, [values]);
 
   const dropDownRef = useRef<HTMLDivElement>(null);
@@ -31,7 +38,10 @@ export const DropDown = ({ values, handleChange, placeholder, className }: Selec
     setMenuVisibility(false);
   };
 
-  const handleTogglerClick = () => setMenuVisibility((prevState) => !prevState);
+  const handleTogglerClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    setMenuVisibility((prevState) => !prevState);
+  };
 
   return (
     <S.Container ref={dropDownRef} className={className}>
