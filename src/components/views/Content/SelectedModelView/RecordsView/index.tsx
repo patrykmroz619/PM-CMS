@@ -17,6 +17,7 @@ type RecordsViewProps = {
 
 const RecordsView = ({ model }: RecordsViewProps) => {
   const [activePreview, setActivePreview] = useState(model.fields[0]?.name);
+  const [searchValue, setSearchValue] = useState("");
 
   useEffect(() => {
     setActivePreview(model.fields[0]?.name);
@@ -34,14 +35,20 @@ const RecordsView = ({ model }: RecordsViewProps) => {
     return <Redirect to={routes.modelFields} />;
   }
 
-  const handleDropDownChange = (value: string) => setActivePreview(value);
+  const handleDropDownChange = (value: string) => {
+    setActivePreview(value);
+    setSearchValue("");
+  };
+
+  const handleSearchInputChange = (e: React.ChangeEvent<HTMLInputElement>) =>
+    setSearchValue(e.target.value);
 
   return (
     <S.ViewWrapper>
-      <S.Search placeholder="SEARCH..." />
+      <S.Search placeholder="SEARCH..." value={searchValue} onChange={handleSearchInputChange} />
       <S.StyledDropDown values={fieldNames} handleChange={handleDropDownChange} />
       {activePreview && model.records && (
-        <RecordsTable preview={activePreview} records={model.records} />
+        <RecordsTable preview={activePreview} records={model.records} searchValue={searchValue} />
       )}
       <S.AddButton onClick={asidePanelHandler.open}>{content.addRecordButton}</S.AddButton>
       <NewRecordAsidePanel
