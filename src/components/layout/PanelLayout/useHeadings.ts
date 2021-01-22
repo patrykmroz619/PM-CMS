@@ -31,7 +31,7 @@ const getSubheading = (pathname: string) => {
     case routes.settings:
       return subheadings.settings;
     default:
-      return "undefined"; // For dev
+      return "";
   }
 };
 

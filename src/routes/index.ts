@@ -7,6 +7,7 @@ const routes = {
   content: "/panel/content",
   newContentModel: "/panel/new-content-model",
   records: "/panel/content/records",
+  singleRecord: "/panel/records/:id",
   modelFields: "/panel/content/fields",
   profile: "/panel/profile",
   media: "/panel/media",

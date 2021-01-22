@@ -1,8 +1,9 @@
-import React, { useMemo } from "react";
+import React from "react";
 
 import { ScrollableTable } from "@common";
 
 import * as S from "./styled";
+import { useHistory } from "react-router-dom";
 
 type RecordsTableProps = {
   records: RecordObject[];
@@ -11,6 +12,10 @@ type RecordsTableProps = {
 };
 
 const RecordsTable = ({ records, preview, searchValue }: RecordsTableProps) => {
+  const history = useHistory();
+
+  const handleRecordClick = (recordId: string) => history.push(`/panel/records/${recordId}`);
+
   const recordsWithPreview = records.map((record) => {
     const previewRecord = record.data.find((dataItem) => dataItem.name === preview);
 
@@ -24,7 +29,7 @@ const RecordsTable = ({ records, preview, searchValue }: RecordsTableProps) => {
     : recordsWithPreview;
 
   const tableRows = filteredRecords.map((record) => (
-    <ScrollableTable.TR key={record.id}>
+    <ScrollableTable.TR key={record.id} onClick={() => handleRecordClick(record.id)}>
       <ScrollableTable.TD>{String(record.preview)}</ScrollableTable.TD>
       <ScrollableTable.TD>{new Date().toLocaleDateString()}</ScrollableTable.TD>
     </ScrollableTable.TR>
