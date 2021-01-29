@@ -202,7 +202,8 @@ export const fieldFormErrors = {
 
 export const singleRecordPage = {
   updateRecordButton: "update",
-  deleteRecordButton: "delete"
+  deleteRecordButton: "delete",
+  deleteMessage: "Are you sure to delete this record?"
 };
 
 export const footer = "ⓒ 2020-2021 PM CMS - Headless CMS | Patryk Mróz" as const;
