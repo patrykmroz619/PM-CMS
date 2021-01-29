@@ -200,4 +200,9 @@ export const fieldFormErrors = {
   }
 } as const;
 
+export const singleRecordPage = {
+  updateRecordButton: "update",
+  deleteRecordButton: "delete"
+};
+
 export const footer = "ⓒ 2020-2021 PM CMS - Headless CMS | Patryk Mróz" as const;
