@@ -72,6 +72,19 @@ const currentProjectSlice = createSlice({
 
         currentModel.records?.push(action.payload);
       }
+    },
+    deleteRecord(state, action: PayloadAction<{ id: string }>) {
+      if (state.data) {
+        const currentModel = getCurrentModel(state.data, state.selectedModelId);
+
+        const deletedRecordIndex = currentModel.records?.findIndex(
+          (record) => record.id === action.payload.id
+        );
+
+        if (typeof deletedRecordIndex == "number") {
+          currentModel.records?.splice(deletedRecordIndex, 1);
+        }
+      }
     }
   },
   extraReducers: {

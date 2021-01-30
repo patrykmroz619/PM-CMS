@@ -5,26 +5,28 @@ import routes from "@routes";
 import { singleRecordPage as content } from "@content";
 import { useConfirmationModalHandler } from "@hooks";
 import { useRecordViewData } from "./useRecordViewData";
+import { useDeleteRecordHandling } from "./useDeleteRecordHandling";
 
 import RecordDataList from "./RecordDataList";
+import { ConfirmationModal, Spinner } from "@common";
 import * as S from "./styled";
-import { ConfirmationModal } from "@common";
 
 const SingleRecordView = () => {
   const { id } = useParams<{ id: string }>();
 
   const [record, model] = useRecordViewData(id);
 
-  const onDeleteConfirm = () => console.log("delete");
+  const [pending, handleDelete] = useDeleteRecordHandling(id);
 
   const [
     isDeleteModalOpen,
     openDeleteModal,
     closeDeleteModal,
     confirmDelete
-  ] = useConfirmationModalHandler(onDeleteConfirm);
+  ] = useConfirmationModalHandler(handleDelete);
 
   if (!record || !model) return <Redirect to={routes.records} />;
+  if (pending) return <Spinner />;
 
   return (
     <S.Wrapper>
