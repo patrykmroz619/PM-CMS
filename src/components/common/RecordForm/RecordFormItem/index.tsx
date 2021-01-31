@@ -1,14 +1,13 @@
 import React from "react";
 import { DropDown, Input } from "@common";
 import TextInput from "./TextInput";
+import { Checkbox } from "@common";
 
 type RecordFormItemProps = {
   field: ContentField;
   itemData: RecordItem;
   handleChange: (value: string | boolean | number, fieldName: string) => void;
 };
-
-const dropDownValues = ["true", "false"];
 
 const RecordFormItem = ({ field, itemData, handleChange }: RecordFormItemProps) => {
   switch (field.type) {
@@ -32,12 +31,11 @@ const RecordFormItem = ({ field, itemData, handleChange }: RecordFormItemProps) 
     case "boolean":
       return (
         <>
-          <label>{field.name}</label>
-          <DropDown
-            values={dropDownValues}
-            handleChange={(value) => handleChange(Boolean(value), field.name)}
-            placeholder="True or false"
-            nullDefault
+          <Checkbox
+            id={field.name}
+            checked={Boolean(itemData.value)}
+            onChange={(e) => handleChange(e.target.checked, field.name)}
+            label={field.name}
           />
         </>
       );

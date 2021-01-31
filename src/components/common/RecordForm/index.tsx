@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
 import { AxiosPromise } from "axios";
 import { ActionCreatorWithPayload } from "@reduxjs/toolkit";
 
@@ -7,7 +6,6 @@ import { useSubmitAndDispatch } from "@hooks";
 
 import RecordFormItem from "./RecordFormItem";
 import { Button, Spinner } from "@common";
-import { currentProjectSelector } from "@selectors";
 import * as S from "./styled";
 
 type RecordFormProps = {
@@ -19,6 +17,20 @@ type RecordFormProps = {
   paramId: string;
 };
 
+const getDefaultValue = (fieldType: FieldType) => {
+  switch (fieldType) {
+    case "boolean":
+      return false;
+    case "color":
+      return "#000000";
+    default:
+      return "";
+  }
+};
+
+const createInitialState = (fields: ContentField[]) =>
+  fields.map((field) => ({ name: field.name, value: getDefaultValue(field.type) }));
+
 const getItemData = (fieldName: string, recordItems: RecordItem[]) =>
   recordItems.find((item) => item.name === fieldName) || { name: fieldName, value: "" };
 
@@ -28,9 +40,11 @@ export const RecordForm = ({
   apiCall,
   reduxAction,
   paramId,
-  recordItems = []
+  recordItems
 }: RecordFormProps) => {
-  const [recordFormData, setRecordFormData] = useState<RecordItem[]>(recordItems);
+  const initialState = recordItems ? recordItems : createInitialState(fields);
+
+  const [recordFormData, setRecordFormData] = useState<RecordItem[]>(initialState);
 
   const handleChange = (value: string | number | boolean, fieldName: string) => {
     setRecordFormData((prevState) => {
@@ -46,7 +60,7 @@ export const RecordForm = ({
   };
 
   const handleClose = () => {
-    if (recordItems.length == 0) {
+    if (recordItems) {
       setRecordFormData([]);
     }
     closePanel();
@@ -73,10 +87,12 @@ export const RecordForm = ({
     />
   ));
 
+  if (pending) return <Spinner />;
+
   return (
     <S.Form onSubmit={handleFormSubmit}>
       {error && <S.ErrorMessage>{error}</S.ErrorMessage>}
-      {pending ? <Spinner /> : formItems}
+      {formItems}
       <Button type="submit">Submit</Button>
       <S.CancelButton secondary onClick={handleCancelClick}>
         Cancel
