@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback, useState } from "react";
 import { Redirect, useParams } from "react-router-dom";
 
 import routes from "@routes";
@@ -10,12 +10,16 @@ import { useDeleteRecordHandling } from "./useDeleteRecordHandling";
 import RecordDataList from "./RecordDataList";
 import { ConfirmationModal, Spinner } from "@common";
 import * as S from "./styled";
+import UpdateRecordAsidePanel from "./UpdateRecordAsidePanel";
 
 const SingleRecordView = () => {
+  const [isPanelVisible, setPanelVisibility] = useState(false);
+
+  const handlePanelClose = useCallback(() => setPanelVisibility(false), []);
+  const handlePanelOpen = useCallback(() => setPanelVisibility(true), []);
+
   const { id } = useParams<{ id: string }>();
-
   const [record, model] = useRecordViewData(id);
-
   const [pending, handleDelete] = useDeleteRecordHandling(id);
 
   const [
@@ -33,9 +37,15 @@ const SingleRecordView = () => {
       <S.ContentName>{model.name}</S.ContentName>
       <RecordDataList record={record} fields={model.fields} />
       <S.ButtonsWrapper>
-        <S.UpdateButton>{content.updateRecordButton}</S.UpdateButton>
+        <S.UpdateButton onClick={handlePanelOpen}>{content.updateRecordButton}</S.UpdateButton>
         <S.DeleteButton onClick={openDeleteModal}>{content.deleteRecordButton}</S.DeleteButton>
       </S.ButtonsWrapper>
+      <UpdateRecordAsidePanel
+        visible={isPanelVisible}
+        close={handlePanelClose}
+        fields={model.fields}
+        record={record}
+      />
       <ConfirmationModal
         message={content.deleteMessage}
         isOpen={isDeleteModalOpen}

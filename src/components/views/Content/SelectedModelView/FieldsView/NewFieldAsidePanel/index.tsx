@@ -10,8 +10,8 @@ import DateFieldForm from "../FieldForms/DateFieldForm";
 // import MediaFieldForm from "./FieldForms/MediaFieldForm";
 import ColorFieldForm from "../FieldForms/ColorFieldForm";
 
+import { AsidePanel } from "@common";
 import * as S from "./styled";
-import AsidePanel from "../../AsidePanel";
 
 type NewFieldFormProps = {
   isVisible: boolean;

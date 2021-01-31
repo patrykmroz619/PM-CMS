@@ -9,8 +9,8 @@ export const addRecord = (recordData: RecordItem[], contentModelId: string) =>
     record: recordData
   });
 
-export const updateRecord = (recordId: string, recordData: RecordItem) =>
-  ApiWithTokenHandling.put<RecordItem>(endpoint.records + "/" + recordId, recordData);
+export const updateRecord = (recordData: RecordItem[], recordId: string) =>
+  ApiWithTokenHandling.put<RecordObject>(endpoint.records + "/" + recordId, { record: recordData });
 
 export const deleteRecord = (recordId: string) =>
   ApiWithTokenHandling.delete(endpoint.records + "/" + recordId);

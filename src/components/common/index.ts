@@ -15,3 +15,5 @@ export { Checkbox } from "./Checkbox";
 export { DropDown } from "./DropDown";
 export { ScrollableTable } from "./ScrollableTable";
 export { ConfirmationModal } from "./ConfirmationModal";
+export { AsidePanel } from "./AsidePanel";
+export { RecordForm } from "./RecordForm";

@@ -8,7 +8,7 @@ type AsidePanelProps = {
   children: React.ReactNode;
 };
 
-const AsidePanel = ({ visible, close, children }: AsidePanelProps) => {
+export const AsidePanel = ({ visible, close, children }: AsidePanelProps) => {
   return (
     <>
       {visible && <S.BlurBackground onClick={close} />}
@@ -16,5 +16,3 @@ const AsidePanel = ({ visible, close, children }: AsidePanelProps) => {
     </>
   );
 };
-
-export default AsidePanel;

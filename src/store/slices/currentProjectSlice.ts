@@ -73,6 +73,19 @@ const currentProjectSlice = createSlice({
         currentModel.records?.push(action.payload);
       }
     },
+    updateRecord(state, action: PayloadAction<RecordObject>) {
+      if (state.data) {
+        const currentModel = getCurrentModel(state.data, state.selectedModelId);
+
+        const updatedRecordIndex = currentModel.records?.findIndex(
+          (record) => record.id === action.payload.id
+        );
+
+        if (typeof updatedRecordIndex == "number" && currentModel.records) {
+          currentModel.records[updatedRecordIndex] = action.payload;
+        }
+      }
+    },
     deleteRecord(state, action: PayloadAction<{ id: string }>) {
       if (state.data) {
         const currentModel = getCurrentModel(state.data, state.selectedModelId);

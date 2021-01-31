@@ -11,9 +11,8 @@ import DateFieldForm from "../FieldForms/DateFieldForm";
 import ColorFieldForm from "../FieldForms/ColorFieldForm";
 
 import * as S from "./styled";
-import AsidePanel from "../../AsidePanel";
 import useDeleteFieldHandler from "./useDeleteFieldHandler";
-import { Spinner } from "@common";
+import { Spinner, AsidePanel } from "@common";
 
 type NewFieldFormProps = {
   isVisible: boolean;
