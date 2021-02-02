@@ -1,7 +1,7 @@
 import React from "react";
 
 import styled from "@myStyled";
-import { ProfilePage as content } from "@content";
+import { profilePage as content } from "@content";
 
 import { Button, P } from "@common";
 

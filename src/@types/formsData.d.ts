@@ -3,14 +3,17 @@ declare type SignInFormData = {
   password: string;
 };
 
-declare type SignUpFormData = {
-  email: string;
-  password: string;
-  passwordRepeated: string;
+declare type PersonalUserData = {
   name?: string;
   surname?: string;
   company?: string;
 };
+
+declare type SignUpFormData = {
+  email: string;
+  password: string;
+  passwordRepeated: string;
+} & PersonalUserData;
 
 declare type NewProjectFormData = {
   name: string;
@@ -37,3 +40,9 @@ declare type ContentFieldFormData =
   | BooleanFieldFormData
   | ColorFieldFormData
   | DateFieldFormData;
+
+declare type PasswordChangeFormData = {
+  currentPassword: string;
+  newPassword: string;
+  passwordRepeated: string;
+};

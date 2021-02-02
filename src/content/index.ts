@@ -206,12 +206,25 @@ export const singleRecordPage = {
   deleteMessage: "Are you sure to delete this record?"
 } as const;
 
-export const ProfilePage = {
+export const profilePage = {
   errorMessage: "Something went wrong! Reload the page or try again later.",
   reloadButton: "Reload page",
   passwordButton: "Change password",
   updateDataButton: "Update data",
-  deleteAccountButton: "Delete account"
+  deleteAccountButton: "Delete account",
+  deleteMessage: "Are you sure you want to delete your account? All data will be lost.",
+  updatePasswordForm: {
+    currentPassword: "Current password",
+    newPassword: "New password",
+    repeatPassword: "Repeat password",
+    submit: "Change password"
+  },
+  updateUserDataForm: {
+    name: "Name",
+    surname: "Surname",
+    company: "Company name",
+    submit: "Update data"
+  }
 } as const;
 
 export const footer = "ⓒ 2020-2021 PM CMS - Headless CMS | Patryk Mróz" as const;
