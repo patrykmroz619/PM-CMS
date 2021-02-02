@@ -1,7 +1,7 @@
 import React from "react";
-import { DropDown, Input } from "@common";
+
 import TextInput from "./TextInput";
-import { Checkbox } from "@common";
+import { Input, Checkbox } from "@common";
 
 type RecordFormItemProps = {
   field: ContentField;

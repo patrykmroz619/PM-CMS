@@ -6,6 +6,7 @@ declare module "*.svg" {
 declare module "*.png";
 
 declare type UserData = {
+  id: string;
   email: string;
   name?: string;
   surname?: string;

@@ -204,6 +204,14 @@ export const singleRecordPage = {
   updateRecordButton: "update",
   deleteRecordButton: "delete",
   deleteMessage: "Are you sure to delete this record?"
-};
+} as const;
+
+export const ProfilePage = {
+  errorMessage: "Something went wrong! Reload the page or try again later.",
+  reloadButton: "Reload page",
+  passwordButton: "Change password",
+  updateDataButton: "Update data",
+  deleteAccountButton: "Delete account"
+} as const;
 
 export const footer = "ⓒ 2020-2021 PM CMS - Headless CMS | Patryk Mróz" as const;

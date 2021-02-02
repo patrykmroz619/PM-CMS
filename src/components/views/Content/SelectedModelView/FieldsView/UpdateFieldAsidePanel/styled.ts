@@ -1,4 +1,4 @@
-import { Button, P } from "@common";
+import { Button as Btn, P } from "@common";
 import styled from "@myStyled";
 
 export const ListLabel = styled(P)`
@@ -8,19 +8,8 @@ export const ListLabel = styled(P)`
   text-align: center;
 `;
 
-export const CancelButton = styled(Button)`
+export const Button = styled(Btn)`
   margin: ${({ theme }) => theme.spacing.s};
   margin-top: 0;
   width: calc(100% - ${({ theme }) => theme.spacing.s} * 2);
-`;
-
-export const DeleteButton = styled(Button)`
-  margin: ${({ theme }) => theme.spacing.s};
-  margin-top: 0;
-  width: calc(100% - ${({ theme }) => theme.spacing.s} * 2);
-  background-color: ${({ theme }) => theme.color.danger};
-
-  &:hover {
-    background-color: ${({ theme }) => theme.color.dangerHover};
-  }
 `;

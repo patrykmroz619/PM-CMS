@@ -1,6 +1,7 @@
 import React from "react";
 
 import { contentModelsPage as content } from "@content";
+import useDeleteFieldHandler from "./useDeleteFieldHandler";
 
 import FieldTypesList from "../FieldTypesList";
 import TextFieldForm from "../FieldForms/TextFieldForm";
@@ -10,9 +11,8 @@ import DateFieldForm from "../FieldForms/DateFieldForm";
 // import MediaFieldForm from "./FieldForms/MediaFieldForm";
 import ColorFieldForm from "../FieldForms/ColorFieldForm";
 
-import * as S from "./styled";
-import useDeleteFieldHandler from "./useDeleteFieldHandler";
 import { Spinner, AsidePanel } from "@common";
+import * as S from "./styled";
 
 type NewFieldFormProps = {
   isVisible: boolean;
@@ -61,12 +61,12 @@ const UpdateFieldAsidePanel = ({ isVisible, closePanel, selectedField }: NewFiel
           <S.ListLabel>{content.updateFieldPanel.label}</S.ListLabel>
           <FieldTypesList selectedFieldType={selectedField.type} />
           {pending ? <Spinner /> : FieldForm}
-          <S.DeleteButton onClick={handleDeleteFieldClick}>
+          <S.Button danger onClick={handleDeleteFieldClick}>
             {content.updateFieldPanel.delete}
-          </S.DeleteButton>
-          <S.CancelButton onClick={closePanel} secondary>
+          </S.Button>
+          <S.Button onClick={closePanel} secondary>
             {content.updateFieldPanel.cancel}
-          </S.CancelButton>
+          </S.Button>
         </>
       )}
     </AsidePanel>

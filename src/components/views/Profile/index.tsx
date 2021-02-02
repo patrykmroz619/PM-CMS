@@ -1,11 +1,17 @@
 import React from "react";
+import { useSelector } from "react-redux";
+
+import { userSelector } from "@selectors";
+
+import UserDetails from "./UserDetails";
+import ErrorMessage from "./ErrorMessage";
 
 const ProfileView = () => {
-  return (
-    <div>
-      <h3>Profile</h3>
-    </div>
-  );
+  const userData = useSelector(userSelector.data);
+
+  if (!userData) return <ErrorMessage />;
+
+  return <UserDetails userData={userData} />;
 };
 
 export default ProfileView;

@@ -1,6 +1,6 @@
 import styled from "@myStyled";
 import media, { breakpoints } from "@mediaQuery";
-import { Button } from "@common";
+import { Button as Btn } from "@common";
 
 export const Wrapper = styled.section`
   display: flex;
@@ -30,20 +30,9 @@ export const ButtonsWrapper = styled.div`
   margin-top: auto;
 `;
 
-const StyledButton = styled(Button)`
+export const Button = styled(Btn)`
+  margin-bottom: ${({ theme }) => theme.spacing.s};
   ${media(breakpoints.tablet.m)} {
     max-width: 250px;
-  }
-`;
-
-export const UpdateButton = styled(StyledButton)`
-  margin-bottom: ${({ theme }) => theme.spacing.s};
-`;
-
-export const DeleteButton = styled(StyledButton)`
-  background-color: ${({ theme }) => theme.color.danger};
-
-  &:hover {
-    background-color: ${({ theme }) => theme.color.dangerHover};
   }
 `;

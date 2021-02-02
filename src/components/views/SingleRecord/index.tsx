@@ -37,8 +37,10 @@ const SingleRecordView = () => {
       <S.ContentName>{model.name}</S.ContentName>
       <RecordDataList record={record} fields={model.fields} />
       <S.ButtonsWrapper>
-        <S.UpdateButton onClick={handlePanelOpen}>{content.updateRecordButton}</S.UpdateButton>
-        <S.DeleteButton onClick={openDeleteModal}>{content.deleteRecordButton}</S.DeleteButton>
+        <S.Button onClick={handlePanelOpen}>{content.updateRecordButton}</S.Button>
+        <S.Button danger onClick={openDeleteModal}>
+          {content.deleteRecordButton}
+        </S.Button>
       </S.ButtonsWrapper>
       <UpdateRecordAsidePanel
         visible={isPanelVisible}
