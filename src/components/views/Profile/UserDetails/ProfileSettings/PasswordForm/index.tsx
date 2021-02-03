@@ -4,8 +4,9 @@ import { useFormik } from "formik";
 import { profilePage } from "@content";
 import { authValidator, setError } from "@validators";
 
-import { Button, Form, Input, Modal } from "@common";
+import { Button, ErrorBox, Form, Input, Modal } from "@common";
 import * as S from "./styled";
+import { useSubmitChangePassword } from "./useSubmitChangePassword";
 
 type ErrorObject = Partial<PasswordChangeFormData>;
 
@@ -25,10 +26,12 @@ const initialFormValues: PasswordChangeFormData = {
 const { validatePassword, validatePasswordRepeated } = authValidator;
 
 const PasswordForm = ({ isOpen, close }: PasswordFormProps) => {
+  const [pending, error, handleSubmit] = useSubmitChangePassword(close);
+
   const formik = useFormik<PasswordChangeFormData>({
     initialValues: initialFormValues,
     onSubmit(values) {
-      console.log(values); //TODO: communicate with backend
+      handleSubmit(values);
     },
     validate(values) {
       const errors: ErrorObject = {};
@@ -45,8 +48,9 @@ const PasswordForm = ({ isOpen, close }: PasswordFormProps) => {
   });
 
   return (
-    <Modal isOpen={isOpen} onClose={close}>
+    <Modal loading={pending} isOpen={isOpen} onClose={close}>
       <Form onSubmit={formik.handleSubmit}>
+        {error && <ErrorBox>{error}</ErrorBox>}
         <label htmlFor="currentPassword">{content.currentPassword}</label>
         <Input
           id="currentPassword"

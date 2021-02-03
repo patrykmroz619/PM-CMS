@@ -3,6 +3,10 @@ import { keyframes } from "styled-components";
 
 import styled from "@myStyled";
 
+type SpinnerProps = {
+  className?: string;
+};
+
 const spin = keyframes`
   from {
     transform: rotate(0deg) translate(-50%, -50%);
@@ -46,8 +50,8 @@ const Inner = styled(Circle)`
   animation-direction: reverse;
 `;
 
-export const Spinner = () => (
-  <Wrapper data-testid="spinner">
+export const Spinner = ({ className }: SpinnerProps) => (
+  <Wrapper data-testid="spinner" className={className}>
     <Outher />
     <Inner />
   </Wrapper>

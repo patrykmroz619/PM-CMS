@@ -3,16 +3,18 @@ import { createPortal } from "react-dom";
 
 import { useDetectOutsideClick } from "@hooks";
 
+import { Spinner } from "../Spinner";
 import * as S from "./styled";
 
 type ModalProps = {
   isOpen: boolean;
   onClose: () => void;
   children: React.ReactNode;
+  loading?: boolean;
 };
 const modalRoot = document.getElementById("modal") as HTMLElement;
 
-export const Modal = ({ isOpen, onClose, children }: ModalProps) => {
+export const Modal = ({ isOpen, onClose, children, loading }: ModalProps) => {
   const modalRef = useRef<HTMLDivElement>(null);
 
   const onOutsideClick = () => {
@@ -27,7 +29,10 @@ export const Modal = ({ isOpen, onClose, children }: ModalProps) => {
 
   return createPortal(
     <S.Background>
-      <S.Modal ref={modalRef}>{children}</S.Modal>
+      <S.Modal loading={loading} ref={modalRef}>
+        {children}
+        {loading && <S.StyledSpinner />}
+      </S.Modal>
     </S.Background>,
     modalRoot
   );

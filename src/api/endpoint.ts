@@ -7,5 +7,6 @@ export const endpoint = {
   refresh: "refresh",
   contentModels: "content-models",
   contentFields: "content-model-fields",
-  records: "records"
+  records: "records",
+  password: "users/password"
 } as const;

@@ -18,3 +18,4 @@ export { ConfirmationModal } from "./ConfirmationModal";
 export { Modal } from "./Modal";
 export { AsidePanel } from "./AsidePanel";
 export { RecordForm } from "./RecordForm";
+export { ErrorBox } from "./ErrorBox";

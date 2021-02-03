@@ -1,4 +1,5 @@
 import styled from "@myStyled";
+import { Spinner } from "../Spinner";
 
 export const Background = styled.div`
   position: fixed;
@@ -11,7 +12,7 @@ export const Background = styled.div`
   z-index: 2;
 `;
 
-export const Modal = styled.div`
+export const Modal = styled.div<{ loading?: boolean }>`
   position: absolute;
   top: 50%;
   left: 50%;
@@ -23,4 +24,15 @@ export const Modal = styled.div`
   width: 90%;
   padding: ${({ theme }) => theme.spacing.xl} ${({ theme }) => theme.spacing.m};
   background-color: ${({ theme }) => theme.color.light};
+
+  * {
+    opacity: ${({ loading }) => (loading ? 0.5 : 1)};
+  }
+`;
+
+export const StyledSpinner = styled(Spinner)`
+  opacity: 1;
+  * {
+    opacity: 1;
+  }
 `;
