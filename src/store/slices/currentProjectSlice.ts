@@ -110,11 +110,12 @@ const currentProjectSlice = createSlice({
       state.loading = false;
       delete state.error;
       state.data = action.payload;
-      state.selectedModelId = action.payload.contentModels[0].id || null;
+      state.selectedModelId = action.payload.contentModels[0]?.id || null;
     },
     [`${CURRENT_PROJECT_SET.REJECTED}`]: (state, action: PayloadAction<ApiError>) => {
+      console.log(action);
       state.loading = false;
-      state.error = action.payload?.error.description;
+      state.error = action.payload?.error?.description;
     },
     [`${RECORDS_GET.PENDING}`]: (state) => {
       state.recordsLoading = true;

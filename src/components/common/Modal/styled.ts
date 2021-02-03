@@ -12,7 +12,7 @@ export const Background = styled.div`
   z-index: 2;
 `;
 
-export const Modal = styled.div<{ loading?: boolean }>`
+export const Modal = styled.div<{ pending?: boolean }>`
   position: absolute;
   top: 50%;
   left: 50%;
@@ -26,7 +26,7 @@ export const Modal = styled.div<{ loading?: boolean }>`
   background-color: ${({ theme }) => theme.color.light};
 
   * {
-    opacity: ${({ loading }) => (loading ? 0.5 : 1)};
+    opacity: ${({ pending }) => (pending ? 0.5 : 1)};
   }
 `;
 

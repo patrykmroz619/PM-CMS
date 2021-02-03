@@ -3,7 +3,6 @@ import { createPortal } from "react-dom";
 
 import { useDetectOutsideClick } from "@hooks";
 
-import { Spinner } from "../Spinner";
 import * as S from "./styled";
 
 type ModalProps = {
@@ -29,7 +28,7 @@ export const Modal = ({ isOpen, onClose, children, loading }: ModalProps) => {
 
   return createPortal(
     <S.Background>
-      <S.Modal loading={loading} ref={modalRef}>
+      <S.Modal pending={loading} ref={modalRef}>
         {children}
         {loading && <S.StyledSpinner />}
       </S.Modal>

@@ -2,10 +2,15 @@ import React from "react";
 import { useFormik } from "formik";
 
 import { profilePage } from "@content";
+import { useSubmitAndDispatch } from "@hooks";
 import { authValidator, setError } from "@validators";
+import { updateData } from "@api/user";
+import { userActions } from "@actions";
 
-import { Button, Form, Input, Modal } from "@common";
+import { Button, ErrorBox, Form, Input, Modal } from "@common";
 import * as S from "./styled";
+import { useSelector } from "react-redux";
+import { userSelector } from "@selectors";
 
 type ErrorObject = Partial<PersonalUserData>;
 
@@ -16,19 +21,24 @@ type PasswordFormProps = {
 
 const { updateUserDataForm: content } = profilePage;
 
-const initialFormValues: PersonalUserData = {
-  name: "",
-  surname: "",
-  company: ""
-};
-
 const { validateName, validateSurname, validateCompanyName } = authValidator;
 
 const UserDataForm = ({ isOpen, close }: PasswordFormProps) => {
+  const userData = useSelector(userSelector.data);
+  const [pending, error, handleSubmit] = useSubmitAndDispatch(
+    updateData,
+    userActions.setUserData,
+    close
+  );
+
   const formik = useFormik<PersonalUserData>({
-    initialValues: initialFormValues,
+    initialValues: {
+      name: userData?.name,
+      surname: userData?.surname,
+      company: userData?.company
+    },
     onSubmit(values) {
-      console.log(values); //TODO: communicate with backend
+      handleSubmit(values);
     },
     validate(values) {
       const errors: ErrorObject = {};
@@ -42,13 +52,14 @@ const UserDataForm = ({ isOpen, close }: PasswordFormProps) => {
   });
 
   return (
-    <Modal isOpen={isOpen} onClose={close}>
+    <Modal loading={pending} isOpen={isOpen} onClose={close}>
       <Form onSubmit={formik.handleSubmit}>
+        {error && <ErrorBox>{error}</ErrorBox>}
         <label htmlFor="name">{content.name}</label>
         <Input
           id="name"
           name="name"
-          type="password"
+          type="text"
           value={formik.values.name}
           onChange={formik.handleChange}
           isTouched={formik.touched.name}
@@ -58,7 +69,7 @@ const UserDataForm = ({ isOpen, close }: PasswordFormProps) => {
         <Input
           id="surname"
           name="surname"
-          type="password"
+          type="text"
           value={formik.values.surname}
           onChange={formik.handleChange}
           isTouched={formik.touched.surname}
@@ -68,7 +79,7 @@ const UserDataForm = ({ isOpen, close }: PasswordFormProps) => {
         <Input
           id="company"
           name="company"
-          type="password"
+          type="text"
           value={formik.values.company}
           onChange={formik.handleChange}
           isTouched={formik.touched.company}

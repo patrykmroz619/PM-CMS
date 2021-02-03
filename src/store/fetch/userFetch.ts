@@ -44,6 +44,7 @@ export const logoutUser = createAsyncThunk(LOGOUT.CONST, async (arg: void, { rej
   try {
     await logout();
     tokenHandler.removeTokens();
+    sessionStorage.clear();
     return { success: true };
   } catch {
     return rejectWithValue({ success: false });

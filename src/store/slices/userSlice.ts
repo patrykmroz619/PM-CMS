@@ -17,8 +17,11 @@ const userSlice = createSlice({
   name: "user",
   initialState,
   reducers: {
-    clearError: (state) => {
+    clearError(state) {
       delete state.error;
+    },
+    setUserData(state, action: PayloadAction<UserData>) {
+      state.data = action.payload;
     }
   },
   extraReducers: {
@@ -36,7 +39,7 @@ const userSlice = createSlice({
     [`${AUTH.REJECTED}`]: (state, action: PayloadAction<ApiError>) => {
       state.loading = false;
       state.isAuthenticated = false;
-      state.error = action.payload?.error.description;
+      state.error = action.payload?.error?.description;
     },
     [`${LOGOUT.PENDING}`]: (state) => {
       state.loading = true;
