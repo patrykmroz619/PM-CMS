@@ -10,6 +10,11 @@ export const setTokens = ({ accessToken, refreshToken }: JsonWebTokens) => {
   setRefreshToken(refreshToken);
 };
 
+export const removeTokens = () => {
+  window.localStorage.removeItem(ACCESS_TOKEN);
+  window.localStorage.removeItem(REFRESH_TOKEN);
+};
+
 export const getAccessToken = () => window.localStorage.getItem(ACCESS_TOKEN);
 
 export const getRefreshToken = () => window.localStorage.getItem(REFRESH_TOKEN);

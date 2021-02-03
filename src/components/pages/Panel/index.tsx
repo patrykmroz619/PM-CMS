@@ -15,6 +15,7 @@ const SingleRecordView = React.lazy(() => import("../../views/SingleRecord"));
 const MediaView = React.lazy(() => import("../../views/Media"));
 const ProfileView = React.lazy(() => import("../../views/Profile"));
 const SettingsView = React.lazy(() => import("../../views/Settings"));
+const LogoutView = React.lazy(() => import("../../views/Logout"));
 
 const PanelPage = () => {
   const dispatch = useDispatch();
@@ -53,6 +54,9 @@ const PanelPage = () => {
           </Route>
           <Route exact path={routes.settings}>
             <SettingsView />
+          </Route>
+          <Route exact path={routes.logout}>
+            <LogoutView />
           </Route>
           <Route exact path={routes.panel}>
             <Redirect to={routes.projects} />

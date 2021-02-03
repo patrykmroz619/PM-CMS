@@ -2,6 +2,7 @@ export const endpoint = {
   users: "users",
   projects: "projects",
   login: "login",
+  logout: "logout",
   register: "register",
   refresh: "refresh",
   contentModels: "content-models",

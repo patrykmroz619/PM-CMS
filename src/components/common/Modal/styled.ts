@@ -19,7 +19,8 @@ export const Modal = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
-  min-width: 300px;
+  max-width: 450px;
+  width: 90%;
   padding: ${({ theme }) => theme.spacing.xl} ${({ theme }) => theme.spacing.m};
   background-color: ${({ theme }) => theme.color.light};
 `;

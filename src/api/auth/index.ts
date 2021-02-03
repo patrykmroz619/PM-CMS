@@ -1,4 +1,5 @@
 import { endpoint } from "@api/endpoint";
+import apiWithTokenHandling from "@api/withTokenHandling";
 import { tokenHandler } from "@utils";
 import api from "..";
 
@@ -7,6 +8,8 @@ export const signIn = (signInData: SignInFormData) =>
 
 export const signUp = (signUpData: SignUpFormData) =>
   api.post<SignUpApiResponseData>(endpoint.register, signUpData);
+
+export const logout = () => apiWithTokenHandling.post(endpoint.logout);
 
 export const refreshActiveToken = (): Promise<string> => {
   return api

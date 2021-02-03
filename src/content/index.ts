@@ -42,8 +42,7 @@ export const formErrors = {
   },
   password: {
     required: "Password is required.",
-    tooShort: "Password has to be longer than 7 characters.",
-    tooLong: "Password has to be shorter than 35 characters.",
+    tooShort: "Password has to be longer than 4 characters.",
     withoutNumber: "Password should contain some numbers.",
     withoutUpper: "Password should contain some uppercase letter.",
     differentRepeat: "Passwords are not the same."
@@ -225,6 +224,10 @@ export const profilePage = {
     company: "Company name",
     submit: "Update data"
   }
+} as const;
+
+export const logoutView = {
+  message: "Do you want to logout now?"
 } as const;
 
 export const footer = "ⓒ 2020-2021 PM CMS - Headless CMS | Patryk Mróz" as const;

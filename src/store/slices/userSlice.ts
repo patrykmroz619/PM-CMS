@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { AUTH } from "../constants/auth";
+import { AUTH, LOGOUT } from "../constants/auth";
 
 type UserState = {
   isAuthenticated: boolean;
@@ -37,6 +37,19 @@ const userSlice = createSlice({
       state.loading = false;
       state.isAuthenticated = false;
       state.error = action.payload?.error.description;
+    },
+    [`${LOGOUT.PENDING}`]: (state) => {
+      state.loading = true;
+      delete state.error;
+    },
+    [`${LOGOUT.FULFILLED}`]: (state) => {
+      state.loading = false;
+      state.isAuthenticated = false;
+      delete state.error;
+      delete state.data;
+    },
+    [`${LOGOUT.REJECTED}`]: (state) => {
+      state.loading = false;
     }
   }
 });

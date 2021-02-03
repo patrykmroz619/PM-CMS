@@ -21,10 +21,8 @@ export const validatePassword: validateFunction = (value) => {
   let error = "";
   if (!value) {
     error = password.required;
-  } else if (value.length < 8) {
+  } else if (value.length < 5) {
     error = password.tooShort;
-  } else if (value.length > 34) {
-    error = password.tooLong;
   } else if (!/\d/.test(value)) {
     error = password.withoutNumber;
   } else if (!/[A-Z]/.test(value)) {

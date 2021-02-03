@@ -1,11 +1,11 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
-import { signIn, signUp } from "@api/auth";
+import { signIn, signUp, logout } from "@api/auth";
 import { tokenHandler } from "@utils";
-import { AUTH } from "../constants/auth";
+import { AUTH, LOGOUT } from "../constants/auth";
 import { getAuthUser } from "@api/user";
 
-const signInUser = createAsyncThunk(
+export const signInUser = createAsyncThunk(
   AUTH.CONST,
   async (userData: SignInFormData, { rejectWithValue }) => {
     try {
@@ -18,7 +18,7 @@ const signInUser = createAsyncThunk(
   }
 );
 
-const signUpUser = createAsyncThunk(
+export const signUpUser = createAsyncThunk(
   AUTH.CONST,
   async (userData: SignUpFormData, { rejectWithValue }) => {
     try {
@@ -31,7 +31,7 @@ const signUpUser = createAsyncThunk(
   }
 );
 
-const authUser = createAsyncThunk(AUTH.CONST, async (arg: void, { rejectWithValue }) => {
+export const authUser = createAsyncThunk(AUTH.CONST, async (arg: void, { rejectWithValue }) => {
   try {
     const response = await getAuthUser();
     return response.data;
@@ -40,4 +40,12 @@ const authUser = createAsyncThunk(AUTH.CONST, async (arg: void, { rejectWithValu
   }
 });
 
-export { signInUser, signUpUser, authUser };
+export const logoutUser = createAsyncThunk(LOGOUT.CONST, async (arg: void, { rejectWithValue }) => {
+  try {
+    await logout();
+    tokenHandler.removeTokens();
+    return { success: true };
+  } catch {
+    return rejectWithValue({ success: false });
+  }
+});
