@@ -226,6 +226,10 @@ export const profilePage = {
   }
 } as const;
 
+export const settingsPage = {
+  dangerZone: "Danger zone"
+} as const;
+
 export const logoutView = {
   message: "Do you want to logout now?"
 } as const;

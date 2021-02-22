@@ -1,9 +1,10 @@
 import React from "react";
+import DangerZone from "./DangerZone";
 
 const SettingsView = () => {
   return (
     <div>
-      <h3>Settings</h3>
+      <DangerZone />
     </div>
   );
 };
