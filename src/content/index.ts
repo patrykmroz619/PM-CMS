@@ -232,6 +232,7 @@ export const settingsPage = {
   confirmUpdateName: "Confirm",
   dangerZone: "Danger zone",
   deleteModelBtn: "Delete model",
+  deleteModelError: "Deleting of the content model was not passed. Please try again later.",
   deleteProjectBtn: "Delete project",
   deleteProjectMessage:
     "Are you sure you want to delete this project? All data will be lost irrevocably."

@@ -6,3 +6,6 @@ export const addContentModel = (data: NewContentModelData, projectId: string) =>
 
 export const getContentModels = (projectId: string) =>
   apiWithTokenHandling.get<ContentModel[]>(endpoint.contentModels + "/" + projectId);
+
+export const deleteContentModel = (contentModelId: string) =>
+  apiWithTokenHandling.delete(endpoint.contentModels + "/" + contentModelId);

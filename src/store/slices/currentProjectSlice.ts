@@ -2,6 +2,8 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 import { CURRENT_PROJECT_SET, RECORDS_GET } from "../constants/project";
 
+type IdType = string;
+
 type CurrentProjectState = {
   loading: boolean;
   error?: string;
@@ -36,11 +38,22 @@ const currentProjectSlice = createSlice({
       state.selectedModelId = null;
       delete state.data;
     },
-    selectModel(state, action: PayloadAction<string>) {
+    selectModel(state, action: PayloadAction<IdType>) {
       state.selectedModelId = action.payload;
     },
     addContentModel(state, action: PayloadAction<ContentModel>) {
       state.data?.contentModels.push(action.payload);
+    },
+    deleteContentModel(state, action: PayloadAction<IdType>) {
+      if (state.data) {
+        state.data.contentModels = state.data.contentModels.filter(
+          (model) => model.id != action.payload
+        );
+
+        if (action.payload == state.selectedModelId) {
+          state.selectedModelId = state.data.contentModels[0].id || null;
+        }
+      }
     },
     addField(state, action: PayloadAction<ContentField>) {
       if (state.data) {
@@ -61,7 +74,7 @@ const currentProjectSlice = createSlice({
         }
       }
     },
-    deleteField(state, action: PayloadAction<{ fieldId: string }>) {
+    deleteField(state, action: PayloadAction<{ fieldId: IdType }>) {
       if (state.data) {
         const currentModel = getCurrentModel(state.data, state.selectedModelId);
 
@@ -93,7 +106,7 @@ const currentProjectSlice = createSlice({
         }
       }
     },
-    deleteRecord(state, action: PayloadAction<{ id: string }>) {
+    deleteRecord(state, action: PayloadAction<{ id: IdType }>) {
       if (state.data) {
         const currentModel = getCurrentModel(state.data, state.selectedModelId);
 
