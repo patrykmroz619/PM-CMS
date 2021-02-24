@@ -2,7 +2,7 @@ import styled from "@myStyled";
 import React from "react";
 
 import DangerZone from "./DangerZone";
-import NameSection from "./NameSection";
+import ProjectNameSection from "./ProjectNameSection";
 
 const Wrapper = styled.div`
   max-width: 900px;
@@ -11,7 +11,7 @@ const Wrapper = styled.div`
 const SettingsView = () => {
   return (
     <Wrapper>
-      <NameSection />
+      <ProjectNameSection />
       <DangerZone />
     </Wrapper>
   );

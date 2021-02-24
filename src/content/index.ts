@@ -228,6 +228,8 @@ export const profilePage = {
 
 export const settingsPage = {
   name: "Project name",
+  enableUpdateName: "Click to update",
+  confirmUpdateName: "Confirm",
   dangerZone: "Danger zone"
 } as const;
 

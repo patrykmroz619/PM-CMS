@@ -29,6 +29,9 @@ const currentProjectSlice = createSlice({
   name: "currentProject",
   initialState,
   reducers: {
+    updateData(state, action: PayloadAction<Project>) {
+      state.data = { ...action.payload, contentModels: state.data?.contentModels || [] };
+    },
     selectModel(state, action: PayloadAction<string>) {
       state.selectedModelId = action.payload;
     },

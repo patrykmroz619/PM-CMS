@@ -4,7 +4,7 @@ import { settingsPage as content } from "@content";
 import * as S from "./styled";
 import NameInput from "./NameInput";
 
-const NameSection = () => {
+const ProjectNameSection = () => {
   return (
     <S.Section>
       <S.Heading>{content.name}</S.Heading>
@@ -13,4 +13,4 @@ const NameSection = () => {
   );
 };
 
-export default NameSection;
+export default ProjectNameSection;

@@ -40,7 +40,7 @@ export const useSubmitAndDispatch: UseSubmitAndDispatchType = (
         onSuccess();
       }
     } catch (e) {
-      const error = e?.response.data.error.description;
+      const error = e?.response.data.error?.description;
       if (error) {
         setError(e.response.data.error.description);
       } else {

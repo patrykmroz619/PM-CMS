@@ -10,8 +10,8 @@ export const getProjectById = (id: string) =>
 export const addProject = (data: NewProjectFormData) =>
   apiWithTokenHandling.post<Project>(endpoint.projects, data);
 
-export const updateProject = (id: string, data: Partial<Project>) =>
-  apiWithTokenHandling.put<Project>(endpoint.projects + `/${id}`, data);
+export const updateProject = (data: Partial<Project>, id: string) =>
+  apiWithTokenHandling.patch<Project>(endpoint.projects + `/${id}`, data);
 
 export const deleteProject = (id: string) =>
   apiWithTokenHandling.delete<void>(endpoint.projects + `/${id}`);
