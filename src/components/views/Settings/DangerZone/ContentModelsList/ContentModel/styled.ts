@@ -18,7 +18,7 @@ export const Btn = styled(Button)`
   width: 300px;
   display: none;
 
-  ${media(breakpoints.tablet.s)} {
+  ${media(breakpoints.tablet.m)} {
     display: block;
   }
 `;
@@ -30,7 +30,7 @@ export const Bin = styled.button`
   border-radius: 5px;
   transition: 0.3s;
 
-  ${media(breakpoints.tablet.s)} {
+  ${media(breakpoints.tablet.m)} {
     display: none;
   }
 

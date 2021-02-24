@@ -2,7 +2,6 @@ import styled from "@myStyled";
 
 export const Wrapper = styled.section`
   padding: ${({ theme }) => theme.spacing.s};
-  max-width: 900px;
   border-radius: 5px;
   background-image: linear-gradient(170deg, #cd5c5ccc, #cd5c5c09 70%);
 `;

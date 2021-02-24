@@ -227,6 +227,7 @@ export const profilePage = {
 } as const;
 
 export const settingsPage = {
+  name: "Project name",
   dangerZone: "Danger zone"
 } as const;
 
