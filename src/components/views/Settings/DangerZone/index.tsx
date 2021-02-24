@@ -4,6 +4,7 @@ import { settingsPage as content } from "@content";
 import ContentModelsList from "./ContentModelsList";
 
 import * as S from "./styled";
+import DeleteProjectSection from "./DeleteProjectSection";
 
 const DangerZone = () => {
   return (
@@ -11,6 +12,8 @@ const DangerZone = () => {
       <S.Heading>{content.dangerZone}</S.Heading>
       <S.Separator />
       <ContentModelsList />
+      <S.Separator />
+      <DeleteProjectSection />
     </S.Wrapper>
   );
 };

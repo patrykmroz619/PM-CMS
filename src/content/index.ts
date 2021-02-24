@@ -230,7 +230,11 @@ export const settingsPage = {
   name: "Project name",
   enableUpdateName: "Click to update",
   confirmUpdateName: "Confirm",
-  dangerZone: "Danger zone"
+  dangerZone: "Danger zone",
+  deleteModelBtn: "Delete model",
+  deleteProjectBtn: "Delete project",
+  deleteProjectMessage:
+    "Are you sure you want to delete this project? All data will be lost irrevocably."
 } as const;
 
 export const logoutView = {

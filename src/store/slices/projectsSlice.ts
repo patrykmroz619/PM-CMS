@@ -1,6 +1,8 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { PROJECTS_GET } from "../constants/project";
 
+type ProjectID = string;
+
 type ProjectsState = {
   loading: boolean;
   error?: string;
@@ -18,6 +20,9 @@ const projectsSlice = createSlice({
   reducers: {
     add: (state, action: PayloadAction<Project>) => {
       state.data.unshift(action.payload);
+    },
+    delete: (state, action: PayloadAction<ProjectID>) => {
+      state.data = state.data.filter((project) => !(project.id === action.payload));
     }
   },
   extraReducers: {

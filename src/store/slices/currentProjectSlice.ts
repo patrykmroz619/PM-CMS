@@ -32,6 +32,10 @@ const currentProjectSlice = createSlice({
     updateData(state, action: PayloadAction<Project>) {
       state.data = { ...action.payload, contentModels: state.data?.contentModels || [] };
     },
+    unsetCurrentProject(state) {
+      state.selectedModelId = null;
+      delete state.data;
+    },
     selectModel(state, action: PayloadAction<string>) {
       state.selectedModelId = action.payload;
     },
