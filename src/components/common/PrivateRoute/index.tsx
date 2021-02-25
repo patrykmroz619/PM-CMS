@@ -1,22 +1,16 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { Redirect, Route, RouteProps } from "react-router-dom";
+import { RouteProps } from "react-router-dom";
 
 import { userSelector } from "@selectors";
+import { ConditionalRoute } from "../ConditionalRoute";
 
 export const PrivateRoute = ({ children, ...rest }: RouteProps) => {
   const isAuthenticated = useSelector(userSelector.isAuthenticated);
 
   return (
-    <Route
-      {...rest}
-      render={({ location }) =>
-        isAuthenticated ? (
-          children
-        ) : (
-          <Redirect to={{ pathname: "/login", state: { from: location } }} />
-        )
-      }
-    />
+    <ConditionalRoute available={isAuthenticated} redirectTo="/login" {...rest}>
+      {children}
+    </ConditionalRoute>
   );
 };

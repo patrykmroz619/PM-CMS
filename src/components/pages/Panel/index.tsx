@@ -1,12 +1,11 @@
 import React, { Suspense, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Switch, Route, Redirect } from "react-router-dom";
 
 import routes from "@routes";
+import { setCurrentProject } from "@fetch";
+import { currentProjectSelector } from "@selectors";
 
-import { PanelLayout } from "@layout";
-import { Spinner } from "@common";
-import { useDispatch } from "react-redux";
-import { setCurrentProject } from "store/fetch/projectsFetch";
 const ProjectsView = React.lazy(() => import("../../views/Projects"));
 const ProjectFormView = React.lazy(() => import("../../views/ProjectForm"));
 const ContentModelFormView = React.lazy(() => import("../../views/ContentModelForm"));
@@ -17,7 +16,12 @@ const ProfileView = React.lazy(() => import("../../views/Profile"));
 const SettingsView = React.lazy(() => import("../../views/Settings"));
 const LogoutView = React.lazy(() => import("../../views/Logout"));
 
+import { PanelLayout } from "@layout";
+import { ConditionalRoute, Spinner } from "@common";
+
 const PanelPage = () => {
+  const isCurrentProjectSelected = Boolean(useSelector(currentProjectSelector.id));
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -37,24 +41,48 @@ const PanelPage = () => {
           <Route exact path={routes.newProject}>
             <ProjectFormView />
           </Route>
-          <Route path={routes.content}>
+          <ConditionalRoute
+            available={isCurrentProjectSelected}
+            redirectTo={routes.projects}
+            path={routes.content}
+          >
             <ContentView />
-          </Route>
-          <Route exact path={routes.newContentModel}>
+          </ConditionalRoute>
+          <ConditionalRoute
+            available={isCurrentProjectSelected}
+            redirectTo={routes.projects}
+            exact
+            path={routes.newContentModel}
+          >
             <ContentModelFormView />
-          </Route>
-          <Route exact path={routes.singleRecord}>
+          </ConditionalRoute>
+          <ConditionalRoute
+            available={isCurrentProjectSelected}
+            redirectTo={routes.projects}
+            exact
+            path={routes.singleRecord}
+          >
             <SingleRecordView />
-          </Route>
-          <Route exact path={routes.media}>
+          </ConditionalRoute>
+          <ConditionalRoute
+            available={isCurrentProjectSelected}
+            redirectTo={routes.projects}
+            exact
+            path={routes.media}
+          >
             <MediaView />
-          </Route>
+          </ConditionalRoute>
           <Route exact path={routes.profile}>
             <ProfileView />
           </Route>
-          <Route exact path={routes.settings}>
+          <ConditionalRoute
+            available={isCurrentProjectSelected}
+            redirectTo={routes.projects}
+            exact
+            path={routes.settings}
+          >
             <SettingsView />
-          </Route>
+          </ConditionalRoute>
           <Route exact path={routes.logout}>
             <LogoutView />
           </Route>
