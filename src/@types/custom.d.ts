@@ -85,3 +85,11 @@ declare type RecordObject = {
 declare type CurrentProject = Project & {
   contentModels: ContentModel[];
 };
+
+declare type NotificationType = "success" | "error";
+
+declare type NotificationObj = {
+  id: string;
+  type: NotificationType;
+  message: string;
+};
