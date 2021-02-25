@@ -5,5 +5,6 @@ const selectedModelId = (state: RootState) => state.currentProject.selectedModel
 const loading = (state: RootState) => state.currentProject.loading;
 const id = (state: RootState) => state.currentProject.data?.id;
 const recordsLoading = (state: RootState) => state.currentProject.recordsLoading;
+const published = (state: RootState) => state.currentProject.data?.published;
 
-export default { name, contentModels, selectedModelId, loading, id, recordsLoading };
+export default { name, contentModels, selectedModelId, loading, id, recordsLoading, published };

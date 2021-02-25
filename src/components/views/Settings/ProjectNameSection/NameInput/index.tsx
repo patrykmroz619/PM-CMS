@@ -16,9 +16,14 @@ const NameInput = () => {
   const currentProjectId = useSelector(currentProjectSelector.id);
   const [nameInputValue, setNameInputValue] = useState(currentProjectName);
 
+  const onSuccess = () => {
+    setInputDisabled(true);
+  };
+
   const [pending, error, handleSubmit] = useSubmitAndDispatch(
     updateProject,
-    currentProjectActions.updateData
+    currentProjectActions.updateData,
+    onSuccess
   );
 
   const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {

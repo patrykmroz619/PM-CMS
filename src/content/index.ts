@@ -230,6 +230,10 @@ export const settingsPage = {
   name: "Project name",
   enableUpdateName: "Click to update",
   confirmUpdateName: "Confirm",
+  publishingHeading: "Publish project",
+  publishedInfo: "Your project is published. You can use the api on the websites or applications.",
+  notPublishedInfo:
+    "Your project isn't published. The api isn't available on the any websites or applications.",
   dangerZone: "Danger zone",
   deleteModelBtn: "Delete model",
   deleteModelError: "Deleting of the content model was not passed. Please try again later.",
