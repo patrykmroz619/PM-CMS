@@ -1,6 +1,8 @@
 import { useState } from "react";
 
 import { changePassword } from "@api/user";
+import { useNotification } from "@hooks";
+import { profilePage as content } from "@content";
 
 type UseSubmitChangePasswordType = (
   onSucces: () => void
@@ -10,12 +12,15 @@ export const useSubmitChangePassword: UseSubmitChangePasswordType = (onSucces) =
   const [pending, setPending] = useState(false);
   const [error, setError] = useState("");
 
+  const { success } = useNotification();
+
   const handleSubmit = async (values: PasswordChangeFormData) => {
     setPending(true);
     setError("");
     try {
       await changePassword(values);
       setPending(false);
+      success(content.updatePasswordForm.successNotification);
       onSucces();
     } catch (e) {
       setPending(false);

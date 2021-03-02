@@ -19,8 +19,6 @@ export const useDeleteRecordHandling: UseDeleteRecordHandlingType = (recordId) =
 
   const { success, error } = useNotification();
 
-  error(content.rejectedDeleteNotification);
-
   const handleDeleteRecord = async () => {
     setPending(true);
     try {

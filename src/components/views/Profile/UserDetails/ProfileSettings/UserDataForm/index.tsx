@@ -1,16 +1,16 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import { useFormik } from "formik";
 
-import { profilePage } from "@content";
-import { useSubmitAndDispatch } from "@hooks";
-import { authValidator, setError } from "@validators";
 import { updateData } from "@api/user";
+import { profilePage } from "@content";
+import { useSubmitAndDispatch, useNotification } from "@hooks";
+import { authValidator, setError } from "@validators";
+import { userSelector } from "@selectors";
 import { userActions } from "@actions";
 
 import { Button, ErrorBox, Form, Input, Modal } from "@common";
 import * as S from "./styled";
-import { useSelector } from "react-redux";
-import { userSelector } from "@selectors";
 
 type ErrorObject = Partial<PersonalUserData>;
 
@@ -25,10 +25,18 @@ const { validateName, validateSurname, validateCompanyName } = authValidator;
 
 const UserDataForm = ({ isOpen, close }: PasswordFormProps) => {
   const userData = useSelector(userSelector.data);
+
+  const { success } = useNotification();
+
+  const onSuccess = () => {
+    success(content.successNotification);
+    close();
+  };
+
   const [pending, error, handleSubmit] = useSubmitAndDispatch(
     updateData,
     userActions.setUserData,
-    close
+    onSuccess
   );
 
   const formik = useFormik<PersonalUserData>({

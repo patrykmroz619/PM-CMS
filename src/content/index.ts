@@ -224,13 +224,15 @@ export const profilePage = {
     currentPassword: "Current password",
     newPassword: "New password",
     repeatPassword: "Repeat password",
+    successNotification: "Your password has been changed.",
     submit: "Change password"
   },
   updateUserDataForm: {
     name: "Name",
     surname: "Surname",
     company: "Company name",
-    submit: "Update data"
+    submit: "Update data",
+    successNotification: "Your personal data has been updated."
   }
 } as const;
 
