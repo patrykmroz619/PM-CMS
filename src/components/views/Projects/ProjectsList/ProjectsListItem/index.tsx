@@ -17,8 +17,8 @@ const ProjectsListItem = ({ project, selectProject }: ProjectsListItemProps) => 
       {project.createdAt}
     </S.Detail>
     <S.Detail>
-      <S.Label>Updated at: </S.Label>
-      {project.updatedAt}
+      <S.Label>Published: </S.Label>
+      {project.published}
     </S.Detail>
   </S.Wrapper>
 );

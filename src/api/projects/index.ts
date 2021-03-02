@@ -15,3 +15,6 @@ export const updateProject = (data: Partial<Project>, id: string) =>
 
 export const deleteProject = (id: string) =>
   apiWithTokenHandling.delete<void>(endpoint.projects + `/${id}`);
+
+export const generateApiKey = (id: string) =>
+  apiWithTokenHandling.post<{ apiKey: string }>(endpoint.apiKey + `/${id}`);

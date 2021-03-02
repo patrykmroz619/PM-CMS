@@ -255,7 +255,14 @@ export const settingsPage = {
   deleteProjectMessage:
     "Are you sure you want to delete this project? All data will be lost irrevocably.",
   deleteProjectSuccessMessage: "Your project has been deleted.",
-  deleteProjectErrorMessage: "Error has occured. Please try again later."
+  deleteProjectErrorMessage: "Error has occured. Please try again later.",
+  apiKey: "Api key",
+  generateMessage: "Api key has not generated yet.",
+  generateSubmit: "Generate",
+  generateSuccessNotification: "The api key has been generated.",
+  generateErrorNotification: "The error has occured.",
+  regenerateSubmit: "Re-generate",
+  copyToClipboardNotification: "Api key coppied to the clipboard."
 } as const;
 
 export const logoutView = {

@@ -25,7 +25,7 @@ const ProjectsTable = ({ projects, selectProject }: ProjectsTableProps) => {
             <tr>
               <S.TH>Name</S.TH>
               <S.TH>Created at</S.TH>
-              <S.TH>Updated at</S.TH>
+              <S.TH>Published</S.TH>
             </tr>
           </S.THead>
           <S.TBody>{tableRows}</S.TBody>

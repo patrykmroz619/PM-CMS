@@ -17,7 +17,7 @@ declare type Project = {
   id: string;
   name: string;
   createdAt: string;
-  updatedAt: string;
+  apiKey?: string;
   userId: string;
   published: boolean;
 };

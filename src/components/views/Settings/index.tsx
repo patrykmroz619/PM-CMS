@@ -4,6 +4,7 @@ import React from "react";
 import ProjectNameSection from "./ProjectNameSection";
 import ProjectPublishingSection from "./ProjectPublishingSection";
 import DangerZone from "./DangerZone";
+import ApiKeySection from "./ApiKeySection";
 
 const Wrapper = styled.div`
   max-width: 900px;
@@ -14,6 +15,7 @@ const SettingsView = () => {
     <Wrapper>
       <ProjectNameSection />
       <ProjectPublishingSection />
+      <ApiKeySection />
       <DangerZone />
     </Wrapper>
   );

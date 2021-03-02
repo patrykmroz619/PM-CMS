@@ -1,6 +1,7 @@
 export const endpoint = {
   users: "users",
   projects: "projects",
+  apiKey: "projects/api-key",
   login: "login",
   logout: "logout",
   register: "register",

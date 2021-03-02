@@ -12,7 +12,7 @@ const ProjectsTableRow = ({ project, selectProject }: ProjectsTableRowProps) => 
   <S.TR onClick={() => selectProject(project.id)}>
     <S.TD>{project.name}</S.TD>
     <S.TD>{convertToDate(Number(project.createdAt))}</S.TD>
-    <S.TD>{convertToDate(Number(project.updatedAt))}</S.TD>
+    <S.TD>{project.published ? "Yes" : "No"}</S.TD>
   </S.TR>
 );
 

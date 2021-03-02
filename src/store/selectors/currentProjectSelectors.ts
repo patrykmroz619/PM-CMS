@@ -9,6 +9,7 @@ const published = (state: RootState) => state.currentProject.data?.published;
 const projectRoutesAvailable = (state: RootState) => {
   return state.currentProject.loading || !!state.currentProject.data;
 };
+const apiKey = (state: RootState) => state.currentProject.data?.apiKey;
 
 export default {
   name,
@@ -18,5 +19,6 @@ export default {
   id,
   recordsLoading,
   published,
-  projectRoutesAvailable
+  projectRoutesAvailable,
+  apiKey
 };

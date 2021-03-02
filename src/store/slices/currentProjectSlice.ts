@@ -118,6 +118,11 @@ const currentProjectSlice = createSlice({
           currentModel.records?.splice(deletedRecordIndex, 1);
         }
       }
+    },
+    setApiKey(state, action: PayloadAction<{ apiKey: string }>) {
+      if (state.data) {
+        state.data.apiKey = action.payload.apiKey;
+      }
     }
   },
   extraReducers: {
