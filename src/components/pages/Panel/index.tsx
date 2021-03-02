@@ -20,8 +20,7 @@ import { PanelLayout } from "@layout";
 import { ConditionalRoute, Spinner } from "@common";
 
 const PanelPage = () => {
-  const isCurrentProjectSelected = Boolean(useSelector(currentProjectSelector.id));
-
+  const isProjectsRoutesAvailable = useSelector(currentProjectSelector.projectRoutesAvailable);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -42,14 +41,14 @@ const PanelPage = () => {
             <ProjectFormView />
           </Route>
           <ConditionalRoute
-            available={isCurrentProjectSelected}
+            available={isProjectsRoutesAvailable}
             redirectTo={routes.projects}
             path={routes.content}
           >
             <ContentView />
           </ConditionalRoute>
           <ConditionalRoute
-            available={isCurrentProjectSelected}
+            available={isProjectsRoutesAvailable}
             redirectTo={routes.projects}
             exact
             path={routes.newContentModel}
@@ -57,7 +56,7 @@ const PanelPage = () => {
             <ContentModelFormView />
           </ConditionalRoute>
           <ConditionalRoute
-            available={isCurrentProjectSelected}
+            available={isProjectsRoutesAvailable}
             redirectTo={routes.projects}
             exact
             path={routes.singleRecord}
@@ -65,7 +64,7 @@ const PanelPage = () => {
             <SingleRecordView />
           </ConditionalRoute>
           <ConditionalRoute
-            available={isCurrentProjectSelected}
+            available={isProjectsRoutesAvailable}
             redirectTo={routes.projects}
             exact
             path={routes.media}
@@ -76,7 +75,7 @@ const PanelPage = () => {
             <ProfileView />
           </Route>
           <ConditionalRoute
-            available={isCurrentProjectSelected}
+            available={isProjectsRoutesAvailable}
             redirectTo={routes.projects}
             exact
             path={routes.settings}

@@ -12,7 +12,7 @@ import { userActions } from "@actions";
 
 type ErrorObject = Partial<SignInFormData>;
 
-const { validateEmail, validatePassword } = authValidator;
+const { validateEmail } = authValidator;
 
 const LoginPage: React.FC = () => {
   const dispatch = useDispatch();
@@ -31,7 +31,6 @@ const LoginPage: React.FC = () => {
       const formErrors: ErrorObject = {};
 
       setError(formErrors, "email", validateEmail(formData.email));
-      setError(formErrors, "password", validatePassword(formData.password));
 
       return formErrors;
     }

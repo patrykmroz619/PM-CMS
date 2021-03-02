@@ -5,6 +5,11 @@ export const NavItem = styled.li<{ disabled: boolean }>`
   pointer-events: ${({ disabled }) => (disabled ? "none" : "auto")};
   cursor: ${({ disabled }) => (disabled ? "pointer" : "auto")};
   opacity: ${({ disabled }) => (disabled ? 0.5 : 1)};
+
+  .active div {
+    border: 2px solid black;
+    background-color: ${({ theme }) => theme.color.secondary};
+  }
 `;
 
 export const IconWrapper = styled.div`

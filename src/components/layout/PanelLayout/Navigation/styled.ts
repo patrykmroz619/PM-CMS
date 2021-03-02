@@ -11,11 +11,6 @@ export const Navigation = styled.nav`
   height: ${({ theme }) => theme.sizing.navigation.mobile};
   background-color: ${({ theme }) => theme.color.primary};
 
-  .active li {
-    border: 2px solid black;
-    background-color: ${({ theme }) => theme.color.secondary};
-  }
-
   ${media(breakpoints.descop.s)} {
     display: flex;
     align-items: center;
