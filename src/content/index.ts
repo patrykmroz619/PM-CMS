@@ -240,16 +240,22 @@ export const settingsPage = {
   name: "Project name",
   enableUpdateName: "Click to update",
   confirmUpdateName: "Confirm",
+  updateNameSuccessNotification: "Project name has been updated.",
   publishingHeading: "Publish project",
   publishedInfo: "Your project is published. You can use the api on the websites or applications.",
+  publishedNotification: "Your project has been published.",
   notPublishedInfo:
     "Your project isn't published. The api isn't available on the any websites or applications.",
+  notPublishedNotification: "Your project is unavailable.",
   dangerZone: "Danger zone",
   deleteModelBtn: "Delete model",
   deleteModelError: "Deleting of the content model was not passed. Please try again later.",
+  deleteModelSuccessNotification: "The content model has been deleted.",
   deleteProjectBtn: "Delete project",
   deleteProjectMessage:
-    "Are you sure you want to delete this project? All data will be lost irrevocably."
+    "Are you sure you want to delete this project? All data will be lost irrevocably.",
+  deleteProjectSuccessMessage: "Your project has been deleted.",
+  deleteProjectErrorMessage: "Error has occured. Please try again later."
 } as const;
 
 export const logoutView = {

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 
@@ -7,9 +7,9 @@ import { settingsPage as content } from "@content";
 import { deleteProject } from "@api/projects";
 import { currentProjectSelector } from "@selectors";
 import { currentProjectActions, projectsActions } from "@actions";
-import { useConfirmationModalHandler, useSubmitAndDispatch } from "@hooks";
+import { useConfirmationModalHandler, useNotification, useSubmitAndDispatch } from "@hooks";
 
-import { ConfirmationModal, ErrorBox, Spinner } from "@common";
+import { ConfirmationModal, Spinner } from "@common";
 import * as S from "./styled";
 
 const DeleteProjectSection = () => {
@@ -17,10 +17,12 @@ const DeleteProjectSection = () => {
 
   const dispatch = useDispatch();
   const history = useHistory();
+  const { success, error: errorNotify } = useNotification();
 
   const onDeleteSuccess = () => {
     if (currentProjectId) {
       dispatch(projectsActions.delete(currentProjectId));
+      success(content.deleteProjectSuccessMessage);
       history.push(routes.projects);
     }
   };
@@ -30,6 +32,12 @@ const DeleteProjectSection = () => {
     currentProjectActions.unsetCurrentProject,
     onDeleteSuccess
   );
+
+  useEffect(() => {
+    if (error) {
+      errorNotify(content.deleteProjectErrorMessage);
+    }
+  }, [error]);
 
   const handleDelete = () => {
     if (currentProjectId) {
@@ -52,7 +60,6 @@ const DeleteProjectSection = () => {
         onConfirm={confirm}
       />
       {pending && <Spinner />}
-      {error && <ErrorBox>{error}</ErrorBox>}
     </S.Box>
   );
 };

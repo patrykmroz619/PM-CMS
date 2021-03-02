@@ -1,36 +1,38 @@
-import { currentProjectActions } from "@actions";
-import { deleteContentModel } from "@api/contentModels";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 
+import { currentProjectActions } from "@actions";
+import { deleteContentModel } from "@api/contentModels";
+import { settingsPage as content } from "@content";
+import { useNotification } from "@hooks";
+
 type PendingType = boolean;
-type ErrorType = boolean;
 type HandleDeleteType = (contentModelId: string) => void;
 
-type UseDeletingContentModelType = () => [PendingType, ErrorType, HandleDeleteType];
+type UseDeletingContentModelType = () => [PendingType, HandleDeleteType];
 
 const useDeletingContentModel: UseDeletingContentModelType = () => {
   const [pending, setPending] = useState(false);
-  const [error, setError] = useState(false);
 
   const dispatch = useDispatch();
+  const { success, error } = useNotification();
 
   const handleDelete = async (contentModelId: string) => {
     setPending(true);
-    setError(false);
     try {
       const response = await deleteContentModel(contentModelId);
 
       if (response.status == 204) {
+        success(content.deleteModelSuccessNotification);
         dispatch(currentProjectActions.deleteContentModel(contentModelId));
       }
     } catch (e) {
-      setError(true);
+      error(content.deleteModelError);
       setPending(false);
     }
   };
 
-  return [pending, error, handleDelete];
+  return [pending, handleDelete];
 };
 
 export default useDeletingContentModel;

@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 
 import { settingsPage as content } from "@content";
 import { updateProject } from "@api/projects";
-import { useSubmitAndDispatch } from "@hooks";
+import { useNotification, useSubmitAndDispatch } from "@hooks";
 import { currentProjectActions } from "@actions";
 import { currentProjectSelector } from "@selectors";
 
@@ -14,14 +14,18 @@ const ProjectPublishingSection = () => {
   const isProjectPublished = useSelector(currentProjectSelector.published);
   const projectId = useSelector(currentProjectSelector.id);
 
+  const { success, error: errorNotify } = useNotification();
+
   const [pending, error, handleSubmit] = useSubmitAndDispatch(
     updateProject,
-    currentProjectActions.updateData
+    currentProjectActions.updateData,
+    () =>
+      success(isProjectPublished ? content.notPublishedNotification : content.publishedNotification)
   );
 
   useEffect(() => {
     if (error) {
-      alert(error); //TODO: Log errors
+      errorNotify(error);
     }
   }, [error]);
 

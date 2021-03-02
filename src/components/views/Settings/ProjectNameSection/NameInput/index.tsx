@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 
-import { useSubmitAndDispatch } from "@hooks";
+import { useNotification, useSubmitAndDispatch } from "@hooks";
 import { currentProjectSelector } from "@selectors";
 import { settingsPage as content } from "@content";
 
@@ -16,8 +16,11 @@ const NameInput = () => {
   const currentProjectId = useSelector(currentProjectSelector.id);
   const [nameInputValue, setNameInputValue] = useState(currentProjectName);
 
+  const { success } = useNotification();
+
   const onSuccess = () => {
     setInputDisabled(true);
+    success(content.updateNameSuccessNotification);
   };
 
   const [pending, error, handleSubmit] = useSubmitAndDispatch(
