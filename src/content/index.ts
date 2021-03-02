@@ -90,7 +90,7 @@ export const newProjectForm = {
     label: "Name",
     placeholder: "My new project"
   },
-
+  successNotification: "A new project was created.",
   submit: "confirm"
 } as const;
 
@@ -104,6 +104,7 @@ export const newContentModelForm = {
     label: "Api endpoint",
     placeholder: "article"
   },
+  successNotification: "A new content has been created.",
   submit: "confirm"
 };
 
@@ -115,6 +116,7 @@ export const contentModelsPage = {
   newModelButton: "+ new model",
   addFieldButton: "+ add field",
   addRecordButton: "+ add record",
+  addRecordSuccessNotification: "The new record has been added.",
   lackOfFields: {
     message: "You need add some fields to this content model.",
     button: "add field"
@@ -122,12 +124,15 @@ export const contentModelsPage = {
   newFieldPanel: {
     label: "Add new field.",
     submit: "add field",
+    successNotification: "The new field has been created.",
     cancel: "cancel"
   },
   updateFieldPanel: {
     label: "Update field.",
     submit: "update",
     delete: "delete",
+    successUpdateNotification: "The field has been updated.",
+    successDeleteNotification: "The field has been deleted.",
     cancel: "cancel"
   }
 } as const;
@@ -201,8 +206,11 @@ export const fieldFormErrors = {
 
 export const singleRecordPage = {
   updateRecordButton: "update",
+  successUpdateNotification: "The record has been updated.",
   deleteRecordButton: "delete",
-  deleteMessage: "Are you sure to delete this record?"
+  deleteMessage: "Are you sure to delete this record?",
+  successDeleteNotification: "The record has been deleted.",
+  rejectedDeleteNotification: "Failed to delete record. Sorry."
 } as const;
 
 export const profilePage = {

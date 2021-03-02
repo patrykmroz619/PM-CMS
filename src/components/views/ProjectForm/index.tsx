@@ -1,9 +1,10 @@
 import React from "react";
 import { useFormik } from "formik";
 
+import { newProjectForm as content } from "@content";
 import { addProject } from "@api/projects";
 import { projectsActions } from "@actions";
-import { useSubmitAndDispatch } from "@hooks";
+import { useNotification, useSubmitAndDispatch } from "@hooks";
 import { setError, projectDataValidator } from "@validators";
 import routes from "@routes";
 
@@ -21,9 +22,11 @@ const { validateProjectName } = projectDataValidator;
 
 const ProjectFormView = () => {
   const history = useHistory();
+  const { success } = useNotification();
 
   const onSuccess = () => {
     history.push(routes.projects);
+    success(content.successNotification);
   };
 
   const [pending, error, handleSubmit] = useSubmitAndDispatch(

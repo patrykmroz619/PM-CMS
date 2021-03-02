@@ -2,9 +2,12 @@ import React from "react";
 import { useSelector } from "react-redux";
 
 import { addRecord } from "@api/records";
-import { currentProjectActions } from "@actions";
-import { AsidePanel, RecordForm } from "@common";
 import { currentProjectSelector } from "@selectors";
+import { currentProjectActions } from "@actions";
+import { useNotification } from "@hooks";
+import { contentModelsPage as content } from "@content";
+
+import { AsidePanel, RecordForm } from "@common";
 
 type NewRecordAsidePanelProps = {
   visible: boolean;
@@ -14,6 +17,12 @@ type NewRecordAsidePanelProps = {
 
 const NewRecordAsidePanel = ({ visible, close, fields }: NewRecordAsidePanelProps) => {
   const contentModelId = useSelector(currentProjectSelector.selectedModelId);
+  const { success } = useNotification();
+
+  const onSubmitSuccess = () => {
+    success(content.addRecordSuccessNotification);
+  };
+
   return (
     <AsidePanel visible={visible} close={close}>
       <RecordForm
@@ -22,6 +31,7 @@ const NewRecordAsidePanel = ({ visible, close, fields }: NewRecordAsidePanelProp
         apiCall={addRecord}
         reduxAction={currentProjectActions.addRecord}
         paramId={contentModelId || ""}
+        onSubmitSuccess={onSubmitSuccess}
       />
     </AsidePanel>
   );

@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { FormikProps, useFormik } from "formik";
 
-import { useSubmitAndDispatch } from "@hooks";
+import { useNotification, useSubmitAndDispatch } from "@hooks";
 import { updateField as updateFieldApiCall } from "@api/fields";
 import { currentProjectActions } from "@actions";
 import { contentModelsPage as content } from "@content";
@@ -23,10 +23,17 @@ const FieldFormProvider = <T extends ContentFieldFormData>({
   render,
   closePanel
 }: FieldFormProviderProps<T>) => {
+  const { success } = useNotification();
+
+  const onSuccess = () => {
+    closePanel();
+    success(content.updateFieldPanel.successUpdateNotification);
+  };
+
   const [pending, error, handleSubmit] = useSubmitAndDispatch(
     updateFieldApiCall,
     currentProjectActions.updateField,
-    closePanel
+    onSuccess
   );
 
   const selectedModelId = useSelector(currentProjectSelectors.selectedModelId);

@@ -1,16 +1,16 @@
 import React, { useEffect } from "react";
+import { useSelector } from "react-redux";
 import { FormikProps, useFormik } from "formik";
 
-import { useSubmitAndDispatch } from "@hooks";
+import { useNotification, useSubmitAndDispatch } from "@hooks";
+import { currentProjectSelector } from "@selectors";
 import { addField as addFieldApiCall } from "@api/fields";
 import { currentProjectActions } from "@actions";
-import { contentModelsPage as content } from "@content";
 import { validateField } from "@validators";
+import { contentModelsPage as content } from "@content";
 
 import { Button, Spinner } from "@common";
 import * as S from "./styled";
-import { useSelector } from "react-redux";
-import currentProjectSelectors from "store/selectors/currentProjectSelectors";
 
 type FieldFormProviderProps<T> = {
   initialValues: T;
@@ -23,13 +23,20 @@ const AddFormProvider = <T extends ContentFieldFormData>({
   render,
   closePanel
 }: FieldFormProviderProps<T>) => {
+  const { success } = useNotification();
+
+  const onSuccess = () => {
+    closePanel();
+    success(content.newFieldPanel.successNotification);
+  };
+
   const [pending, error, handleSubmit] = useSubmitAndDispatch(
     addFieldApiCall,
     currentProjectActions.addField,
-    closePanel
+    onSuccess
   );
 
-  const selectedModelId = useSelector(currentProjectSelectors.selectedModelId);
+  const selectedModelId = useSelector(currentProjectSelector.selectedModelId);
 
   const formik = useFormik({
     initialValues: initialValues,

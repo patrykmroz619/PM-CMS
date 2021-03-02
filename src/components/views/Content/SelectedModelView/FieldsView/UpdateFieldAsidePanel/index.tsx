@@ -1,6 +1,7 @@
 import React from "react";
 
 import { contentModelsPage as content } from "@content";
+import { useNotification } from "@hooks";
 import useDeleteFieldHandler from "./useDeleteFieldHandler";
 
 import FieldTypesList from "../FieldTypesList";
@@ -40,8 +41,11 @@ const UpdateFieldAsidePanel = ({ isVisible, closePanel, selectedField }: NewFiel
     }
   })();
 
+  const { success } = useNotification();
+
   const onDeleteSuccess = () => {
     closePanel();
+    success(content.updateFieldPanel.successDeleteNotification);
   };
 
   const [pending, handleDeleteField] = useDeleteFieldHandler(onDeleteSuccess);

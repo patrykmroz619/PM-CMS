@@ -5,6 +5,8 @@ import { useDispatch } from "react-redux";
 import routes from "@routes";
 import { deleteRecord } from "@api/records";
 import { currentProjectActions } from "@actions";
+import { useNotification } from "@hooks";
+import { singleRecordPage as content } from "@content";
 
 type UseDeleteRecordHandlingType = (recordId: string) => [boolean, () => void];
 
@@ -15,6 +17,10 @@ export const useDeleteRecordHandling: UseDeleteRecordHandlingType = (recordId) =
 
   const history = useHistory();
 
+  const { success, error } = useNotification();
+
+  error(content.rejectedDeleteNotification);
+
   const handleDeleteRecord = async () => {
     setPending(true);
     try {
@@ -23,10 +29,12 @@ export const useDeleteRecordHandling: UseDeleteRecordHandlingType = (recordId) =
       if (response.status === 204) {
         console.log(response);
         dispatch(currentProjectActions.deleteRecord({ id: recordId }));
+        success(content.successDeleteNotification);
         history.push(routes.records);
       }
     } catch {
       setPending(false);
+      error(content.rejectedDeleteNotification);
     }
   };
 

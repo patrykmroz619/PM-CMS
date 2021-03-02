@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useRef } from "react";
 import { useDispatch } from "react-redux";
 
 import { notificationsActions } from "@actions";
@@ -9,7 +9,7 @@ import usePausableTimeout from "./usePausableTimeout";
 
 type NotificationProps = NotificationObj;
 
-const NOTIFICATION_DURATION = 500000;
+const NOTIFICATION_DURATION = 5000;
 
 const Notification = ({ id, message, type }: NotificationProps) => {
   const dispatch = useDispatch();

@@ -1,18 +1,19 @@
 import React from "react";
+import { useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
+import { useFormik } from "formik";
 
 import { addContentModel } from "@api/contentModels";
 import { currentProjectActions } from "@actions";
-import { slugify } from "@utils";
-import { useFormik } from "formik";
-import { setError } from "@validators";
-import { validateApiEndpoint, validateProjectName } from "validators/projectDataValidators";
-import { useSubmitAndDispatch } from "@hooks";
-import ContentModelForm from "./Form";
 import routes from "@routes";
+import { useNotification, useSubmitAndDispatch } from "@hooks";
+import { setError, projectDataValidator } from "@validators";
+import { currentProjectSelector } from "@selectors";
+import { slugify } from "@utils";
+import { newContentModelForm as content } from "@content";
+
+import ContentModelForm from "./Form";
 import { Spinner } from "@common";
-import { useSelector } from "react-redux";
-import currentProjectSelectors from "store/selectors/currentProjectSelectors";
-import { useHistory } from "react-router-dom";
 
 type ErrorObject = Partial<NewContentModelData>;
 
@@ -21,10 +22,16 @@ const initialValues: NewContentModelData = {
   endpoint: ""
 };
 
+const { validateApiEndpoint, validateProjectName } = projectDataValidator;
+
 const ContentModelFormView = () => {
   const history = useHistory();
+  const { success } = useNotification();
 
-  const onSuccess = () => history.push(routes.content);
+  const onSuccess = () => {
+    history.push(routes.content);
+    success(content.successNotification);
+  };
 
   const [pending, error, handleSubmit] = useSubmitAndDispatch(
     addContentModel,
@@ -32,7 +39,7 @@ const ContentModelFormView = () => {
     onSuccess
   );
 
-  const currentProjectId = useSelector(currentProjectSelectors.id);
+  const currentProjectId = useSelector(currentProjectSelector.id);
 
   const formik = useFormik({
     initialValues,

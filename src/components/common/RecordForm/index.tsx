@@ -15,6 +15,7 @@ type RecordFormProps = {
   apiCall: (recordData: RecordItem[], contentModelId: string) => AxiosPromise<RecordObject>;
   reduxAction: ActionCreatorWithPayload<RecordObject>;
   paramId: string;
+  onSubmitSuccess?: () => void;
 };
 
 const getDefaultValue = (fieldType: FieldType) => {
@@ -40,7 +41,8 @@ export const RecordForm = ({
   apiCall,
   reduxAction,
   paramId,
-  recordItems
+  recordItems,
+  onSubmitSuccess
 }: RecordFormProps) => {
   const initialState = recordItems ? recordItems : createInitialState(fields);
 
@@ -64,6 +66,10 @@ export const RecordForm = ({
       setRecordFormData([]);
     }
     closePanel();
+
+    if (onSubmitSuccess) {
+      onSubmitSuccess();
+    }
   };
 
   const [pending, error, handleSubmit] = useSubmitAndDispatch(apiCall, reduxAction, handleClose);
