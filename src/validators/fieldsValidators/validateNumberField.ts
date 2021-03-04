@@ -1,5 +1,5 @@
-import { setError } from "validators/setError";
-import { ErrorObj, FieldValidator } from ".";
+import { setError } from "../setError";
+import { ErrorObj, FieldValidator } from "./index";
 import { validateFieldName } from "./validateFieldName";
 import { fieldFormErrors as errors } from "@content";
 

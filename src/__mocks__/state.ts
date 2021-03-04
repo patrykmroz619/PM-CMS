@@ -4,6 +4,7 @@ const state: RootState = {
     error: "",
     loading: false,
     data: {
+      id: "asdqweqwe",
       email: "email@example.com",
       name: "Name",
       surname: "Surname",
@@ -15,19 +16,17 @@ const state: RootState = {
     error: "",
     data: [
       {
+        userId: "asdqweqw",
         id: "1231ewad21313123",
         name: "Project 1",
         createdAt: "160799043",
-        updatedAt: "160799043",
-        endpoint: "project-1",
         published: true
       },
       {
         id: "1231ewad21313dsf",
+        userId: "dqwseqwe41243",
         name: "Project 2",
         createdAt: "160797043",
-        updatedAt: "160798043",
-        endpoint: "project-2",
         published: true
       }
     ]
@@ -36,13 +35,19 @@ const state: RootState = {
     loading: false,
     data: {
       id: "1231ewad21313dsf",
+      userId: "dqwseqwe41243",
       name: "Project 2",
       createdAt: "160797043",
-      updatedAt: "160798043",
-      endpoint: "project-2",
-      published: true
+      published: true,
+      contentModels: []
     },
+    selectedModelId: null,
+    recordsError: false,
+    recordsLoading: false,
     error: ""
+  },
+  notifications: {
+    notifications: []
   }
 };
 

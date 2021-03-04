@@ -12,7 +12,7 @@ import ProjectsTable from "./ProjectsTable";
 import LackOfProjectMessage from "./LackOfProjectMessage";
 import * as S from "./styled";
 import { Spinner } from "@common";
-import { setCurrentProject } from "store/fetch/projectsFetch";
+import { setCurrentProject } from "@fetch";
 import { useHistory } from "react-router-dom";
 
 const MOBILE_VW = 700;

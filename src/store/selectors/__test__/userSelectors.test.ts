@@ -5,6 +5,7 @@ const state: Pick<RootState, "user"> = {
     isAuthenticated: false,
     loading: false,
     data: {
+      id: "id",
       name: "name",
       email: "email",
       surname: "surname"

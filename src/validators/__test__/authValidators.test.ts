@@ -89,19 +89,11 @@ describe("auth validate functions", () => {
       expect(result).toBe(expected);
     });
 
-    test('returns "Password has to be longer than 7 characters." when passed the password is too short', () => {
+    test('returns "Password has to be longer than 4 characters." when passed the password is too short', () => {
       const expected = formErrors.password.tooShort;
-      const shortPassword = "pass123";
+      const shortPassword = "123";
 
       const result = validatePassword(shortPassword);
-      expect(result).toBe(expected);
-    });
-
-    test('returns "Password has to be shorter than 35 characters." when passed the password is too long', () => {
-      const expected = formErrors.password.tooLong;
-      const longPassword = "passwordPasswordPassword0123456789!";
-
-      const result = validatePassword(longPassword);
       expect(result).toBe(expected);
     });
 

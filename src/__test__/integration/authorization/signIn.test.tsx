@@ -64,9 +64,7 @@ describe("Sign in integration tests:", () => {
     fireEvent.click(submitButton);
 
     const emailErrorMessage = await waitFor(() => getByText(/Invalid email address./));
-    const passwordErrorMessage = getByText(/Password should/);
 
     expect(emailErrorMessage).toBeInTheDocument();
-    expect(passwordErrorMessage).toBeInTheDocument();
   });
 });
