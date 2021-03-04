@@ -11,7 +11,6 @@ const ProjectFormView = React.lazy(() => import("../../views/ProjectForm"));
 const ContentModelFormView = React.lazy(() => import("../../views/ContentModelForm"));
 const ContentView = React.lazy(() => import("../../views/Content"));
 const SingleRecordView = React.lazy(() => import("../../views/SingleRecord"));
-const MediaView = React.lazy(() => import("../../views/Media"));
 const ProfileView = React.lazy(() => import("../../views/Profile"));
 const SettingsView = React.lazy(() => import("../../views/Settings"));
 const LogoutView = React.lazy(() => import("../../views/Logout"));
@@ -62,14 +61,6 @@ const PanelPage = () => {
             path={routes.singleRecord}
           >
             <SingleRecordView />
-          </ConditionalRoute>
-          <ConditionalRoute
-            available={isProjectsRoutesAvailable}
-            redirectTo={routes.projects}
-            exact
-            path={routes.media}
-          >
-            <MediaView />
           </ConditionalRoute>
           <Route exact path={routes.profile}>
             <ProfileView />

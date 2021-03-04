@@ -13,7 +13,10 @@ const Wrapper = styled.div`
   margin-top: ${({ theme }) => theme.spacing.m};
   margin-bottom: ${({ theme }) => theme.spacing.m};
   width: 100%;
-  order: 1;
+
+  ${media(breakpoints.tablet.l)} {
+    order: 1;
+  }
 
   svg {
     margin-bottom: ${({ theme }) => theme.spacing.m};

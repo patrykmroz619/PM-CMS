@@ -43,6 +43,7 @@ const currentProjectSlice = createSlice({
     },
     addContentModel(state, action: PayloadAction<ContentModel>) {
       state.data?.contentModels.push(action.payload);
+      state.selectedModelId = action.payload.id;
     },
     deleteContentModel(state, action: PayloadAction<IdType>) {
       if (state.data) {
@@ -51,7 +52,7 @@ const currentProjectSlice = createSlice({
         );
 
         if (action.payload == state.selectedModelId) {
-          state.selectedModelId = state.data.contentModels[0].id || null;
+          state.selectedModelId = state.data.contentModels[0]?.id || null;
         }
       }
     },

@@ -1,7 +1,6 @@
 import React from "react";
 
 import { contentModelsPage as content } from "@content";
-import { useNotification } from "@hooks";
 import useDeleteFieldHandler from "./useDeleteFieldHandler";
 
 import FieldTypesList from "../FieldTypesList";
@@ -9,7 +8,6 @@ import TextFieldForm from "../FieldForms/TextFieldForm";
 import NumberFieldForm from "../FieldForms/NumberFieldForm";
 import BooleanFieldForm from "../FieldForms/BooleanFieldForm";
 import DateFieldForm from "../FieldForms/DateFieldForm";
-// import MediaFieldForm from "./FieldForms/MediaFieldForm";
 import ColorFieldForm from "../FieldForms/ColorFieldForm";
 
 import { Spinner, AsidePanel } from "@common";
@@ -32,8 +30,6 @@ const UpdateFieldAsidePanel = ({ isVisible, closePanel, selectedField }: NewFiel
         return <BooleanFieldForm update initialValues={selectedField} closePanel={closePanel} />;
       case "date":
         return <DateFieldForm update initialValues={selectedField} closePanel={closePanel} />;
-      // case "media":
-      //   return <MediaFieldForm update initialValues={selectedField} closePanel={closePanel} />;
       case "color":
         return <ColorFieldForm update initialValues={selectedField} closePanel={closePanel} />;
       case null:
@@ -41,14 +37,7 @@ const UpdateFieldAsidePanel = ({ isVisible, closePanel, selectedField }: NewFiel
     }
   })();
 
-  const { success } = useNotification();
-
-  const onDeleteSuccess = () => {
-    closePanel();
-    success(content.updateFieldPanel.successDeleteNotification);
-  };
-
-  const [pending, handleDeleteField] = useDeleteFieldHandler(onDeleteSuccess);
+  const [pending, handleDeleteField] = useDeleteFieldHandler(closePanel);
 
   const handleDeleteFieldClick = () => {
     if (selectedField) {

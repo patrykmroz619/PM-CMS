@@ -27,6 +27,7 @@ const useDeletingContentModel: UseDeletingContentModelType = () => {
         dispatch(currentProjectActions.deleteContentModel(contentModelId));
       }
     } catch (e) {
+      console.log(e);
       error(content.deleteModelError);
       setPending(false);
     }

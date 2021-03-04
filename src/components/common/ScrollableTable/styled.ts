@@ -12,9 +12,11 @@ export const ScrollableBox = styled.div`
   flex-shrink: 1;
   max-height: 100%;
   overflow-y: auto;
+  overflow-x: hidden;
 `;
 
 export const Table = styled.table`
+  table-layout: fixed;
   width: 100%;
   border-spacing: 0px;
   border-collapse: collapse;

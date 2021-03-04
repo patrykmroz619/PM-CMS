@@ -18,7 +18,7 @@ const ProjectsListItem = ({ project, selectProject }: ProjectsListItemProps) => 
     </S.Detail>
     <S.Detail>
       <S.Label>Published: </S.Label>
-      {project.published}
+      {project.published ? "Yes" : "No"}
     </S.Detail>
   </S.Wrapper>
 );

@@ -73,7 +73,6 @@ export const subheadings = {
   newProject: "New project",
   content: "Content models",
   newContentModel: "New content model",
-  media: "Media",
   profile: "Profile",
   settings: "Settings",
   addProject: "Add new project"
@@ -133,6 +132,7 @@ export const contentModelsPage = {
     delete: "delete",
     successUpdateNotification: "The field has been updated.",
     successDeleteNotification: "The field has been deleted.",
+    errorDeleteNotification: "Failed to delete field. Sorry.",
     cancel: "cancel"
   }
 } as const;

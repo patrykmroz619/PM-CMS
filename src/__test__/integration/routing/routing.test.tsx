@@ -26,16 +26,6 @@ describe("routing", () => {
 
     expect(getByText(subheadings.content)).toBeInTheDocument();
 
-    const mediaLink = container.querySelector(`a[href="${routes.media}"]`);
-
-    if (mediaLink) {
-      userEvent.click(mediaLink);
-    } else {
-      throw new Error("media link was not found");
-    }
-
-    expect(getByText(subheadings.media)).toBeInTheDocument();
-
     const profileLink = container.querySelector(`a[href="${routes.profile}"]`);
 
     if (profileLink) {
@@ -51,7 +41,7 @@ describe("routing", () => {
     if (settingsLink) {
       userEvent.click(settingsLink);
     } else {
-      throw new Error("media link was not found");
+      throw new Error("settings link was not found");
     }
 
     expect(getByText(subheadings.settings)).toBeInTheDocument();

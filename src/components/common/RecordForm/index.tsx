@@ -66,13 +66,17 @@ export const RecordForm = ({
       setRecordFormData([]);
     }
     closePanel();
+  };
 
+  const onSuccess = () => {
     if (onSubmitSuccess) {
       onSubmitSuccess();
     }
+
+    handleClose();
   };
 
-  const [pending, error, handleSubmit] = useSubmitAndDispatch(apiCall, reduxAction, handleClose);
+  const [pending, error, handleSubmit] = useSubmitAndDispatch(apiCall, reduxAction, onSuccess);
 
   const handleCancelClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();

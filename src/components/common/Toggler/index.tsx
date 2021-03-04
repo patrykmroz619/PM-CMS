@@ -35,7 +35,7 @@ export const Toggler = ({
       pending={Boolean(pending)}
     >
       <S.Switch active={!!checked} pending={Boolean(pending)} />
-      <S.Checkbox type="checkbox" {...props} checked={checked} />
+      <S.Checkbox type="checkbox" {...props} defaultChecked={checked} />
     </S.SwitchWrapper>
   );
 };

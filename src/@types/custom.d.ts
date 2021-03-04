@@ -32,7 +32,7 @@ declare type ContentModel = {
   projectId: string;
 };
 
-declare type FieldType = "text" | "number" | "boolean" | "color" | "date" | "media";
+declare type FieldType = "text" | "number" | "boolean" | "color" | "date";
 
 declare type Field = {
   id: string;

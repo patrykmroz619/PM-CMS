@@ -2,14 +2,23 @@ import styled from "@myStyled";
 import media, { breakpoints } from "@mediaQuery";
 
 export const TableWrapper = styled.div`
+  ${media(breakpoints.tablet.m)} {
+    max-height: 280px;
+  }
+
   tr {
     display: flex;
+    max-width: 100%;
   }
 
   th:first-child,
   td:first-child {
     display: block;
     flex-grow: 1;
+    max-width: calc(100% - 106px);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 
   th:last-child,

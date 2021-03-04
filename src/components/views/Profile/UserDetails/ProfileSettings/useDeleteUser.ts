@@ -1,11 +1,14 @@
 import { useState } from "react";
 
 import { deleteUser } from "@api/user";
+import { useNotification } from "@hooks";
 
 type UseDeleteUserType = () => [boolean, () => void];
 
 export const useDeleteUser: UseDeleteUserType = () => {
   const [pending, setPending] = useState(false);
+
+  const { error } = useNotification();
 
   const handleDeleteUser = async () => {
     setPending(true);
@@ -17,7 +20,7 @@ export const useDeleteUser: UseDeleteUserType = () => {
       }
     } catch {
       setPending(false);
-      alert("something went wront"); // For dev
+      error("something went wrong.");
     }
   };
 

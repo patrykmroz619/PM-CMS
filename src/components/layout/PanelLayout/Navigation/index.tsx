@@ -1,7 +1,6 @@
 import React from "react";
 
 import ContentModelsIcon from "@assets/content-models.svg";
-import MediaIcon from "@assets/media.svg";
 import ListIcon from "@assets/list.svg";
 import GearsIcon from "@assets/gears.svg";
 import UserIcon from "@assets/user.svg";
@@ -25,7 +24,6 @@ const Navigation = () => {
           icon={ContentModelsIcon}
           disabled={!isCurrentProjectSelected}
         />
-        <NavItem to={routes.media} icon={MediaIcon} disabled={!isCurrentProjectSelected} />
         <NavItem to={routes.profile} icon={UserIcon} />
         <NavItem to={routes.settings} icon={GearsIcon} disabled={!isCurrentProjectSelected} />
         <NavItem to={routes.logout} icon={LogoutIcon} />

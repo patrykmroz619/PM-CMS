@@ -24,8 +24,6 @@ const getSubheading = (pathname: string) => {
       return subheadings.content;
     case routes.modelFields:
       return subheadings.content;
-    case routes.media:
-      return subheadings.media;
     case routes.profile:
       return subheadings.profile;
     case routes.settings:

@@ -2,7 +2,9 @@ import React from "react";
 
 import { updateRecord } from "@api/records";
 import { currentProjectActions } from "@actions";
-import { AsidePanel, RecordForm } from "@common";
+import { RecordForm } from "@common";
+
+import * as S from "./styled";
 
 type UpdateRecordAsidePanelProps = {
   visible: boolean;
@@ -19,7 +21,7 @@ const UpdateRecordAsidePanel = ({
 }: UpdateRecordAsidePanelProps) => {
   const nestedRecordItemsCopy = JSON.parse(JSON.stringify(record.data)) as RecordItem[];
   return (
-    <AsidePanel visible={visible} close={close}>
+    <S.AsidePanel visible={visible} close={close}>
       <RecordForm
         fields={fields}
         closePanel={close}
@@ -28,7 +30,7 @@ const UpdateRecordAsidePanel = ({
         recordItems={nestedRecordItemsCopy}
         paramId={record.id}
       />
-    </AsidePanel>
+    </S.AsidePanel>
   );
 };
 

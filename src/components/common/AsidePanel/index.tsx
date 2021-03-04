@@ -6,13 +6,16 @@ type AsidePanelProps = {
   visible: boolean;
   close: () => void;
   children: React.ReactNode;
+  className?: string;
 };
 
-export const AsidePanel = ({ visible, close, children }: AsidePanelProps) => {
+export const AsidePanel = ({ visible, close, children, className }: AsidePanelProps) => {
   return (
     <>
       {visible && <S.BlurBackground onClick={close} />}
-      <S.AsidePanel isVisible={visible}>{children}</S.AsidePanel>
+      <S.AsidePanel isVisible={visible} className={className}>
+        {children}
+      </S.AsidePanel>
     </>
   );
 };

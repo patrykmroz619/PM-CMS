@@ -15,7 +15,7 @@ import { Spinner } from "@common";
 import { setCurrentProject } from "store/fetch/projectsFetch";
 import { useHistory } from "react-router-dom";
 
-const MOBILE_VW = 800;
+const MOBILE_VW = 700;
 
 const ProjectsView = () => {
   const projectsLoading = useSelector(projectsSelector.loading);

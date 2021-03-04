@@ -7,7 +7,6 @@ import TextFieldForm from "../FieldForms/TextFieldForm";
 import NumberFieldForm from "../FieldForms/NumberFieldForm";
 import BooleanFieldForm from "../FieldForms/BooleanFieldForm";
 import DateFieldForm from "../FieldForms/DateFieldForm";
-// import MediaFieldForm from "./FieldForms/MediaFieldForm";
 import ColorFieldForm from "../FieldForms/ColorFieldForm";
 
 import { AsidePanel } from "@common";
@@ -35,8 +34,6 @@ const NewFieldAsidePanel = ({ isVisible, closePanel }: NewFieldFormProps) => {
         return <BooleanFieldForm closePanel={closePanel} />;
       case "date":
         return <DateFieldForm closePanel={closePanel} />;
-      // case "media":
-      //   return <MediaFieldForm closePanel={closePanel} />;
       case "color":
         return <ColorFieldForm closePanel={closePanel} />;
       case null:

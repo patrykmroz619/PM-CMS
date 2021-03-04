@@ -17,7 +17,7 @@ export const Search = styled(SearchInput)`
   ${media(breakpoints.tablet.m)} {
     margin-right: ${({ theme }) => theme.spacing.m};
     margin-bottom: ${({ theme }) => theme.spacing.m};
-    max-width: 350px;
+    max-width: 300px;
   }
 `;
 
@@ -27,7 +27,7 @@ export const StyledDropDown = styled(DropDown)`
 
   ${media(breakpoints.tablet.m)} {
     margin-bottom: ${({ theme }) => theme.spacing.m};
-    max-width: 250px;
+    max-width: 200px;
   }
 `;
 

@@ -10,7 +10,6 @@ const routes = {
   singleRecord: "/panel/records/:id",
   modelFields: "/panel/content/fields",
   profile: "/panel/profile",
-  media: "/panel/media",
   settings: "/panel/settings",
   logout: "/panel/logout"
 } as const;

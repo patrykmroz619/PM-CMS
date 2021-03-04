@@ -5,7 +5,6 @@ import TextIcon from "@assets/text.svg";
 import NumbersIcon from "@assets/numbers.svg";
 import BooleanIcon from "@assets/boolean.svg";
 import DateIcon from "@assets/date.svg";
-import MediaIcon from "@assets/media-field.svg";
 import ColorIcon from "@assets/color.svg";
 import * as S from "./styled";
 
@@ -38,12 +37,6 @@ const FieldTypesList = ({ selectedFieldType, selectFieldType }: FieldTypesListPr
       <FieldTypesListItem
         type="date"
         icon={DateIcon}
-        selectFieldType={selectFieldType}
-        selectedType={selectedFieldType}
-      />
-      <FieldTypesListItem
-        type="media"
-        icon={MediaIcon}
         selectFieldType={selectFieldType}
         selectedType={selectedFieldType}
       />

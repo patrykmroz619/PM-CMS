@@ -9,6 +9,9 @@ export const ContentWrapper = styled.div<{ $mobile: boolean; areThereProjects: b
   width: 100%;
   height: 100%;
   flex-wrap: wrap;
+  a {
+    width: ${({ $mobile }) => ($mobile ? "100%" : "auto")};
+  }
 `;
 
 export const Search = styled(SearchInput)<{ $mobile: boolean }>`
@@ -19,14 +22,13 @@ export const Search = styled(SearchInput)<{ $mobile: boolean }>`
 export const AddButton = styled(Button)<{ $mobile: boolean }>`
   margin-top: auto;
   order: 2;
-  width: 100%;
+  flex-basis: 100%;
   ${({ $mobile, theme }) =>
-    $mobile
-      ? null
-      : css`
-          margin-top: initial;
-          margin-left: ${theme.spacing.l};
-          width: 300px;
-          order: 0;
-        `}
+    !$mobile &&
+    css`
+      margin-top: initial;
+      margin-left: ${theme.spacing.l};
+      width: 300px;
+      order: 0;
+    `}
 `;

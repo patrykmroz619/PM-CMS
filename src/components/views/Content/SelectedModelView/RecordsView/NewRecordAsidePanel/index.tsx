@@ -7,7 +7,8 @@ import { currentProjectActions } from "@actions";
 import { useNotification } from "@hooks";
 import { contentModelsPage as content } from "@content";
 
-import { AsidePanel, RecordForm } from "@common";
+import { RecordForm } from "@common";
+import * as S from "./styled";
 
 type NewRecordAsidePanelProps = {
   visible: boolean;
@@ -20,11 +21,12 @@ const NewRecordAsidePanel = ({ visible, close, fields }: NewRecordAsidePanelProp
   const { success } = useNotification();
 
   const onSubmitSuccess = () => {
+    console.log("asdasqwe");
     success(content.addRecordSuccessNotification);
   };
 
   return (
-    <AsidePanel visible={visible} close={close}>
+    <S.AsidePanel visible={visible} close={close}>
       <RecordForm
         fields={fields}
         closePanel={close}
@@ -33,7 +35,7 @@ const NewRecordAsidePanel = ({ visible, close, fields }: NewRecordAsidePanelProp
         paramId={contentModelId || ""}
         onSubmitSuccess={onSubmitSuccess}
       />
-    </AsidePanel>
+    </S.AsidePanel>
   );
 };
 
