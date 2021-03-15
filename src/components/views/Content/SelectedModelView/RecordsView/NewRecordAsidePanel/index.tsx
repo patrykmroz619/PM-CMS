@@ -21,7 +21,6 @@ const NewRecordAsidePanel = ({ visible, close, fields }: NewRecordAsidePanelProp
   const { success } = useNotification();
 
   const onSubmitSuccess = () => {
-    console.log("asdasqwe");
     success(content.addRecordSuccessNotification);
   };
 

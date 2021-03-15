@@ -25,7 +25,6 @@ export const useDeleteRecordHandling: UseDeleteRecordHandlingType = (recordId) =
       const response = await deleteRecord(recordId);
 
       if (response.status === 204) {
-        console.log(response);
         dispatch(currentProjectActions.deleteRecord({ id: recordId }));
         success(content.successDeleteNotification);
         history.push(routes.records);
