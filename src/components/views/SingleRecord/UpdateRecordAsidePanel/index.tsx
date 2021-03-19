@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useCallback } from "react";
 
 import { updateRecord } from "@api/records";
 import { currentProjectActions } from "@actions";
-import { RecordForm } from "@common";
+import { useNotification } from "@hooks";
+import { singleRecordPage as content } from "@content";
 
+import { RecordForm } from "@common";
 import * as S from "./styled";
 
 type UpdateRecordAsidePanelProps = {
@@ -20,6 +22,13 @@ const UpdateRecordAsidePanel = ({
   record
 }: UpdateRecordAsidePanelProps) => {
   const nestedRecordItemsCopy = JSON.parse(JSON.stringify(record.data)) as RecordItem[];
+
+  const { success } = useNotification();
+
+  const onSuccess = useCallback(() => {
+    success(content.successUpdateNotification);
+  }, []);
+
   return (
     <S.AsidePanel visible={visible} close={close}>
       <RecordForm
@@ -29,6 +38,7 @@ const UpdateRecordAsidePanel = ({
         reduxAction={currentProjectActions.updateRecord}
         recordItems={nestedRecordItemsCopy}
         paramId={record.id}
+        onSubmitSuccess={onSuccess}
       />
     </S.AsidePanel>
   );

@@ -41,6 +41,9 @@ const SingleRecordView = () => {
         <S.Button danger onClick={openDeleteModal}>
           {content.deleteRecordButton}
         </S.Button>
+        <S.Button secondary to={routes.content}>
+          Go back
+        </S.Button>
       </S.ButtonsWrapper>
       <UpdateRecordAsidePanel
         visible={isPanelVisible}

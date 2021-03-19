@@ -25,14 +25,23 @@ export const ContentName = styled.h2`
 export const ButtonsWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
-  max-width: 520px;
+  max-width: 650px;
   justify-content: space-between;
   margin-top: auto;
+
+  a {
+    width: 100%;
+
+    ${media(breakpoints.tablet.l)} {
+      width: 200px;
+    }
+  }
 `;
 
 export const Button = styled(Btn)`
   margin-bottom: ${({ theme }) => theme.spacing.s};
-  ${media(breakpoints.tablet.m)} {
-    max-width: 250px;
+  width: 100%;
+  ${media(breakpoints.tablet.l)} {
+    width: 200px;
   }
 `;

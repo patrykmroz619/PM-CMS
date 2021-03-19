@@ -16,5 +16,6 @@ export const AsidePanel = styled(Panel)`
   ${media(breakpoints.tablet.m)} {
     position: absolute;
     top: 0;
+    bottom: 0;
   }
 `;
