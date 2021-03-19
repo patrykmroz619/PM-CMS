@@ -1,9 +1,9 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 
 import { ScrollableTable } from "@common";
-
+import RecordsTableRow from "./RecordsTableRow";
 import * as S from "./styled";
-import { useHistory } from "react-router-dom";
 
 type RecordsTableProps = {
   records: RecordObject[];
@@ -11,28 +11,30 @@ type RecordsTableProps = {
   searchValue: string;
 };
 
+const getRecordsWithPreview = (records: RecordObject[], preview: string) => {
+  return records.map((record) => {
+    const previewRecord = record.data.find((dataItem) => dataItem.name === preview);
+
+    return { ...record, preview: previewRecord?.value || null };
+  });
+};
+
+const checkFilterValue = (value1: string, value2: string) =>
+  value1.toLowerCase().includes(value2.toLowerCase());
+
 const RecordsTable = ({ records, preview, searchValue }: RecordsTableProps) => {
   const history = useHistory();
 
   const handleRecordClick = (recordId: string) => history.push(`/panel/records/${recordId}`);
 
-  const recordsWithPreview = records.map((record) => {
-    const previewRecord = record.data.find((dataItem) => dataItem.name === preview);
-
-    return { ...record, preview: previewRecord?.value || null };
-  });
+  const recordsWithPreview = getRecordsWithPreview(records, preview);
 
   const filteredRecords = searchValue
-    ? recordsWithPreview.filter((record) =>
-        String(record.preview).toLowerCase().includes(searchValue.toLowerCase())
-      )
+    ? recordsWithPreview.filter((record) => checkFilterValue(String(record.preview), searchValue))
     : recordsWithPreview;
 
   const tableRows = filteredRecords.map((record) => (
-    <ScrollableTable.TR key={record.id} onClick={() => handleRecordClick(record.id)}>
-      <ScrollableTable.TD>{String(record.preview)}</ScrollableTable.TD>
-      <ScrollableTable.TD>{new Date().toLocaleDateString()}</ScrollableTable.TD>
-    </ScrollableTable.TR>
+    <RecordsTableRow key={record.id} record={record} handleRecordClick={handleRecordClick} />
   ));
 
   return (

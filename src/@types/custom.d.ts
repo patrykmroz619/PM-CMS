@@ -79,6 +79,7 @@ declare type RecordObject = {
   id: string;
   userId: string;
   contentModelId: string;
+  createdAt: number;
   data: RecordItem[];
 };
 
