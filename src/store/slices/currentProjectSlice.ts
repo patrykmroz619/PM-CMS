@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 import { CURRENT_PROJECT_SET, RECORDS_GET } from "../constants/project";
+import { LOGOUT } from "../constants/auth";
 
 type IdType = string;
 
@@ -168,6 +169,9 @@ const currentProjectSlice = createSlice({
 
         currentModel.records = [];
       }
+    },
+    [`${LOGOUT.FULFILLED}`]: (state) => {
+      return initialState;
     }
   }
 });

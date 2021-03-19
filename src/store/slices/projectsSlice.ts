@@ -1,5 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+
 import { PROJECTS_GET } from "../constants/project";
+import { LOGOUT } from "store/constants/auth";
 
 type ProjectID = string;
 
@@ -40,6 +42,9 @@ const projectsSlice = createSlice({
       state.loading = false;
       state.error = action.payload.error?.description;
       state.data = [];
+    },
+    [`${LOGOUT.FULFILLED}`]: (state) => {
+      return initialState;
     }
   }
 });
