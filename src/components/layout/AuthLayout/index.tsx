@@ -19,7 +19,7 @@ const Footer = styled.footer`
   padding: ${({ theme }) => theme.spacing.s};
   width: 100%;
   text-align: center;
-  color: ${({ theme }) => theme.color.light};
+  color: ${({ theme }) => theme.color.dark};
   line-height: 14px;
   font-size: 12px;
   font-weight: 700;

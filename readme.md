@@ -2,15 +2,6 @@
 
 You can view the app [here](https://pm-cms.netlify.app/).
 
-<details open="open">
-  <summary>Table of concept</summary>
-  <ol>
-    <li><a href="#about-the-project">About the project</a></li>
-    <li><a href="#local-usage">Usage</a></li>
-    <li><a href="#primary-technologies-/-packages">Primary technologies / packages</a></li>
-  </ol>
-</details>
-
 ## About the project
 
 The dashboard for my full-stack project called "PM CMS - Headless CMS" created with react + typescript. [Rest api repo here](https://github.com/patrykmroz619/PM-CMS-api).
