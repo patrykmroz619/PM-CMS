@@ -21,3 +21,4 @@ export { RecordForm } from "./RecordForm";
 export { ErrorBox } from "./ErrorBox";
 export { Toggler } from "./Toggler";
 export { ConditionalRoute } from "./ConditionalRoute";
+export { ErrorFallback } from "./ErrorFallback";

@@ -269,4 +269,7 @@ export const logoutView = {
   message: "Do you want to logout now?"
 } as const;
 
+export const errorBoundaryMessage =
+  "Something went wrong, we have received the error information and will fix it as soon as possible. Please come back later, sorry :(";
+
 export const footer = "ⓒ 2020-2021 PM CMS - Headless CMS | Patryk Mróz" as const;
