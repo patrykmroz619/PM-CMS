@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback } from "react";
 import { useFormik } from "formik";
 
 import { profilePage } from "@content";
@@ -26,7 +26,12 @@ const initialFormValues: PasswordChangeFormData = {
 const { validatePassword, validatePasswordRepeated } = authValidator;
 
 const PasswordForm = ({ isOpen, close }: PasswordFormProps) => {
-  const [pending, error, handleSubmit] = useSubmitChangePassword(close);
+  const onClose = useCallback(() => {
+    formik.resetForm();
+    close();
+  }, []);
+
+  const [pending, error, handleSubmit] = useSubmitChangePassword(onClose);
 
   const formik = useFormik<PasswordChangeFormData>({
     initialValues: initialFormValues,
@@ -48,7 +53,7 @@ const PasswordForm = ({ isOpen, close }: PasswordFormProps) => {
   });
 
   return (
-    <Modal loading={pending} isOpen={isOpen} onClose={close}>
+    <Modal loading={pending} isOpen={isOpen} onClose={onClose}>
       <Form onSubmit={formik.handleSubmit}>
         {error && <ErrorBox>{error}</ErrorBox>}
         <label htmlFor="currentPassword">{content.currentPassword}</label>
@@ -83,7 +88,7 @@ const PasswordForm = ({ isOpen, close }: PasswordFormProps) => {
         />
         <Button type="submit">{content.submit}</Button>
       </Form>
-      <S.CancelButton secondary onClick={close}>
+      <S.CancelButton secondary onClick={onClose}>
         Cancel
       </S.CancelButton>
     </Modal>
