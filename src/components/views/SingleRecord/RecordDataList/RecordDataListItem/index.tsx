@@ -27,7 +27,7 @@ const RecordDataListItem = ({ fieldName, recordItem, fieldType }: RecordDataList
     <S.ItemWrapper>
       <S.FieldName>{fieldName}</S.FieldName>
       <S.Separator />
-      {fieldValue}
+      {fieldValue ?? "Not passed"}
     </S.ItemWrapper>
   );
 };
