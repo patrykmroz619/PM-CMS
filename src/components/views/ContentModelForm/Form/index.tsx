@@ -16,6 +16,14 @@ type ContentModelFormProps = {
 const ContentModelForm = ({ formik, error }: ContentModelFormProps) => {
   const [isEndpointDefault, setIsEnpointDefault] = useState(true);
 
+  const handleNameInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+    if (isEndpointDefault) {
+      formik.values.endpoint = slugify(e.target.value);
+    }
+
+    formik.handleChange(e);
+  };
+
   const handleEndpointInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     if (isEndpointDefault) {
       setIsEnpointDefault(false);
@@ -33,7 +41,7 @@ const ContentModelForm = ({ formik, error }: ContentModelFormProps) => {
         <Input
           id="name"
           name="name"
-          onChange={formik.handleChange}
+          onChange={handleNameInputChange}
           value={formik.values.name}
           placeholder={nameInput.placeholder}
           isTouched={formik.touched.name}
@@ -44,7 +52,7 @@ const ContentModelForm = ({ formik, error }: ContentModelFormProps) => {
           id="endpoint"
           name="endpoint"
           onChange={handleEndpointInputChange}
-          value={isEndpointDefault ? slugify(formik.values.name) : formik.values.endpoint}
+          value={formik.values.endpoint}
           placeholder={endpointInput.placeholder}
           isTouched={formik.touched.endpoint}
           error={formik.errors.endpoint}
