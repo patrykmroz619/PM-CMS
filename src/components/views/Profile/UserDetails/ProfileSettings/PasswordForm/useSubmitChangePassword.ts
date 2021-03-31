@@ -1,8 +1,9 @@
 import { useState } from "react";
-
+import * as Sentry from "@sentry/react";
 import { changePassword } from "@api/user";
 import { useNotification } from "@hooks";
 import { profilePage as content } from "@content";
+import { isApiError, isAxiosError } from "@utils";
 
 type UseSubmitChangePasswordType = (
   onSucces: () => void
@@ -22,12 +23,13 @@ export const useSubmitChangePassword: UseSubmitChangePasswordType = (onSucces) =
       setPending(false);
       success(content.updatePasswordForm.successNotification);
       onSucces();
-    } catch (e) {
+    } catch (e: unknown) {
       setPending(false);
-      if (e.response.data.error.description) {
-        setError(e.response.data.error.description);
+      if (isAxiosError(e) && isApiError(e.response?.data)) {
+        setError(e.response?.data.error.description || "");
       } else {
-        setError("Something went wrong. Try again later.");
+        Sentry.captureException(e);
+        setError("Something went wrong. Pleasy try again later.");
       }
     }
   };

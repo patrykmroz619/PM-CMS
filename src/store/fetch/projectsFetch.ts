@@ -1,7 +1,10 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
+import * as Sentry from "@sentry/react";
+
 import { CURRENT_PROJECT_SET, PROJECTS_GET } from "../constants/project";
 import * as projectApi from "@api/projects";
 import * as contentModelApi from "@api/contentModels";
+import { isApiError, isAxiosError } from "@utils";
 
 export const getProjects = createAsyncThunk(
   PROJECTS_GET.CONST,
@@ -9,8 +12,15 @@ export const getProjects = createAsyncThunk(
     try {
       const response = await projectApi.getProjects();
       return response.data.projects;
-    } catch (e) {
-      return rejectWithValue(e);
+    } catch (e: unknown) {
+      if (isAxiosError(e)) {
+        const errorData = e.response?.data;
+        if (isApiError(errorData)) {
+          rejectWithValue(errorData);
+        }
+      }
+      Sentry.captureException(e);
+      throw new Error("Projects fetching error");
     }
   }
 );
@@ -27,7 +37,14 @@ export const setCurrentProject = createAsyncThunk(
 
       return currentProject;
     } catch (e) {
-      return rejectWithValue(e);
+      if (isAxiosError(e)) {
+        const errorData = e.response?.data;
+        if (isApiError(errorData)) {
+          rejectWithValue(errorData);
+        }
+      }
+      Sentry.captureException(e);
+      throw new Error("The single project fetching error");
     }
   }
 );

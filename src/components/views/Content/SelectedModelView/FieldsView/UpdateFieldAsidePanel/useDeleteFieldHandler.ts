@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import * as Sentry from "@sentry/react";
 
 import { deleteField } from "@api/fields";
 import { currentProjectActions } from "@actions";
@@ -27,7 +28,8 @@ const useDeleteFieldHandler: UseDeleteFieldHandlerType = (onSuccess) => {
         dispatch(currentProjectActions.deleteField({ fieldId }));
         success(content.updateFieldPanel.successDeleteNotification);
         onSuccess();
-      } catch (e) {
+      } catch (e: unknown) {
+        Sentry.captureException(e);
         error(content.updateFieldPanel.errorDeleteNotification);
       } finally {
         setPending(false);

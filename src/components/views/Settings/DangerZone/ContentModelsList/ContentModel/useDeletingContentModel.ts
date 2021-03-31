@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
+import * as Sentry from "@sentry/react";
 
 import { currentProjectActions } from "@actions";
 import { deleteContentModel } from "@api/contentModels";
@@ -26,7 +27,8 @@ const useDeletingContentModel: UseDeletingContentModelType = () => {
         success(content.deleteModelSuccessNotification);
         dispatch(currentProjectActions.deleteContentModel(contentModelId));
       }
-    } catch (e) {
+    } catch (e: unknown) {
+      Sentry.captureException(e);
       error(content.deleteModelError);
       setPending(false);
     }

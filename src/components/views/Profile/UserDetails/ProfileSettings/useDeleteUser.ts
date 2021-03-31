@@ -1,5 +1,5 @@
 import { useState } from "react";
-
+import * as Sentry from "@sentry/react";
 import { deleteUser } from "@api/user";
 import { useNotification } from "@hooks";
 
@@ -18,9 +18,10 @@ export const useDeleteUser: UseDeleteUserType = () => {
       if (response.status == 204) {
         window.location.href = process.env.LANDING_PAGE_URL as string;
       }
-    } catch {
+    } catch (e: unknown) {
       setPending(false);
-      error("something went wrong.");
+      Sentry.captureException(e);
+      error("Something went wrong.");
     }
   };
 

@@ -11,7 +11,7 @@ export const useFilter = <T extends Pick<T, string>>(
     const filterResult = items.filter((item) => {
       const itemValue = item[filterBy];
       if (typeof itemValue === "string") {
-        return itemValue.includes(value as string);
+        return itemValue.toLowerCase().includes(String(value).toLowerCase());
       }
       return false;
     });

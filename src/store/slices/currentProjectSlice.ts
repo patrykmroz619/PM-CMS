@@ -141,7 +141,7 @@ const currentProjectSlice = createSlice({
     },
     [`${CURRENT_PROJECT_SET.REJECTED}`]: (state, action: PayloadAction<ApiError>) => {
       state.loading = false;
-      state.error = action.payload?.error?.description;
+      state.error = action.payload.error.description;
     },
     [`${RECORDS_GET.PENDING}`]: (state) => {
       state.recordsLoading = true;
@@ -170,7 +170,7 @@ const currentProjectSlice = createSlice({
         currentModel.records = [];
       }
     },
-    [`${LOGOUT.FULFILLED}`]: (state) => {
+    [`${LOGOUT.FULFILLED}`]: () => {
       return initialState;
     }
   }

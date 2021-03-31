@@ -3,7 +3,7 @@ import React from "react";
 import userEvent from "@testing-library/user-event";
 
 import RegisterForm from "@pages/Register/RegisterForm";
-import { fireEvent, RenderResult, renderWithStore, waitFor, act } from "@testHelpers";
+import { fireEvent, RenderResult, renderWithStore, waitFor } from "@testHelpers";
 
 import { signUpPageContent as content } from "@content";
 import * as fetch from "@fetch";

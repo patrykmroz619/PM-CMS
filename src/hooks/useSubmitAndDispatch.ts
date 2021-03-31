@@ -1,8 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState } from "react";
+import * as Sentry from "@sentry/react";
 import { useDispatch } from "react-redux";
 import { AxiosPromise } from "axios";
 import { ActionCreatorWithPayload } from "@reduxjs/toolkit";
+import { isApiError, isAxiosError } from "@utils";
 
 type ApiCall<T, K> = (data: T, param?: any) => AxiosPromise<K>;
 type SuccessAction<T> = ActionCreatorWithPayload<T>;
@@ -39,15 +41,15 @@ export const useSubmitAndDispatch: UseSubmitAndDispatchType = (
       if (onSuccess) {
         onSuccess();
       }
-    } catch (e) {
-      const error = e?.response.data.error?.description;
-      if (error) {
-        setError(e.response.data.error.description);
+    } catch (e: unknown) {
+      if (isAxiosError(e) && isApiError(e.response?.data)) {
+        setError(e.response?.data.error.description);
       } else {
+        Sentry.captureException(e);
         setError("Something went wrong. Pleasy try again later.");
       }
-      setPending(false);
     }
+    setPending(false);
   };
 
   return [pending, error, handleSubmit];
