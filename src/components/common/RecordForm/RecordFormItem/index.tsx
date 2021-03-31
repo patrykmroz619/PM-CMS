@@ -22,6 +22,7 @@ const RecordFormItem = ({ field, itemData, handleChange }: RecordFormItemProps) 
             id={field.name}
             min={field.min}
             max={field.max}
+            step={field.integer ? "1" : "any"}
             placeholder={field.integer ? "Integer number" : "Number"}
             value={String(itemData.value)}
             onChange={(e) => handleChange(Number(e.currentTarget.value), field.name)}
