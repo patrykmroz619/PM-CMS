@@ -61,31 +61,26 @@ export const RecordForm = ({
     });
   };
 
-  const handleClose = () => {
-    if (recordItems) {
-      setRecordFormData([]);
-    }
-    closePanel();
-  };
-
   const onSuccess = () => {
     if (onSubmitSuccess) {
+      setRecordFormData([]);
       onSubmitSuccess();
     }
 
-    handleClose();
+    setRecordFormData(initialState);
+    closePanel();
   };
 
   const [pending, error, handleSubmit] = useSubmitAndDispatch(apiCall, reduxAction, onSuccess);
 
-  const handleCancelClick = (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault();
-    handleClose();
-  };
-
   const handleFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     handleSubmit(recordFormData, paramId);
+  };
+
+  const handleCancelClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    closePanel();
   };
 
   const formItems = fields.map((field) => (
