@@ -1,27 +1,21 @@
-import React from "react";
-import { renderWithStore } from "@testHelpers";
-import * as Redux from "react-redux";
-
+import { renderHook } from "@testing-library/react-hooks";
 import { useAuth } from "../useAuth";
+
+const authFunctionMock = jest.fn();
+
+jest.mock("react-redux", () => ({
+  useDispatch: () => authFunctionMock,
+  useSelector: jest.fn()
+}));
 
 describe("useAuth hook", () => {
   test("dispatch auth function once despite rerenders", () => {
-    const authFunctionMock = jest.fn();
-    const spy = jest.spyOn(Redux, "useDispatch").mockImplementation(() => authFunctionMock);
+    const { rerender } = renderHook(() => useAuth());
 
-    const App = () => {
-      useAuth();
-      return <div>App</div>;
-    };
-
-    const { rerender } = renderWithStore(<App />, { initialState: {} });
-
-    expect(spy).toHaveBeenCalledTimes(1);
     expect(authFunctionMock).toHaveBeenCalledTimes(1);
 
-    rerender(<App />);
+    rerender();
 
-    expect(spy).toHaveBeenCalledTimes(2);
     expect(authFunctionMock).toHaveBeenCalledTimes(1);
   });
 });
