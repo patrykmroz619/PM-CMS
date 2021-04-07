@@ -7,7 +7,8 @@ import { HashRouter } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 
 import App from "./components/App";
-import store from "store";
+import { setViewportHeight } from "@utils";
+import store from "./store";
 import theme from "./style/theme";
 import GlobalStyle from "./style/global";
 import { ErrorFallback } from "@common";
@@ -20,6 +21,8 @@ if (process.env.MODE === "PRODUCTION") {
     tracesSampleRate: Number(process.env.SENTRY_TRACES_SAMPLE_RATE)
   });
 }
+
+setViewportHeight();
 
 const RootApp = () => {
   return (

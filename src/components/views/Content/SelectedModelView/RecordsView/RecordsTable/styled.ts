@@ -54,6 +54,6 @@ export const TableWrapper = styled.div`
   }
 
   ${media(breakpoints.descop.s)} {
-    height: calc(100vh - 365px);
+    height: calc(var(--viewportHeight) - 365px);
   }
 `;

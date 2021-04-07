@@ -8,22 +8,22 @@ export const FieldList = styled.ul`
 
     return css`
       height: calc(
-        100vh - ${sizing.header.mobile} - ${sizing.navigation.mobile} - ${sizing.inputsHeight} -
-          (${theme.spacing.s} * 3) - 77px
+        var(--viewportHeight) - ${sizing.header.mobile} - ${sizing.navigation.mobile} -
+          ${sizing.inputsHeight} - (${theme.spacing.s} * 3) - 77px
       );
     `;
   }}
   overflow: auto;
 
   ${media(breakpoints.tablet.s)} {
-    height: calc(100vh - 270px);
+    height: calc(var(--viewportHeight) - 270px);
   }
 
   ${media(breakpoints.tablet.l)} {
-    height: calc(100vh - 300px);
+    height: calc(var(--viewportHeight) - 300px);
   }
 
   ${media(breakpoints.tablet.xl)} {
-    height: calc(100vh - 310px);
+    height: calc(var(--viewportHeight) - 310px);
   }
 `;

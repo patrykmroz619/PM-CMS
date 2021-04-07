@@ -8,7 +8,7 @@ export const Wrapper = styled.section`
   flex-direction: column;
   padding: ${({ theme }) => theme.spacing.s} ${({ theme }) => theme.spacing.m};
   height: calc(
-    100vh -
+    var(--viewportHeight) -
       (
         ${({ theme }) => theme.sizing.header.mobile} +
           ${({ theme }) => theme.sizing.navigation.mobile}
@@ -22,7 +22,7 @@ export const Wrapper = styled.section`
   ${media(breakpoints.tablet.s)} {
     padding: ${({ theme }) => theme.spacing.l};
     height: calc(
-      100vh -
+      var(--viewportHeight) -
         (
           ${({ theme }) => theme.sizing.header.descop} +
             ${({ theme }) => theme.sizing.navigation.mobile}
@@ -34,7 +34,7 @@ export const Wrapper = styled.section`
     margin-left: 70px;
     padding: ${({ theme }) => theme.spacing.xxl};
     padding-bottom: ${({ theme }) => theme.spacing.m};
-    height: calc(100vh - ${({ theme }) => theme.sizing.header.descop});
+    height: calc(var(--viewportHeight) - ${({ theme }) => theme.sizing.header.descop});
   }
 `;
 

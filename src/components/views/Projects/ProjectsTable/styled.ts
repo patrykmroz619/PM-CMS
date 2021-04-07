@@ -7,7 +7,7 @@ export const Wrapper = styled.div`
   flex-basis: 100%;
   align-self: flex-start;
   order: 2;
-  height: calc(100vh - 250px);
+  height: calc(var(--viewportHeight) - 250px);
 `;
 
 export const ScrollableBox = styled.div`
