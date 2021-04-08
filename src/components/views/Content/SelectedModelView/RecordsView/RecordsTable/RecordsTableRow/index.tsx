@@ -11,7 +11,9 @@ type RecordTableRowProps = {
 
 const RecordTableRow = ({ record, handleRecordClick }: RecordTableRowProps) => (
   <ScrollableTable.TR key={record.id} onClick={() => handleRecordClick(record.id)}>
-    <ScrollableTable.TD>{String(record.preview)}</ScrollableTable.TD>
+    <ScrollableTable.TD>
+      {record.preview ? String(record.preview) : "Not passed"}
+    </ScrollableTable.TD>
     <ScrollableTable.TD>{convertToDate(record.createdAt)}</ScrollableTable.TD>
   </ScrollableTable.TR>
 );

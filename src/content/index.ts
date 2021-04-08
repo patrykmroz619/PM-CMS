@@ -242,7 +242,7 @@ export const settingsPage = {
   confirmUpdateName: "Confirm",
   updateNameSuccessNotification: "Project name has been updated.",
   publishingHeading: "Publish project",
-  publishedInfo: "Your project is published. You can use the api on the websites or applications.",
+  publishedInfo: `Your project is published. You can use the api at ${process.env.API_URL}api. Your requests have to contain an api key in the Authorization header passed on in the following way: 'Authorization: bearer <api key>'`,
   publishedNotification: "Your project has been published.",
   notPublishedInfo:
     "Your project isn't published. The api isn't available on the any websites or applications.",

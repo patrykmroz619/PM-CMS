@@ -11,7 +11,7 @@ type MenuItemProps = {
 const MenuItem = ({ modelData, isActive, handleClick }: MenuItemProps) => (
   <S.MenuItem onClick={handleClick} active={isActive}>
     <S.ModelName>{modelData.name}</S.ModelName>
-    <S.ModelEndpoint>{modelData.endpoint}</S.ModelEndpoint>
+    <S.ModelEndpoint>/{modelData.endpoint}</S.ModelEndpoint>
   </S.MenuItem>
 );
 

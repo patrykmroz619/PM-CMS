@@ -24,6 +24,6 @@ export const FieldList = styled.ul`
   }
 
   ${media(breakpoints.tablet.xl)} {
-    height: calc(var(--viewportHeight) - 310px);
+    max-height: calc(var(--viewportHeight) - 310px);
   }
 `;
