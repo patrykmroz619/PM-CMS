@@ -4,14 +4,15 @@
     "ecmaVersion": 2018,
     "sourceType": "module"
   },
-  "plugins": ["@typescript-eslint", "react-hooks", "testing-library", "jest-dom"],
+  "plugins": ["@typescript-eslint", "react-hooks", "testing-library", "jest-dom", "cypress"],
   "extends": ["plugin:react/recommended", "plugin:@typescript-eslint/recommended"],
   "rules": {
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "off",
     "react/prop-types": "off",
     "react/display-name": "off",
-    "@typescript-eslint/explicit-module-boundary-types": "off"
+    "@typescript-eslint/explicit-module-boundary-types": "off",
+    "@typescript-eslint/triple-slash-reference": "off"
   },
   "overrides": [
     {

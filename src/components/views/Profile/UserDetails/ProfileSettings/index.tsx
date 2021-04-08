@@ -32,7 +32,7 @@ const ProfileSettings = () => {
       <S.ButtonsWrapper>
         <S.Button onClick={openPasswordForm}>{content.passwordButton}</S.Button>
         <S.Button onClick={openUserDataForm}>{content.updateDataButton}</S.Button>
-        <S.Button danger onClick={openDeleteModal}>
+        <S.Button danger onClick={openDeleteModal} data-testid="delete-user">
           {content.deleteAccountButton}
         </S.Button>
       </S.ButtonsWrapper>

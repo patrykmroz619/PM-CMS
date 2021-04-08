@@ -1,0 +1,13 @@
+{
+  "userData": {
+    "id": "id",
+    "email": "example@mail.com",
+    "name": "user name",
+    "surname": "user surname",
+    "company": "company"
+  },
+  "tokens": {
+    "accessToken": "accessToken",
+    "refreshToken": "refreshToken"
+  }
+}

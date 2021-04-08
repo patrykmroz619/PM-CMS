@@ -18,7 +18,9 @@ export const ConfirmationModal = ({
 }: ConfirmationModalProps) => (
   <Modal isOpen={isOpen} onClose={onClose}>
     <S.Message>{message}</S.Message>
-    <S.Button onClick={onConfirm}>Yes</S.Button>
+    <S.Button onClick={onConfirm} data-testid="yes">
+      Yes
+    </S.Button>
     <S.Button secondary onClick={onClose}>
       No
     </S.Button>
