@@ -18,7 +18,16 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: path(__dirname, "../src/index.html")
+      template: path(__dirname, "../src/index.html"),
+      favicon: path(__dirname, "../src/assets/favicon.png"),
+      title: "PM CMS - Headless CMS",
+      meta: {
+        author: "Patryk Mróz",
+        description: "PM CMS is a free headless content management system for your website.",
+        "og:title": "PM CMS - Headless CMS",
+        "og:description": "PM CMS is a free headless content management system for your website.",
+        "og:url": process.env.LANDING_PAGE_URL
+      }
     }),
     new DotEnv({
       systemvars: true

@@ -18,15 +18,21 @@ const Navigation = () => {
   return (
     <S.Navigation>
       <S.NavList>
-        <NavItem to={routes.projects} exact icon={ListIcon} />
+        <NavItem to={routes.projects} exact icon={ListIcon} title="Projects" />
         <NavItem
           to={routes.content}
           icon={ContentModelsIcon}
+          title="Content models"
           disabled={!isCurrentProjectSelected}
         />
-        <NavItem to={routes.profile} icon={UserIcon} />
-        <NavItem to={routes.settings} icon={GearsIcon} disabled={!isCurrentProjectSelected} />
-        <NavItem to={routes.logout} icon={LogoutIcon} />
+        <NavItem to={routes.profile} icon={UserIcon} title="Profile" />
+        <NavItem
+          to={routes.settings}
+          icon={GearsIcon}
+          title="Settings"
+          disabled={!isCurrentProjectSelected}
+        />
+        <NavItem to={routes.logout} icon={LogoutIcon} title="Logout" />
       </S.NavList>
     </S.Navigation>
   );
