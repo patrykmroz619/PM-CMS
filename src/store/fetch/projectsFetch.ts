@@ -39,12 +39,16 @@ export const setCurrentProject = createAsyncThunk(
     } catch (e) {
       if (isAxiosError(e)) {
         const errorData = e.response?.data;
+
         if (isApiError(errorData)) {
+          console.log(errorData);
+
           rejectWithValue(errorData);
         }
+      } else {
+        Sentry.captureException(e);
+        throw new Error("The single project fetching error");
       }
-      Sentry.captureException(e);
-      throw new Error("The single project fetching error");
     }
   }
 );

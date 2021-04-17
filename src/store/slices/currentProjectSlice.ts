@@ -137,7 +137,7 @@ const currentProjectSlice = createSlice({
       state.loading = false;
       delete state.error;
       state.data = action.payload;
-      state.selectedModelId = action.payload.contentModels[0]?.id || null;
+      state.selectedModelId = action.payload?.contentModels[0]?.id || null;
     },
     [`${CURRENT_PROJECT_SET.REJECTED}`]: (state, action: PayloadAction<ApiError>) => {
       state.loading = false;
