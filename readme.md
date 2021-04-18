@@ -2,6 +2,10 @@
 
 You can view the app [here](https://pm-cms.netlify.app/).
 
+Credentials:
+- email: `example@mail.com`
+- password: `Password1`
+
 ## About the project
 
 The dashboard for my full-stack project called "PM CMS - Headless CMS" created with react + typescript. [Rest api repo here](https://github.com/patrykmroz619/PM-CMS-api).
