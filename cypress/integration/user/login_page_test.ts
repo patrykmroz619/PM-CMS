@@ -4,14 +4,14 @@ describe("Login page", () => {
   });
 
   it("should allow sign in and then redirects to projects view.", () => {
-    cy.get("input[name='email']").type("patrykmroz619@wp.pl");
+    cy.get("input[name='email']", { timeout: 10000 }).type("patrykmroz619@wp.pl");
     cy.get("input[name='password']").type("Rider619");
     cy.get("button").contains("Login").click();
     cy.hash().should("eq", "#/panel/projects");
   });
 
   it("should display error about credentials.", () => {
-    cy.get("input[name='email']").type("patrykmroz619@wp.pl");
+    cy.get("input[name='email']", { timeout: 10000 }).type("patrykmroz619@wp.pl");
     cy.get("input[name='password']").type("Rider619!");
     cy.get("button").contains("Login").click();
     cy.get("form").contains("Password is invalid.");

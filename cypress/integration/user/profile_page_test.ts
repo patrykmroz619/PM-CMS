@@ -5,7 +5,7 @@ describe("Profile page", () => {
   });
 
   it("allows change the user's password", () => {
-    cy.contains(/change password/i).click();
+    cy.contains(/change password/i, { timeout: 10000 }).click();
 
     cy.get('input[id="currentPassword"]').type(Cypress.env("password")),
       cy.get('input[id="newPassword"]').type(Cypress.env("password")),
@@ -19,7 +19,7 @@ describe("Profile page", () => {
   });
 
   it("allows update user's data", () => {
-    cy.contains(/update data/i).click();
+    cy.contains(/update data/i, { timeout: 10000 }).click();
 
     cy.get('input[id="name"]').clear().type("John"),
       cy.get('input[id="surname"]').clear().type("Doe"),

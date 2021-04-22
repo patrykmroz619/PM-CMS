@@ -4,7 +4,7 @@ describe("Register page", () => {
   it("should allow to create new account and delete it.", () => {
     cy.visit("#/register");
 
-    cy.get('input[name="email"]').type("example@mail.com");
+    cy.get('input[name="email"]', { timeout: 10000 }).type("example@mail.com");
     cy.get('input[name="password"]').type("Password123");
     cy.get('input[name="passwordRepeated"]').type("Password123");
 
