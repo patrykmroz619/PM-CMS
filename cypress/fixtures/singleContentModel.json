@@ -1,0 +1,16 @@
+{
+  "id": "1",
+  "name": "Content model 1",
+  "endpoint": "content-model-1",
+  "fields": [
+    {
+      "id": "1",
+      "type": "text",
+      "name": "Text field",
+      "multiline": false,
+      "unique": true
+    }
+  ],
+  "userId": "1",
+  "projectId": "1"
+}

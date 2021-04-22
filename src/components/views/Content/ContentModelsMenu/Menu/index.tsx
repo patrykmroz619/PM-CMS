@@ -43,7 +43,9 @@ const Menu = ({
             />
           ))}
         </S.MenuList>
-        <S.Btn to={routes.newContentModel}>{content.newModelButton}</S.Btn>
+        <S.Btn to={routes.newContentModel} title="new model">
+          {content.newModelButton}
+        </S.Btn>
         <S.Toggler isOpen={isOpen} onClick={toogleMenu}>
           <ArrowIcon />
         </S.Toggler>
