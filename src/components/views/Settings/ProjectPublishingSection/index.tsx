@@ -40,6 +40,7 @@ const ProjectPublishingSection = () => {
         checked={isProjectPublished}
         onTogglerChange={handleTogglerChange}
         pending={pending}
+        data-testid="toggler"
       />
       <P>{isProjectPublished ? content.publishedInfo : content.notPublishedInfo}</P>
     </S.Box>

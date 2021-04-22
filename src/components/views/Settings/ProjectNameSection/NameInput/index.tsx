@@ -49,6 +49,7 @@ const NameInput = () => {
         onChange={handleInputChange}
         value={nameInputValue}
         disabled={isInputDisabled}
+        name="project name"
       />
       <S.Btn onClick={handleClick} type="submit">
         {isInputDisabled ? content.enableUpdateName : content.confirmUpdateName}

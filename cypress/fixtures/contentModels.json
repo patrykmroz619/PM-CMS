@@ -1,0 +1,36 @@
+[
+  {
+    "id": "1",
+    "name": "Content model 1",
+    "endpoint": "content-model-1",
+    "fields": [
+      {
+        "id": "1",
+        "type": "text",
+        "name": "Text field",
+        "multiline": false,
+        "unique": true,
+        "maxLendgth": "undefined",
+        "minLength": "undefined"
+      }
+    ],
+    "userId": "1",
+    "projectId": "1"
+  },
+  {
+    "id": "2",
+    "name": "Content model 2",
+    "endpoint": "content-model-2",
+    "fields": [
+      {
+        "id": "2",
+        "type": "number",
+        "name": "Number field",
+        "unique": true,
+        "integer": true
+      }
+    ],
+    "userId": "1",
+    "projectId": "1"
+  }
+]

@@ -3,7 +3,7 @@ describe("Project", () => {
     cy.login();
     cy.visit("#/panel");
 
-    cy.contains(/add project/i).click();
+    cy.contains(/add project/i, { timeout: 10000 }).click();
 
     cy.get("input").type("My new project");
     cy.get('button[type="submit"]').click();

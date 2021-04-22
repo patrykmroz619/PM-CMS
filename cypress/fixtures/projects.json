@@ -1,0 +1,28 @@
+{
+  "projects": [
+    {
+      "id": "1",
+      "userId": "1",
+      "name": "Project 1",
+      "createdAt": 1223,
+      "apiKey": "undefined",
+      "published": "false"
+    },
+    {
+      "id": "2",
+      "userId": "2",
+      "name": "Project 2",
+      "createdAt": 1223234234,
+      "apiKey": "uwersdfwerwer",
+      "published": "true"
+    },
+    {
+      "id": "3",
+      "userId": "3",
+      "name": "Project 3",
+      "createdAt": 1223412321,
+      "apiKey": "undefined",
+      "published": "false"
+    }
+  ]
+}
