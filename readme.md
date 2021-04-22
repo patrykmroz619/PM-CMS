@@ -3,12 +3,15 @@
 You can view the app [here](https://pm-cms.netlify.app/).
 
 Credentials:
+
 - email: `example@mail.com`
 - password: `Password1`
 
 ## About the project
 
 The dashboard for my full-stack project called "PM CMS - Headless CMS" created with react + typescript. [Rest api repo here](https://github.com/patrykmroz619/PM-CMS-api).
+
+![Screenshot](https://patrykmroz.pl/assets/images/pm-cms.jpg)
 
 ## Local usage
 
@@ -34,6 +37,16 @@ npm start
 
 ```sh
 npm run build
+```
+
+4. Run tests
+
+```sh
+npm run test
+```
+
+```sh
+npm run cypress
 ```
 
 ## Primary technologies / packages
